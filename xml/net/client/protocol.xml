@@ -1,0 +1,900 @@
+<protocol>
+    <enum name="SitAction" type="char">
+        <value name="Sit">1</value>
+        <value name="Stand">2</value>
+    </enum>
+
+    <enum name="GuildInfoType" type="short">
+        <value name="Description">1</value>
+        <value name="Ranks">2</value>
+        <value name="Bank">3</value>
+    </enum>
+
+    <enum name="TrainType" type="char">
+        <value name="Stat">1</value>
+        <value name="Skill">2</value>
+    </enum>
+
+    <enum name="DialogReply" type="char">
+        <value name="OK">1</value>
+        <value name="Link">2</value>
+    </enum>
+
+    <enum name="FileType" type="char">
+        <value name="EMF">1</value>
+        <value name="EIF">2</value>
+        <value name="EIF">3</value>
+        <value name="ESF">4</value>
+        <value name="ECF">5</value>
+    </enum>
+
+    <enum name="StatId" type="short">
+        <value name="Str">1</value>
+        <value name="Int">2</value>
+        <value name="Wis">3</value>
+        <value name="Agi">4</value>
+        <value name="Con">5</value>
+        <value name="Cha">6</value>
+    </enum>
+
+    <enum name="SpellTargetType" type="char">
+        <value name="Player">1</value>
+        <value name="NPC">2</value>
+    </enum>
+
+    <enum name="MarriageRequestType" type="char">
+        <value name="MarriageApproval">1</value>
+        <value name="Divorce">2</value>
+    </enum>
+
+    <struct name="WalkAction">
+        <field name="direction" type="Direction"/>
+        <field name="timestamp" type="three"/>
+        <field name="coords" type="Coords"/>
+    </struct>
+
+    <packet family="Init" action="Init">
+        <comment>Connection initialization request</comment>
+        <field name="challenge" type="three"/>
+        <field name="version" type="Version"/>
+        <!-- The official server verifies that this number is 112 -->
+        <field type="char">112</field>
+        <field name="hdid_length" type="char"/>
+        <field name="hdid" type="string" length="hdid_length"/>
+    </packet>
+
+    <packet family="Connection" action="Accept">
+        <comment>Confirm initialization data</comment>
+        <field name="encode_multiple" type="short"/>
+        <field name="encode_multiple" type="short"/>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Connection" action="Ping">
+        <comment>Ping reply</comment>
+        <dummy type="string">k</dummy>
+    </packet>
+
+    <packet family="Account" action="Request">
+        <comment>Request creating an account</comment>
+        <field name="username" type="string"/>
+    </packet>
+
+    <packet family="Account" action="Create">
+        <comment>Confirm creating an account</comment>
+        <chunked>
+            <field name="session_id" type="short"/>
+            <break/>
+            <field name="username" type="string"/>
+            <break/>
+            <field name="password" type="string"/>
+            <break/>
+            <field name="full_name" type="string"/>
+            <break/>
+            <field name="location" type="string"/>
+            <break/>
+            <field name="email" type="string"/>
+            <break/>
+            <field name="computer" type="string"/>
+            <break/>
+            <field name="hdid" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Account" action="Agree">
+        <comment>Change password</comment>
+        <chunked>
+            <field name="username" type="string"/>
+            <break/>
+            <field name="old_password" type="string"/>
+            <break/>
+            <field name="new_password" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Character" action="Request">
+        <comment>Request to create a character</comment>
+        <chunked>
+            <field name="request_string" type="string">NEW</field>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Character" action="Create">
+        <comment>Confirm creating a character</comment>
+        <chunked>
+            <field name="session_id" type="short"/>
+            <field name="gender" type="Gender:short"/>
+            <field name="hair_style" type="short"/>
+            <field name="hair_color" type="short"/>
+            <field name="skin" type="Skin:short"/>
+            <break/>
+            <field name="name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Character" action="Take">
+        <comment>Request to delete a character from an account</comment>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Character" action="Remove">
+        <comment>Confirm deleting character from an account</comment>
+        <field name="session_id" type="short"/>
+        <field name="character_id" type="int"/>
+    </packet>
+
+    <packet family="Login" action="Request">
+        <comment>Login request</comment>
+        <chunked>
+            <field name="username" type="string"/>
+            <break/>
+            <field name="password" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Welcome" action="Request">
+        <comment>Selected a character</comment>
+        <field name="character_id" type="int"/>
+    </packet>
+
+    <packet family="Welcome" action="Msg">
+        <comment>Entering game</comment>
+        <field name="session_id" type="three"/>
+        <field name="character_id" type="int"/>
+    </packet>
+
+    <packet family="Welcome" action="Agree">
+        <comment>Requesting a file</comment>
+        <field name="file_type" type="FileType"/>
+        <field name="session_id" type="short"/>
+        <switch field="file_type">
+            <case value="EMF">
+                <!-- Unlike the pub file IDs, the EMF file ID is a short -->
+                <field name="file_id" type="short"/>
+            </case>
+            <case value="EIF">
+                <field name="file_id" type="char"/>
+            </case>
+            <case value="ENF">
+                <field name="file_id" type="char"/>
+            </case>
+            <case value="ESF">
+                <field name="file_id" type="char"/>
+            </case>
+            <case value="ECF">
+                <field name="file_id" type="char"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="AdminInteract" action="Tell">
+        <comment>Talk to admin</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="AdminInteract" action="Report">
+        <comment>Report character</comment>
+        <field name="reportee" type="string"/>
+        <break/>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Global" action="Remove">
+        <comment>Enable whispers</comment>
+        <dummy type="string">n</dummy>
+    </packet>
+
+    <packet family="Global" action="Player">
+        <comment>Disable whispers</comment>
+        <dummy type="string">y</dummy>
+    </packet>
+
+    <packet family="Global" action="Open">
+        <comment>Opened global tab</comment>
+        <dummy type="string">y</dummy>
+    </packet>
+
+    <packet family="Global" action="Close">
+        <comment>Closed global tab</comment>
+        <dummy type="string">n</dummy>
+    </packet>
+
+    <packet family="Talk" action="Request">
+        <comment>Guild chat message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Open">
+        <comment>Party chat message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Msg">
+        <comment>Global chat message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Tell">
+        <comment>Private chat message</comment>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Report">
+        <comment>Public chat message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Admin">
+        <comment>Admin chat message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Announce">
+        <comment>Admin announcement</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Attack" action="Use">
+        <comment>Attacking</comment>
+        <field name="direction" type="Direction"/>
+        <field name="timestamp" type="three"/>
+    </packet>
+
+    <packet family="Chair" action="Request">
+        <comment>Sitting on a chair</comment>
+        <field name="sit_action" type="SitAction"/>
+        <switch field="sit_action">
+            <case value="Sit">
+                <field name="coords" type="Coords"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Sit" action="Request">
+        <comment>Sit/stand request</comment>
+        <field name="sit_action" type="SitAction"/>
+    </packet>
+
+    <packet family="Emote" action="Report">
+        <comment>Doing an emote</comment>
+        <field name="emote" type="Emote"/>
+    </packet>
+
+    <packet family="Face" action="Player">
+        <comment>Facing a direction</comment>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Walk" action="Admin">
+        <comment>Walking with #nowall</comment>
+        <field name="walk_action" type="WalkAction"/>
+    </packet>
+
+    <packet family="Walk" action="Spec">
+        <comment>Walking through a player</comment>
+        <field name="walk_action" type="WalkAction"/>
+    </packet>
+
+    <packet family="Walk" action="Player">
+        <comment>Walking</comment>
+        <field name="walk_action" type="WalkAction"/>
+    </packet>
+
+    <packet family="Bank" action="Open">
+        <comment>Talked to a banker NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="Bank" action="Add">
+        <comment>Depositing gold</comment>
+        <field name="amount" type="int"/>
+    </packet>
+
+    <packet family="Bank" action="Take">
+        <comment>Withdrawing gold</comment>
+        <field name="amount" type="int"/>
+    </packet>
+
+    <packet family="Locker" action="Add">
+        <comment>Adding an item to a bank locker</comment>
+        <field name="locker_coords" type="Coords"/>
+        <field name="deposit_item" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Locker" action="Take">
+        <comment>Taking an item from a bank locker</comment>
+        <field name="locker_coords" type="Coords"/>
+        <field name="take_item_id" type="short"/>
+    </packet>
+
+    <packet family="Locker" action="Open">
+        <comment>Opening a bank locker</comment>
+        <field name="locker_coords" type="Coords"/>
+    </packet>
+
+    <packet family="Locker" action="Buy">
+        <comment>Buying a locker space upgrade from a banker NPC</comment>
+        <dummy type="char">1</dummy>
+    </packet>
+
+    <packet family="Citizen" action="Request">
+        <comment>Request sleeping at an inn</comment>
+        <field name="session_id" type="short"/>
+        <field name="behaviour_id" type="short"/>
+    </packet>
+
+    <packet family="Citizen" action="Accept">
+        <comment>Confirm sleeping at an inn</comment>
+        <field name="session_id" type="short"/>
+        <field name="behaviour_id" type="short"/>
+    </packet>
+
+    <packet family="Citizen" action="Reply">
+        <comment>Subscribing to a town</comment>
+        <chunked>
+            <field name="session_id" type="short"/>
+            <break/>
+            <field name="behaviour_id" type="short"/>
+            <break/>
+            <field name="answer1" type="string"/>
+            <break/>
+            <field name="answer2" type="string"/>
+            <break/>
+            <field name="answer3" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Citizen" action="Remove">
+        <comment>Giving up citizenship of a town</comment>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Citizen" action="Open">
+        <comment>Talking to a citizenship NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="Shop" action="Create">
+        <comment>Crafting an item from a shop</comment>
+        <field name="craft_item_id" type="short"/>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Shop" action="Buy">
+        <comment>Purchasing an item from a shop</comment>
+        <field name="buy_item_id" type="short"/>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Shop" action="Sell">
+        <comment>Selling an item to a shop</comment>
+        <field name="sell_item" type="Item"/>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Shop" action="Open">
+        <comment>Talking to a shop NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="StatSkill" action="Open">
+        <comment>Talking to a skill master NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="StatSkill" action="Take">
+        <comment>Learning a skill from a skill master NPC</comment>
+        <field name="session_id" type="int"/>
+        <field name="spell_id" type="short"/>
+    </packet>
+
+    <packet family="StatSkill" action="Remove">
+        <comment>Forgetting a skill at a skill master NPC</comment>
+        <field name="session_id" type="int"/>
+        <field name="spell_id" type="short"/>
+    </packet>
+
+    <packet family="StatSkill" action="Add">
+        <comment>Spending a stat point on a stat or skill</comment>
+        <field name="action_type" type="TrainType"/>
+        <switch field="action_type">
+            <case value="Stat">
+                <field name="stat_id" type="StatId"/>
+            </case>
+            <case value="Skill">
+                <field name="spell_id" type="short"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="StatSkill" action="Junk">
+        <comment>Resetting stats at a skill master</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Item" action="Use">
+        <comment>Using an item</comment>
+        <field name="item_id" type="short"/>
+    </packet>
+
+    <packet family="Item" action="Drop">
+        <comment>Dropping items on the ground</comment>
+        <field name="item" type="ThreeItem"/>
+        <!--
+            The official client sends 255 byte values for the coords if an item is dropped via the
+            GUI button.
+            254 char values here should be interpreted to mean "drop at current coords".
+        -->
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Item" action="Junk">
+        <comment>Junking items</comment>
+        <field name="item" type="Item"/>
+    </packet>
+
+    <packet family="Item" action="Get">
+        <comment>Taking items from the ground</comment>
+        <field name="item_index" type="short"/>
+    </packet>
+
+    <packet family="Board" action="Remove">
+        <comment>Removing a post from a town board</comment>
+        <field name="board_id" type="short"/>
+        <field name="post_id" type="short"/>
+    </packet>
+
+    <packet family="Board" action="Create">
+        <comment>Posting a new message to a town board</comment>
+        <chunked>
+            <field name="board_id" type="short"/>
+            <break/>
+            <field name="post_subject" type="string"/>
+            <break/>
+            <field name="post_body" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Board" action="Open">
+        <comment>Opening a town board</comment>
+        <field name="board_id" type="short"/>
+    </packet>
+
+    <packet family="Jukebox" action="Open">
+        <comment>Opening the jukebox listing</comment>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Jukebox" action="Msg">
+        <comment>Requesting a song on a jukebox</comment>
+        <chunked>
+            <field type="char">0</field>
+            <field type="char">0</field>
+            <field name="track_id" type="short"/>
+        </chunked>
+    </packet>
+
+    <packet family="Jukebox" action="Use">
+        <comment>Playing a note with the bard skill</comment>
+        <field name="instrument_id" type="char"/>
+        <field name="note_id" type="char"/>
+    </packet>
+
+    <packet family="Warp" action="Accept">
+        <comment>Accept a warp request from the server</comment>
+        <field name="map_id" type="short"/>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Warp" action="Take">
+        <comment>Request to download a copy of the map</comment>
+        <field name="map_id" type="short"/>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Paperdoll" action="Request">
+        <comment>Request for a player's paperdoll</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Paperdoll" action="Remove">
+        <comment>Unequipping an item</comment>
+        <field name="item_id" type="short"/>
+        <field name="sub_loc" type="char"/>
+    </packet>
+
+    <packet family="Paperdoll" action="Add">
+        <comment>Equipping an item</comment>
+        <field name="item_id" type="short"/>
+        <field name="sub_loc" type="char"/>
+    </packet>
+
+    <packet family="Book" action="Request">
+        <comment>Request for a player's book</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Message" action="Ping">
+        <comment>#ping command request</comment>
+        <dummy type="short">2</dummy>
+    </packet>
+
+    <packet family="Players" action="Accept">
+        <comment>#find command request</comment>
+        <field name="name" type="string"/>
+    </packet>
+
+    <packet family="Players" action="Request">
+        <comment>Requesting a list of online players</comment>
+        <dummy type="byte">255</dummy>
+    </packet>
+
+    <packet family="Players" action="List">
+        <comment>Requesting a list of online friends</comment>
+        <dummy type="byte">255</dummy>
+    </packet>
+
+    <packet family="Door" action="Open">
+        <comment>Opening a door</comment>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Chest" action="Open">
+        <comment>Opening a chest</comment>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Chest" action="Add">
+        <comment>Placing an item in to a chest</comment>
+        <field name="coords" type="Coords"/>
+        <field name="add_item" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Chest" action="Take">
+        <comment>Taking an item from a chest</comment>
+        <field name="coords" type="Coords"/>
+        <field name="take_item_id" type="short"/>
+    </packet>
+
+    <packet family="Refresh" action="Request">
+        <comment>Requesting new info about nearby objects</comment>
+        <dummy type="byte">255</dummy>
+    </packet>
+
+    <packet family="Range" action="Request">
+        <comment>Requesting info about nearby players and NPCs</comment>
+        <chunked>
+            <array name="player_ids" type="short"/>
+            <break/>
+            <array name="npc_indexes" type="char"/>
+        </chunked>
+    </packet>
+
+    <packet family="PlayerRange" action="Request">
+        <comment>Requesting info about nearby players</comment>
+        <array name="player_ids" type="short"/>
+    </packet>
+
+    <packet family="NPCRange" action="Request">
+        <comment>Requesting info about nearby NPCs</comment>
+        <array name="npc_indexes" type="char"/>
+    </packet>
+
+    <packet family="Party" action="Request">
+        <comment>Send party invite / join request</comment>
+        <field name="request_type" type="PartyRequestType"/>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Party" action="Accept">
+        <comment>Accept party invite / join request</comment>
+        <field name="request_type" type="PartyRequestType"/>
+        <field name="inviter_player_id" type="short"/>
+    </packet>
+
+    <packet family="Party" action="Accept">
+        <comment>Remove player from a party</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Party" action="Take">
+        <comment>Request updated party info</comment>
+        <field name="members_count" type="char"/>
+    </packet>
+
+    <packet family="Guild" action="Request">
+        <comment>Requested to create a guild</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <break/>
+            <field name="guild_tag" type="string"/>
+            <break/>
+            <field name="guild_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Accept">
+        <comment>Accept pending guild creation invite</comment>
+         <!-- The official client really does send this random harcoded 20202 value -->
+        <field type="int">20202</field>
+        <field name="inviter_player_id" type="short"/>
+    </packet>
+
+    <packet family="Guild" action="Remove">
+        <comment>Leave guild</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Guild" action="Agree">
+        <comment>Update the guild description or rank list</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <field name="info_type" type="GuildInfoType"/>
+            <switch field="info_type">
+                <case value="Description">
+                    <field name="description" type="string"/>
+                    <break/>
+                </case>
+                <case value="Ranks">
+                    <array name="ranks" type="string" length="9" delimited="true"/>
+                    <break/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Create">
+        <comment>Final confirm creating a guild</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <break/>
+            <field name="guild_tag" type="string"/>
+            <break/>
+            <field name="guild_name" type="string"/>
+            <break/>
+            <field name="description" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Player">
+        <comment>Request to join a guild</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <break/>
+            <field name="guild_tag" type="string"/>
+            <break/>
+            <field name="recruiter_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Take">
+        <comment>Request guild bank / ranks / description</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <field name="info_type" type="GuildInfoType"/>
+            <switch field="info_type">
+                <case value="Description">
+                    <field name="description" type="string"/>
+                    <break/>
+                </case>
+                <case value="Ranks">
+                    <array name="ranks" type="string" length="9" delimited="true"/>
+                    <break/>
+                </case>
+                <case value="Bank">
+                    <field name="gold_amount" type="int"/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Use">
+        <comment>Accepted a join request</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Guild" action="Buy">
+        <comment>Deposit gold in to the guild bank</comment>
+        <field name="session_id" type="int"/>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="Guild" action="Open">
+        <comment>Talking to a guild master NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="Guild" action="Tell">
+        <comment>Requested member list of a guild</comment>
+        <field name="session_id" type="int"/>
+        <field name="guild_identity" type="string"/>
+    </packet>
+
+    <packet family="Guild" action="Report">
+        <comment>Requested general information of a guild</comment>
+        <field name="session_id" type="int"/>
+        <field name="guild_identity" type="string"/>
+    </packet>
+
+    <packet family="Guild" action="Junk">
+        <comment>Disband guild</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Guild" action="Kick">
+        <comment>Kick member from guild</comment>
+        <field name="session_id" type="int"/>
+        <field name="member_name" type="string"/>
+    </packet>
+
+    <packet family="Guild" action="Rank">
+        <comment>Update a member's rank</comment>
+        <field name="session_id" type="int"/>
+        <field name="rank" type="char"/>
+        <field name="member_name" type="string"/>
+    </packet>
+
+    <packet family="Spell" action="Request">
+        <comment>Begin spell chanting</comment>
+        <field name="spell_id" type="short"/>
+        <field name="timestamp" type="three"/>
+    </packet>
+
+    <packet family="Spell" action="TargetSelf">
+        <comment>Self-targeted spell cast</comment>
+        <field name="direction" type="Direction"/>
+        <field name="spell_id" type="short"/>
+        <field name="timestamp" type="three"/>
+    </packet>
+
+    <packet family="Spell" action="TargetOther">
+        <comment>Targeted spell cast</comment>
+        <field name="target_type" type="SpellTargetType"/>
+        <field name="previous_timestamp" type="three"/>
+        <field name="spell_id" type="short"/>
+        <field name="timestamp" type="three"/>
+    </packet>
+
+    <packet family="Spell" action="TargetGroup">
+        <comment>Group spell cast</comment>
+        <field name="spell_id" type="short"/>
+        <field name="timestamp" type="three"/>
+    </packet>
+
+    <packet family="Spell" action="Use">
+        <comment>Raise arm to cast a spell (vestigial)</comment>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Trade" action="Request">
+        <comment>Requesting a trade with another player</comment>
+        <!-- The official server verifies that this number is 138 -->
+        <field type="char">138</field>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Trade" action="Accept">
+        <comment>Accepting a trade request</comment>
+        <!-- The official server verifies that this number is 0 -->
+        <field type="char">0</field>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Trade" action="Remove">
+        <comment>Remove an item from the trade screen</comment>
+        <field name="item_id" type="short"/>
+    </packet>
+
+    <packet family="Trade" action="Agree">
+        <comment>Mark trade as agreed</comment>
+        <field name="agree_state" type="char"/>
+    </packet>
+
+    <packet family="Trade" action="Add">
+        <comment>Add an item to the trade screen</comment>
+        <field name="add_item" type="Item"/>
+    </packet>
+
+    <packet family="Trade" action="Close">
+        <comment>Cancel the trade</comment>
+        <field name="unk1" type="char"/>
+    </packet>
+
+    <packet family="Quest" action="Use">
+        <comment>Talking to a quest NPC</comment>
+        <field name="npc_index" type="short"/>
+        <!-- quest_id is 0 unless the player explicitly selects a quest from the quest switcher -->
+        <field name="quest_id" type="short"/>
+    </packet>
+
+    <packet family="Quest" action="Accept">
+        <comment>Response to a quest NPC dialog</comment>
+        <field name="session_id" type="short"/>
+        <field name="dialog_id" type="short"/>
+        <field name="quest_id" type="short"/>
+        <field name="npc_index" type="short"/>
+        <field name="reply_type" type="DialogReply"/>'
+        <switch field="reply_type">
+            <case value="Link">
+                <field name="action" type="char"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Quest" action="List">
+        <comment>Quest history / progress request</comment>
+        <field name="page" type="QuestPage"/>
+    </packet>
+
+    <packet family="Marriage" action="Open">
+        <comment>Talking to a law NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
+    <packet family="Marriage" action="Request">
+        <comment>Requesting marriage approval</comment>
+        <chunked>
+            <field name="request_type" type="MarriageRequestType"/>
+            <field name="session_id" type="string"/>
+            <break/>
+            <field name="name" type="int"/>
+        </chunked>
+    </packet>
+
+    <packet family="Priest" action="Accept">
+        <comment>Accepting a marriage request</comment>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Priest" action="Open">
+        <comment>Talking to a priest NPC</comment>
+        <field name="npc_index" type="int"/>
+    </packet>
+
+    <packet family="Priest" action="Request">
+        <comment>Requesting marriage at a priest</comment>
+        <chunked>
+            <field name="session_id" type="int"/>
+            <break/>
+            <field name="name" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Priest" action="Use">
+        <comment>Saying "I do" at a wedding</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+</protocol>

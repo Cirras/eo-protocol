@@ -1,0 +1,1961 @@
+<protocol>
+    <enum name="InitReply" type="byte">
+        <value name="OutOfDate">1</value>
+        <value name="OK">2</value>
+        <value name="Banned">3</value>
+        <value name="FileEMF">5</value>
+        <value name="FileEIF">6</value>
+        <value name="FileENF">7</value>
+        <value name="FileESF">8</value>
+        <value name="Players">9</value>
+        <value name="MapMutation">10</value>
+        <value name="FriendListPlayers">11</value>
+        <value name="FileECF">12</value>
+    </enum>
+
+    <enum name="InitBanType" type="byte" clamp="true">
+        <value name="Temporary">1</value>
+        <value name="Permanent">2</value>
+    </enum>
+
+    <enum name="PaperdollIcon" type="char">
+        <value name="Player" default="true">1</value>
+        <value name="GM">4</value>
+        <value name="HGM">5</value>
+        <value name="Party">6</value>
+        <value name="GMParty">9</value>
+        <value name="HGMParty">10</value>
+    </enum>
+
+    <enum name="AvatarSlot" type="char">
+        <value name="Clothes">1</value>
+        <value name="Hair">2</value>
+        <value name="HairColor">3</value>
+    </enum>
+
+    <enum name="TalkReply" type="char">
+        <value name="NotFound">1</value>
+    </enum>
+
+    <enum name="SitState" type="char">
+        <value name="Stand">0</value>
+        <value name="Chair">1</value>
+        <value name="Floor">2</value>
+    </enum>
+
+    <enum name="MapEffect" type="char">
+        <value name="Quake">1</value>
+    </enum>
+
+    <enum name="GuildReply" type="short">
+        <value name="Busy">1</value>
+        <value name="NotApproved">2</value>
+        <value name="AlreadyMember">3</value>
+        <value name="NoCandidates">4</value>
+        <value name="Exists">5</value>
+        <value name="CreateBegin">6</value>
+        <value name="CreateAddConfirm">7</value>
+        <value name="CreateAdd">8</value>
+        <value name="RecruiterOffline">9</value>
+        <value name="RecruiterNotHere">10</value>
+        <value name="RecruiterWrongGuild">11</value>
+        <value name="NotRecruiter">12</value>
+        <value name="JoinRequest">13</value>
+        <value name="NotPresent">14</value>
+        <value name="AccountLow">15</value>
+        <value name="Accepted">16</value>
+        <value name="NotFound">17</value>
+        <value name="Updated">18</value>
+        <value name="RanksUpdated">19</value>
+        <value name="RemoveLeader">20</value>
+        <value name="RemoveNotMember">21</value>
+        <value name="Removed">22</value>
+        <value name="RankingLeader">23</value>
+        <value name="RankingNotMember">24</value>
+    </enum>
+
+    <enum name="InnUnsubscribeReply" type="char">
+        <value name="NotCitizen">0</value>
+        <value name="Unsubscribed">1</value>
+    </enum>
+
+    <enum name="CharacterReply" type="short">
+        <value name="Exists">1</value>
+        <value name="Full">2</value>'
+        <!-- Full3 behaves the same as Full -->
+        <value name="Full3">3</value>
+        <value name="NotApproved">4</value>
+        <value name="OK">5</value>
+        <value name="Deleted">6</value>
+    </enum>
+
+    <enum name="SkillMasterReply" type="short">
+        <value name="RemoveItems">1</value>
+        <value name="WrongClass">2</value>
+    </enum>
+
+    <enum name="AccountReply" type="short">
+        <value name="Exists">1</value>
+        <value name="NotApproved">2</value>
+        <value name="Created">3</value>
+        <value name="ChangeFailed">5</value>
+        <value name="Changed">6</value>
+        <value name="RequestDenied">7</value>
+    </enum>
+
+    <enum name="LoginReply" type="short">
+        <value name="WrongUser">1</value>
+        <value name="WrongUserPassword">2</value>
+        <value name="OK">3</value>
+        <value name="Banned">4</value>
+        <value name="LoggedIn">5</value>
+        <value name="Busy">6</value>
+    </enum>
+
+    <enum name="DialogEntryType" type="char">
+        <value name="Text">1</value>
+        <value name="Link">2</value>
+    </enum>
+
+    <enum name="BookIcon" type="char">
+        <value name="Item">3</value>
+        <value name="Talk">5</value>
+        <value name="Kill">8</value>
+        <value name="Step">10</value>
+    </enum>
+
+    <enum name="WarpAnimation" type="char">
+        <value name="None" default="true">0</value>
+        <value name="Scroll">1</value>
+        <value name="Admin">2</value>
+    </enum>
+
+    <enum name="WarpType" type="char">
+        <value name="Local">1</value>
+        <value name="MapSwitch">2</value>
+    </enum>
+
+    <enum name="WelcomeCode" type="short">
+        <value name="SelectCharacter">1</value>
+        <value name="EnterGame">2</value>
+        <value name="ServerBusy">3</value>
+        <value name="LoggedIn">4</value>
+    </enum>
+
+    <enum name="LoginMessageCode" type="char">
+        <value name="No">0</value>
+        <value name="Yes">2</value>
+    </enum>
+
+    <enum name="AdminMessageType" type="char">
+        <value name="Message">1</value>
+        <value name="Report">2</value>
+    </enum>
+
+    <enum name="NPCKilledState" type="char">
+        <value name="Alive">1</value>
+        <value name="Killed">2</value>
+    </enum>
+
+    <enum name="MapDamageType">
+        <value name="TPDrain">1</value>
+        <value name="Spikes">2</value>
+    </enum>
+
+    <enum name="MarriageReply" type="short">
+        <value name="AlreadyMarried">1</value>
+        <value name="NotMarried">2</value>
+        <value name="Success">3</value>
+        <value name="NotEnoughGold">4</value>
+        <value name="WrongName">5</value>
+        <value name="ServiceBusy">6</value>
+        <value name="DivorceNotification">7</value>
+    </enum>
+
+    <enum name="PriestReply" type="short">
+        <value name="NotDressed">1</value>
+        <value name="LowLevel">2</value>
+        <value name="PartnerNotPresent">3</value>
+        <value name="PartnerNotDressed">4</value>
+        <value name="Busy">5</value>
+        <value name="DoYou">6</value>
+        <value name="PartnerAlreadyMarried">7</value>
+        <value name="NoPermission">8</value>
+    </enum>
+
+    <struct name="BigCoords">
+        <field name="x" type="short"/>
+        <field name="y" type="short"/>
+    </struct>
+
+    <!-- The official client skips these if they're under 42 bytes in length -->
+    <struct name="CharacterMapInfo">
+        <field name="name" type="string"/>
+        <break/>
+        <field name="player_id" type="short"/>
+        <field name="map_id" type="short"/>
+        <field name="coords" type="BigCoords"/>
+        <field name="direction" type="Direction"/>
+        <field name="class_id" type="char"/>
+        <field name="guild_tag" type="string" length="3"/>
+        <field name="level" type="char"/>
+        <field name="gender" type="Gender"/>
+        <field name="hair_style" type="char"/>
+        <field name="hair_color" type="char"/>
+        <field name="skin_id" type="Skin"/>
+        <field name="max_hp" type="short"/>
+        <field name="hp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="tp" type="short"/>
+        <field name="paperdoll" type="PaperdollB000A0HSW"/>
+        <field name="sit_state" type="SitState"/>
+        <field name="invisible" type="bool"/>
+        <field name="animation" type="WarpAnimation" optional="true"/>
+    </struct>
+
+    <struct name="NPCMapInfo">
+        <field name="index" type="char"/>
+        <field name="id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+    </struct>
+
+    <struct name="ItemMapInfo">
+        <field name="uid" type="short"/>
+        <field name="id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="amount" type="three"/>
+    </struct>
+
+    <struct name="AvatarChange">
+        <field name="player_id" type="short"/>
+        <field name="slot" type="AvatarSlot"/>
+        <field name="sound" type="bool"/>
+        <switch field="slot">
+            <case value="Clothes">
+                <field name="paperdoll" type="PaperdollBAHWS"/>
+            </case>
+            <case value="Hair">
+                <field name="hair_style" type="char"/>
+                <field name="hair_color" type="char"/>
+            </case>
+            <case value="HairColor">
+                <field name="hair_color" type="char"/>
+            </case>
+        </switch>
+    </struct>
+
+    <struct name="NearbyInfo">
+        <field name="characters_count" type="char"/>
+        <chunked>
+            <break/>
+            <array name="characters" type="CharacterMapInfo" length="characters_count" delimited="true"/>
+            <break/>
+            <array name="npcs" type="NPCMapInfo"/>
+            <break/>
+            <array name="items" type="ItemMapInfo"/>
+        </chunked>
+    </struct>
+
+    <struct name="OnlinePlayer">
+        <field name="name" type="string"/>
+        <break/>
+        <field name="title" type="string"/>
+        <break/>
+        <field type="char">0</field>
+        <field name="icon" type="PaperdollIcon"/>
+        <field name="class_id" type="char"/>
+        <field name="guild_tag" type="string"/>
+    </struct>
+
+    <struct name="CharacterInfo">
+        <comment>Character selection screen character info</comment>
+        <field name="name" type="string"/>
+        <break/>
+        <field name="id" type="int"/>
+        <field name="level" type="char"/>
+        <field name="gender" type="Gender"/>
+        <field name="hair_style" type="char"/>
+        <field name="hair_color" type="char"/>
+        <field name="skin" type="Skin"/>
+        <field name="admin" type="AdminLevel"/>
+        <field name="paperdoll" type="PaperdollBAHSW"/>
+    </struct>
+
+    <struct name="CharacterList">
+        <comment>Character selection screen character info</comment>
+        <field name="characters_count" type="char"/>
+        <field type="char">1</field>
+        <break/>
+        <array name="characters" type="CharacterInfo" delimited="true"/>
+        <break/>
+    </struct>
+
+    <struct name="ServerSettings">
+        <field name="jail_map" type="short"/>
+        <field name="rescue_map" type="short"/>
+        <field name="rescue_coords" type="Coords"/>
+        <field name="light_guide_flood_rate" type="short"/>
+        <field name="guardian_flood_rate" type="short"/>
+        <field name="game_master_and_high_game_master_flood_rate" type="short"/>
+        <field name="reserved5_flood_rate" type="short"/>
+    </struct>
+
+    <struct name="ShopTradeItem">
+        <field name="item_id" type="short"/>
+        <field name="buy_price" type="three"/>
+        <field name="sell_price" type="three"/>
+        <field name="max_buy_amount" type="char"/>
+    </struct>
+
+    <struct name="ShopCraftItem">
+        <field name="item_id" type="short"/>
+        <array name="ingredients" type="CharItem" length="4"/>
+    </struct>
+
+    <struct name="ShopSoldItem">
+        <comment>Used to represent a sold item when selling an item to a shop</comment>
+        <field name="amount" type="int"/>
+        <field name="id" type="short"/>
+    </struct>
+
+    <struct name="CharacterBaseStats">
+        <field name="str" type="short"/>
+        <field name="intl" type="short"/>
+        <field name="wis" type="short"/>
+        <field name="agi" type="short"/>
+        <field name="con" type="short"/>
+        <field name="cha" type="short"/>
+    </struct>
+
+    <struct name="CharacterSecondaryStats">
+        <field name="min_damage" type="short"/>
+        <field name="max_damage" type="short"/>
+        <field name="accuracy" type="short"/>
+        <field name="evade" type="short"/>
+        <field name="armor" type="short"/>
+    </struct>
+
+    <struct name="CharacterStats1">
+        <field name="stat_points" type="short"/>
+        <field name="skill_points" type="short"/>
+        <field name="hp" type="short"/>
+        <field name="max_hp" type="short"/>
+        <field name="tp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="max_sp" type="short"/>
+        <field name="base" type="CharacterBaseStats"/>
+        <field name="secondary" type="CharacterSecondaryStats"/>
+    </struct>
+
+    <struct name="CharacterStats2">
+        <field name="hp" type="short"/>
+        <field name="max_hp" type="short"/>
+        <field name="tp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="max_sp" type="short"/>
+        <field name="stat_points" type="short"/>
+        <field name="skill_points" type="short"/>
+        <field name="karma" type="short"/>
+        <field name="base" type="CharacterBaseStats"/>
+        <field name="secondary" type="CharacterSecondaryStats"/>
+    </struct>
+
+    <struct name="CharacterStats3">
+        <field name="base_stats" type="CharacterBaseStats"/>
+        <field name="max_hp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="max_sp" type="short"/>
+        <field name="max_weight" type="short"/>
+        <field name="secondary_stats" type="CharacterSecondaryStats"/>
+    </struct>
+
+    <struct name="CharacterStats4">
+        <field name="hp" type="short"/>
+        <field name="max_hp" type="short"/>
+        <field name="tp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="base_stats" type="CharacterBaseStats"/>
+        <field name="secondary_stats" type="CharacterSecondaryStats"/>
+    </struct>
+
+    <struct name="ItemCharacterStats">
+        <field name="max_hp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="base_stats" type="CharacterBaseStats"/>
+        <field name="secondary_stats" type="CharacterSecondaryStats"/>
+    </struct>
+
+    <struct name="SkillLearn">
+        <field name="id" type="short"/>
+        <field name="level_req" type="char"/>
+        <field name="class_req" type="char"/>
+        <field name="cost" type="int"/>
+        <array name="skill_req" type="short" length="4"/>
+        <field name="stat_requirements" type="CharacterBaseStats"/>
+    </struct>
+
+    <struct name="BoardPostListing">
+        <field name="post_id" type="short"/>
+        <break/>
+        <field name="author" type="string"/>
+        <break/>
+        <field name="subject" type="string"/>
+    </struct>
+
+    <struct name="PaperdollInfo">
+        <field name="name" type="string"/>
+        <break/>
+        <field name="home" type="string"/>
+        <break/>
+        <field name="partner" type="string"/>
+        <break/>
+        <field name="title" type="string"/>
+        <break/>
+        <field name="guild" type="string"/>
+        <break/>
+        <field name="guild_rank" type="string"/>
+        <break/>
+        <field name="player_id" type="short"/>
+        <field name="class_id" type="char"/>
+        <field name="gender" type="Gender"/>
+        <field name="admin" type="AdminLevel"/>
+    </struct>
+
+    <struct name="PartyMember">
+        <field name="player_id" type="short"/>
+        <field name="leader" type="char"/>
+        <field name="level" type="bool"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="name" type="string"/>
+    </struct>
+
+    <struct name="GuildStaff">
+        <field name="rank" type="char"/>
+        <break/>
+        <field name="name" type="string"/>
+    </struct>
+
+    <struct name="GuildMember">
+        <field name="rank" type="char"/>
+        <break/>
+        <field name="name" type="string"/>
+        <break/>
+        <field name="rank_name" type="string"/>
+    </struct>
+
+    <struct name="GroupHealTargetPlayer">
+        <field name="player_id" type="short"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="hp" type="short"/>
+    </struct>
+
+    <struct name="TradeItemData">
+        <chunked>
+            <field name="partner_player_id" type="short"/>
+            <array name="partner_items" type="Item"/>
+            <break/>
+            <field name="your_player_id" type="short"/>
+            <array name="your_items" type="Item"/>
+            <break/>
+        </chunked>
+    </struct>
+
+    <struct name="NPCKilledData">
+        <field name="killer_id" type="short"/>
+        <field name="killer_direction" type="Direction"/>
+        <field name="npc_index" type="short"/>
+        <field name="drop_index" type="short"/>
+        <field name="drop_id" type="short"/>
+        <field name="drop_coords" type="Coords"/>
+        <field name="drop_amount" type="int"/>
+        <field name="damage" type="three"/>
+    </struct>
+
+    <struct name="LevelUpStats">
+        <field name="level" type="char"/>
+        <field name="stat_points" type="short"/>
+        <field name="skill_points" type="short"/>
+        <field name="max_hp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="max_sp" type="short"/>
+    </struct>
+
+    <struct name="NPCUpdatePosition">
+        <field name="npc_index" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+    </struct>
+
+    <struct name="NPCUpdateAttack">
+        <field name="npc_index" type="short"/>
+        <field name="killed" type="NPCKilledState"/>
+        <field name="direction" type="Direction"/>
+        <field name="player_id" type="short"/>
+        <field name="damage" type="three"/>
+        <field name="hp_percentage" type="char"/>
+    </struct>
+
+    <struct name="NPCUpdateChat">
+        <field name="npc_index" type="short"/>
+        <field name="message_length" type="char"/>
+        <field name="message" type="string" length="message_length"/>
+    </struct>
+
+    <struct name="QuestProgressEntry">
+        <field name="name" type="string"/>
+        <break/>
+        <field name="description" type="string"/>
+        <break/>
+        <field name="icon" type="BookIcon"/>
+        <field name="progress" type="short"/>
+        <field name="target" type="short"/>
+    </struct>
+
+    <struct name="DialogQuestEntry">
+        <field name="quest_id" type="short"/>
+        <field name="quest_name" type="string"/>
+    </struct>
+
+    <struct name="DialogEntry">
+        <field name="entry_type" type="DialogEntryType"/>
+        <switch field="entry_type">
+            <case value="Link">
+                <field name="link_id" type="short"/>
+            </case>
+        </switch>
+        <field name="line" type="string"/>
+    </struct>
+
+    <struct name="MapDrainDamageOther">
+        <field name="player_id" type="short"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="damage" type="short"/>
+    </struct>
+
+    <packet family="Init" action="Init">
+        <comment>Reply to connection initialization and requests for unencoded data</comment>
+        <field name="reply_code" type="InitReply"/>
+        <switch field="reply_code">
+            <case value="OutOfDate">
+                <field name="version" type="Version"/>
+            </case>
+            <case value="OK">
+                <array name="sequence_bytes" type="byte" length="2"/>
+                <field name="decode_multiple" type="byte"/>
+                <field name="encode_multiple" type="byte"/>
+                <field name="player_id" type="short"/>
+                <field name="response" type="int"/>
+            </case>
+            <case value="Banned">
+                <field name="ban_type" type="InitBanType"/>
+                <switch field="ban_type">
+                    <case value="Temporary0">"
+                        <field name="minutes_remaining" type="byte"/>
+                    </case>
+                    <case value="Temporary">
+                        <field name="minutes_remaining" type="byte"/>
+                    </case>
+                </switch>
+            </case>
+            <case value="FileEMF">
+                <array name="content" type="byte"/>
+            </case>
+            <case value="FileEIF">
+                <field name="file_id" type="char"/>
+                <array name="content" type="byte"/>
+            </case>
+            <case value="FileENF">
+                <field name="file_id" type="char"/>
+                <array name="content" type="byte"/>
+            </case>
+            <case value="FileESF">
+                <field name="file_id" type="char"/>
+                <array name="content" type="byte"/>
+            </case>
+            <case value="FileECF">
+                <field name="file_id" type="char"/>
+                <array name="content" type="byte"/>
+            </case>
+            <case value="MapMutation">
+                <array name="content" type="byte"/>
+            </case>
+            <case value="Players">
+                <chunked>
+                    <field name="online_count" type="short"/>
+                    <break/>
+                    <array name="list" type="OnlinePlayer" delimited="true"/>
+                    <break/>
+                </chunked>
+            </case>
+            <case value="FriendListPlayers">
+                <chunked>
+                    <field name="online_count" type="short"/>
+                    <break/>
+                    <array name="list" type="string" delimited="true"/>
+                    <break/>
+                </chunked>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Connection" action="Player">
+        <comment>Ping request</comment>
+        <field name="seq1" type="short"/>
+        <field name="seq2" type="char"/>
+    </packet>
+
+    <packet family="Account" action="Reply">
+        <!-- This is sometimes an AccountReply code, and sometimes a session ID for account creation -->
+        <comment>Reply to client Account-family packets</comment>
+        <field name="reply_code" type="short"/>
+        <switch field="reply_code">
+            <case value="0">
+                <!-- ??? -->
+            </case>
+            <case value="1">
+                <!-- AccountReply.Exists -->
+            </case>
+            <case value="2">
+                <!-- AccountReply.NotApproved -->
+            </case>
+            <case value="3">
+                <!-- AccountReply.Created -->
+            </case>
+            <case value="4">
+                <!-- AccountReply.??? -->
+            </case>
+            <case value="5">
+                <!-- AccountReply.ChangeFailed -->
+            </case>
+            <case value="6">
+                <!-- AccountReply.Changed -->
+            </case>
+            <case value="7">
+                <!-- AccountReply.RequestDenied -->
+            </case>
+            <case value="8">
+                <!-- ??? -->
+            </case>
+            <case value="9">
+                <!-- ??? -->
+            </case>
+            <case default="true">
+                <!-- session ID -->
+                <field name="sequence_start" type="char"/>
+            </case>
+        </switch>
+        <!-- "OK" or "NO" -->
+        <field name="reply_string" type="string"/>
+    </packet>
+
+    <packet family="Character" action="Reply">
+        <comment>Reply to client Character-family packets</comment>
+        <chunked>
+            <!-- This is sometimes a CharacterReply code, and sometimes a session ID for character creation -->
+            <field name="reply_code" type="short"/>
+            <switch field="reply_code">
+                <case value="1">
+                    <!-- CharacterReply.Exists -->
+                </case>
+                <case value="2">
+                    <!-- CharacterReply.Full -->
+                </case>
+                <case value="3">
+                    <!-- CharacterReply.Full3 -->
+                </case>
+                <case value="4">
+                    <!-- CharacterReply.NotApproved -->
+                </case>
+                <case value="5">
+                    <!-- CharacterReply.OK -->
+                    <field name="character_list" type="CharacterList"/>
+                </case>
+                <case value="6">
+                    <!-- CharacterReply.Deleted -->
+                    <field name="character_list" type="CharacterList"/>
+                </case>
+                <case default="true">
+                    <!-- session ID -->
+                    <field type="string">OK</field>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="Character" action="Player">
+        <comment>Reply to client request to delete a character from the account (Character_Take)</comment>
+        <field name="session_id" type="short"/>
+        <field name="character_id" type="int"/>
+    </packet>
+
+    <packet family="Login" action="Reply">
+        <comment>Login reply</comment>
+        <chunked>
+            <field name="reply_code" type="LoginReply"/>
+            <switch field="reply_code">
+                <case value="OK">
+                    <field name="character_list" type="CharacterList"/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="Welcome" action="Reply">
+        <comment>Reply to selecting a character / entering game</comment>
+        <field name="welcome_code" type="WelcomeCode"/>
+        <chunked>
+            <switch field="welcome_code">
+                <case value="SelectCharacter">
+                    <field name="session_id" type="short"/>
+                    <field name="character_id" type="int"/>
+                    <field name="map_id" type="short"/>
+                    <array name="map_rid" type="short" length="2"/>
+                    <field name="map_file_size" type="three"/>
+                    <array name="eif_rid" type="short" length="2"/>
+                    <field name="eif_length" type="short"/>
+                    <array name="enf_rid" type="short" length="2"/>
+                    <field name="enf_length" type="short"/>
+                    <array name="esf_rid" type="short" length="2"/>
+                    <field name="esf_length" type="short"/>
+                    <array name="ecf_rid" type="short" length="2"/>
+                    <field name="ecf_length" type="short"/>
+                    <field name="name" type="string"/>
+                    <break/>
+                    <field name="title" type="string"/>
+                    <break/>
+                    <field name="guild_name" type="string"/>
+                    <break/>
+                    <field name="guild_rank_name" type="string"/>
+                    <break/>
+                    <field name="class_id" type="char"/>
+                    <field name="guild_tag" type="string" length="3"/>
+                    <field name="admin" type="AdminLevel"/>
+                    <field name="level" type="char"/>
+                    <field name="experience" type="int"/>
+                    <field name="usage" type="int"/>
+                    <field name="stats" type="CharacterStats2"/>
+                    <field name="paperdoll" type="Paperdoll"/>
+                    <field name="guild_rank" type="char"/>
+                    <field name="settings" type="ServerSettings"/>
+                    <field name="login_message_code" type="LoginMessageCode"/>
+                    <break/>
+                </case>
+                <case value="EnterGame">
+                    <break/>
+                    <array name="news" type="string" length="9" delimited="true"/>
+                    <break/>
+                    <field name="weight" type="Weight"/>
+                    <array name="items" type="Item"/>
+                    <break/>
+                    <array name="spells" type="Spell"/>
+                    <break/>
+                    <field name="nearby" type="NearbyInfo"/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="AdminInteract" action="Reply">
+        <comment>Incoming admin message</comment>
+        <chunked>
+            <field name="message_type" type="AdminMessageType"/>
+            <break/>
+            <switch field="message_type">
+                <case value="Message">
+                    <field name="player_name" type="string"/>
+                    <break/>
+                    <field name="message" type="string"/>
+                    <break/>
+                </case>
+                <case value="Report">
+                    <field name="player_name" type="string"/>
+                    <break/>
+                    <field name="message" type="string"/>
+                    <break/>
+                    <field name="reportee_name" type="string"/>
+                    <break/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="AdminInteract" action="Remove">
+        <comment>Nearby player disappearing (admin hide)</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="AdminInteract" action="Agree">
+        <comment>Nearby player appearing (admin un-hide)</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="AdminInteract" action="List">
+        <comment>Admin character inventory popup</comment>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="usage" type="int"/>
+            <break/>
+            <field name="gold_bank" type="int"/>
+            <break/>
+            <array name="inventory" type="Item"/>
+            <break/>
+            <array name="bank" type="ThreeItem"/>
+        </chunked>
+    </packet>
+
+    <packet family="AdminInteract" action="Tell">
+        <comment>Admin character info popup</comment>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="usage" type="int"/>
+            <break/>
+            <break/>
+            <field name="exp" type="int"/>
+            <field name="level" type="char"/>
+            <field name="map_id" type="short"/>
+            <field name="map_coords" type="BigCoords"/>
+            <field name="stats" type="CharacterStats4"/>
+            <field name="light" type="short"/>
+            <field name="dark" type="short"/>
+            <field name="fire" type="short"/>
+            <field name="water" type="short"/>
+            <field name="earth" type="short"/>
+            <field name="wind" type="short"/>
+            <field name="weight" type="Weight"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Request">
+        <comment>Guild chat message</comment>
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Open">
+        <comment>Party chat message</comment>
+        <field name="player_id" type="short"/>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Msg">
+        <comment>Global chat message</comment>
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Tell">
+        <comment>Private chat message</comment>
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Player">
+        <comment>Public chat message</comment>
+        <field name="player_id" type="short"/>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Admin">
+        <comment>Admin chat message</comment>
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Announce">
+        <comment>Admin announcement</comment>
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Talk" action="Server">
+        <comment>Server message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Open">
+        <comment>Status bar message</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Spec">
+        <comment>Temporary mute applied</comment>
+        <field name="admin_name" type="string"/>
+    </packet>
+
+    <packet family="Attack" action="Player">
+        <comment>Nearby player attacking</comment>
+        <field name="player_id" type="short"/>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Avatar" action="Reply">
+        <comment>Nearby player hit by another player</comment>
+        <field name="player_id" type="short"/>
+        <field name="victim_id" type="short"/>
+        <field name="damage" type="three"/>
+        <field name="direction" type="Direction"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="dead" type="bool"/>
+    </packet>
+
+    <packet family="Chair" action="Player">
+        <comment>Nearby player sitting on a chair</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Chair" action="Reply">
+        <comment>Your character sitting on a chair</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Chair" action="Close">
+        <comment>Your character standing up from a chair</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Chair" action="Remove">
+        <comment>Nearby player standing up from a chair</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Sit" action="Player">
+        <comment>Nearby player sitting down</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+        <!-- Sent by the official server and ignored by the official client -->
+        <field type="char">0</field>
+    </packet>
+
+    <packet family="Sit" action="Close">
+        <comment>Your character standing up</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Sit" action="Remove">
+        <comment>Nearby player standing up</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Sit" action="Reply">
+        <comment>Your character sitting down</comment>
+        <field name="player_id" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="direction" type="Direction"/>
+        <!-- Sent by the official server and ignored by the official client -->
+        <field type="char">0</field>
+    </packet>
+
+    <packet family="Emote" action="Player">
+        <comment>Nearby player doing an emote</comment>
+        <field name="player_id" type="short"/>
+        <field name="emote" type="Emote"/>
+    </packet>
+
+    <packet family="Effect" action="Player">
+        <comment>Nearby player doing an effect</comment>
+        <field name="player_id" type="short"/>
+        <field name="effect_id" type="three"/>
+    </packet>
+
+    <packet family="Face" action="Player">
+        <comment>Nearby player facing a direction</comment>
+        <field name="player_id" type="short"/>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Avatar" action="Remove">
+        <comment>Nearby player has disappeared from view</comment>
+        <field name="player_id" type="short"/>
+        <field name="animation" type="WarpAnimation" optional="true"/>
+    </packet>
+
+    <packet family="Players" action="Agree">
+        <comment>Player has appeared in nearby view</comment>
+        <field name="nearby" type="NearbyInfo"/>
+    </packet>
+
+    <packet family="Range" action="Reply">
+        <comment>Reply to request for information about nearby players and NPCs</comment>
+        <field name="nearby" type="NearbyInfo"/>
+    </packet>
+
+    <packet family="Walk" action="Player">
+        <comment>Nearby player has walked</comment>
+        <field name="player_id" type="short"/>
+        <field name="Direction" type="Direction"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Walk" action="Reply">
+        <comment>Players, NPCs, and Items appearing in nearby view</comment>
+        <chunked>
+            <array name="player_ids" type="short"/>
+            <break/>
+            <array name="npc_indexes" type="char"/>
+            <break/>
+            <array name="items" type="ItemMapInfo"/>
+        </chunked>
+    </packet>
+
+    <packet family="Walk" action="Close">
+        <comment>Your character has been frozen</comment>
+        <dummy type="string">f</dummy>
+    </packet>
+
+    <packet family="Walk" action="Open">
+        <comment>Your character has been unfrozen</comment>
+        <dummy type="string">u</dummy>
+    </packet>
+
+    <packet family="Bank" action="Open">
+        <comment>Open banker NPC interface</comment>
+        <field name="gold_bank" type="int"/>
+        <field name="session_id" type="three"/>
+        <field name="locker_upgrades" type="char"/>
+    </packet>
+
+    <packet family="Bank" action="Reply">
+        <comment>Update gold counts after deposit/withdraw</comment>
+        <field name="gold_inventory" type="int"/>
+        <field name="gold_bank" type="int"/>
+    </packet>
+
+    <packet family="Locker" action="Reply">
+        <comment>Response to adding an item to a bank locker</comment>
+        <field name="deposited_item" type="Item"/>
+        <field name="weight" type="Weight"/>
+        <array name="locker_items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Locker" action="Get">
+        <comment>Response to taking an item from a bank locker</comment>
+        <field name="taken_item" type="Item"/>
+        <field name="weight" type="Weight"/>
+        <array name="locker_items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Locker" action="Open">
+        <comment>Opening a bank locker</comment>
+        <field name="locker_coords" type="Coords"/>
+        <array name="locker_items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Locker" action="Buy">
+        <comment>Response to buying a locker space upgrade from a banker NPC</comment>
+        <field name="gold_amount" type="int"/>
+        <field name="locker_upgrades" type="char"/>
+    </packet>
+
+    <packet family="Citizen" action="Reply">
+        <comment>Response to subscribing to a town</comment>
+        <field name="questions_wrong" type="char"/>
+    </packet>
+
+    <packet family="Citizen" action="Remove">
+        <comment>Response to giving up citizenship of a town</comment>
+        <field name="reply_code" type="InnUnsubscribeReply"/>
+    </packet>
+
+    <packet family="Citizen" action="Open">
+        <comment>Response from talking to a citizenship NPC</comment>
+        <chunked>
+            <field name="behaviour_id" type="three"/>
+            <field name="current_home_id" type="char"/>
+            <field name="session_id" type="short"/>
+            <break/>
+            <field name="question1" type="string"/>
+            <break/>
+            <field name="question2" type="string"/>
+            <break/>
+            <field name="question3" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Citizen" action="Accept">
+        <comment>Sleeping at an inn</comment>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="Shop" action="Create">
+        <comment>Response to crafting an item from a shop</comment>
+        <field name="craft_item_id" type="short"/>
+        <field name="weight" type="Weight"/>
+        <array name="ingredients" type="Item" length="4"/>
+    </packet>
+
+    <packet family="Shop" action="Buy">
+        <comment>Response to purchasing an item from a shop</comment>
+        <field name="gold_amount" type="int"/>
+        <field name="bought_item" type="Item"/>
+        <field name="weight" type="Weight"/>
+    </packet>
+
+    <packet family="Shop" action="Sell">
+        <comment>Response to selling an item to a shop</comment>
+        <field name="sold_item" type="ShopSoldItem"/>
+        <field name="gold_amount" type="int"/>
+        <field name="weight" type="Weight"/>
+    </packet>
+
+    <packet family="Shop" action="Open">
+        <comment>Response from talking to a shop NPC</comment>
+        <chunked>
+            <field name="session_id" type="short"/>
+            <field name="shop_name" type="string"/>
+            <break/>
+            <array name="trade_items" type="ShopTradeItem"/>
+            <break/>
+            <array name="craft_items" type="ShopCraftItem"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="StatSkill" action="Open">
+        <comment>Response from talking to a skill master NPC</comment>
+        <chunked>
+            <field name="session_id" type="short"/>
+            <field name="shop_name" type="string"/>
+            <break/>
+            <array name="skills" type="SkillLearn"/>
+        </chunked>
+    </packet>
+
+    <packet family="StatSkill" action="Reply">
+        <comment>Response from unsuccessful attempt to learn a skill from a skill master</comment>
+        <field name="reply_code" type="SkillMasterReply"/>
+        <switch field="reply_code">
+            <case value="WrongClass">
+                <field name="class_id" type="short"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="StatSkill" action="Take">
+        <comment>Response from learning a skill from a skill master</comment>
+        <field name="spell_id" type="short"/>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="StatSkill" action="Remove">
+        <comment>Response to forgetting a skill at a skill master</comment>
+        <field name="spell_id" type="short"/>
+    </packet>
+
+    <packet family="StatSkill" action="Player">
+        <comment>Response to spending stat points</comment>
+        <field name="stat_points" type="short"/>
+        <field name="stats" type="CharacterStats3"/>
+    </packet>
+
+    <packet family="StatSkill" action="Accept">
+        <comment>Response to spending skill points</comment>
+        <field name="skill_points" type="short"/>
+        <field name="spell" type="Spell"/>
+    </packet>
+
+    <packet family="StatSkill" action="Junk">
+        <comment>Response to resetting character</comment>
+        <field name="stats" type="CharacterStats1"/>
+    </packet>
+
+    <packet family="Item" action="Reply">
+        <comment>Reply to using an item</comment>
+        <field name="item_type" type="ItemType"/>
+        <switch field="item_type">
+            <case value="Heal">
+                <field name="hp_gain" type="int"/>
+                <field name="hp" type="short"/>
+                <field name="tp" type="short"/>
+            </case>
+            <case value="HairDye">
+                <field name="hair_color" type="char"/>
+            </case>
+            <case value="EffectPotion">
+                <field name="effect_id" type="short"/>
+            </case>
+            <case value="CureCurse">
+                <field name="stats" type="ItemCharacterStats"/>
+            </case>
+            <case value="EXPReward">
+                <field name="experience" type="int"/>
+                <field name="level_up" type="char"/>
+                <field name="stat_points" type="short"/>
+                <field name="skill_points" type="short"/>
+                <field name="max_hp" type="short"/>
+                <field name="max_tp" type="short"/>
+                <field name="max_sp" type="short"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Item" action="Drop">
+        <comment>Reply to dropping items on the ground</comment>
+        <field name="dropped_item" type="ThreeItem"/>
+        <field name="remaining_amount" type="int"/>
+        <field name="item_index" type="short"/>
+        <field name="coords" type="Coords"/>
+        <field name="weight" type="Weight"/>
+    </packet>
+
+    <packet family="Item" action="Add">
+        <comment>Item appeared on the ground</comment>
+        <field name="item_id" type="short"/>
+        <field name="item_index" type="short"/>
+        <field name="item_amount" type="three"/>
+        <field name="coords" type="Coords"/>
+    </packet>
+
+    <packet family="Item" action="Junk">
+        <comment>Reply to junking items</comment>
+        <field name="junked_item" type="ThreeItem"/>
+        <field name="remaining_amount" type="int"/>
+        <field name="weight" type="Amount"/>
+    </packet>
+
+    <packet family="Item" action="Get">
+        <comment>Reply to taking items from the ground</comment>
+        <field name="taken_item_index" type="short"/>
+        <field name="taken_item" type="ThreeItem"/>
+        <field name="weight" type="Amount"/>
+    </packet>
+
+    <packet family="Item" action="Obtain">
+        <comment>Receive item (from quest)</comment>
+        <field name="item" type="ThreeItem"/>
+        <field name="current_weight" type="char"/>
+    </packet>
+
+    <packet family="Item" action="Kick">
+        <comment>Lose item (from quest)</comment>
+        <field name="item" type="Item"/>
+        <field name="current_weight" type="char"/>
+    </packet>
+
+    <packet family="Item" action="Agree">
+        <comment>Reply to using an item that you don't have</comment>
+        <field name="item_id" type="short"/>
+    </packet>
+
+    <packet family="Item" action="Spec">
+        <comment>Reply to trying to take a protected item from the ground</comment>
+        <dummy type="short">2</dummy>
+    </packet>
+
+    <packet family="Board" action="Player">
+        <comment>"Reply to opening a town board</comment>
+        <chunked>
+            <field name="board_id" type="char"/>
+            <field name="posts_count" type="char"/>
+            <array name="posts" type="BoardPostListing" length="posts_count" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Jukebox" action="Agree">
+        <comment>Reply to successfully requesting a song</comment>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="Jukebox" action="Use">
+        <comment>Reply to unsuccessfully requesting a song</comment>
+        <field name="track_id" type="short"/>
+    </packet>
+
+    <packet family="Jukebox" action="Open">
+        <comment>Reply to opening the jukebox listing</comment>
+        <field name="map_id" type="short"/>
+        <field name="jukebox_player" type="string"/>
+    </packet>
+
+    <packet family="Jukebox" action="Msg">
+        <comment>Someone playing a note with the bard skill nearby</comment>
+        <field name="player_id" type="short"/>
+        <field name="direction" type="Direction"/>
+        <field name="instrument_id" type="char"/>
+        <field name="note_id" type="char"/>
+    </packet>
+
+    <packet family="Jukebox" action="Player">
+        <comment>Play background music</comment>
+        <field name="mfx_id" type="char"/>
+    </packet>
+
+    <packet family="Warp" action="Request">
+        <comment>Warp request from server</comment>
+        <field name="warp_type" type="WarpType"/>
+        <field name="map_id" type="short"/>
+        <switch field="warp_type">
+            <case value="MapSwitch">
+                <array name="map_rid" type="short" length="2"/>
+                <field name="map_file_size" type="three"/>
+            </case>
+        </switch>
+        <field name="session_id" type="short"/>
+    </packet>
+
+    <packet family="Warp" action="Agree">
+        <comment>Reply after accepting a warp</comment>
+        <chunked>
+            <field name="warp_type" type="WarpType"/>
+            <switch field="warp_type">
+                <case value="MapSwitch">
+                    <field name="map_id" type="short"/>
+                    <field name="animation" type="WarpAnimation"/>
+                </case>
+            </switch>
+            <field name="nearby" type="NearbyInfo"/>
+        </chunked>
+    </packet>
+
+    <packet family="Paperdoll" action="Reply">
+        <comment>Reply to requesting a paperdoll</comment>
+        <chunked>
+            <field name="info" type="PaperdollInfo"/>
+            <field name="paperdoll" type="Paperdoll"/>
+            <field name="icon" type="PaperdollIcon"/>
+        </chunked>
+    </packet>
+
+    <packet family="Paperdoll" action="Remove">
+        <comment>Reply to unequipping an item</comment>
+        <field name="change" type="AvatarChange"/>
+        <field name="stats" type="ItemCharacterStats"/>
+    </packet>
+
+    <packet family="Paperdoll" action="Agree">
+        <comment>Reply to equipping an item</comment>
+        <field name="change" type="AvatarChange"/>
+        <field name="stats" type="ItemCharacterStats"/>
+    </packet>
+
+    <packet family="Avatar" action="Agree">
+        <comment>Nearby player changed clothes</comment>
+        <field name="change" type="AvatarChange"/>
+    </packet>
+
+    <packet family="Book" action="Reply">
+        <comment>Reply to requesting a book</comment>
+        <chunked>
+            <field name="info" type="PaperdollInfo"/>
+            <field name="icon" type="PaperdollIcon"/>
+            <break/>
+            <array name="quest_names" type="string" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Message" action="Pong">
+        <comment>#ping command reply</comment>
+        <dummy type="short">2</dummy>
+    </packet>
+
+    <packet family="Players" action="Ping">
+        <comment>#find command reply - offline</comment>
+        <field name="name" type="string"/>
+    </packet>
+
+    <packet family="Players" action="Pong">
+        <comment>#find command reply - same map</comment>
+        <field name="name" type="string"/>
+    </packet>
+
+    <packet family="Players" action="Net3">
+        <comment>#find command reply - different map</comment>
+        <field name="name" type="string"/>
+    </packet>
+
+    <packet family="Door" action="Open">
+        <comment>Nearby door opening</comment>
+        <field name="coords" type="Coords"/>
+        <field type="char">0</field>
+    </packet>
+
+    <packet family="Door" action="Close">
+        <comment>Reply to trying to open a locked door</comment>
+        <field name="key" type="char"/>
+    </packet>
+
+    <packet family="Chest" action="Open">
+        <comment>Reply to opening a chest</comment>
+        <field name="coords" type="Coords"/>
+        <array name="items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Chest" action="Reply">
+        <comment>Reply to placing an item in to a chest</comment>
+        <field name="added_item_id" type="short"/>
+        <field name="remaining_amount" type="short"/>
+        <field name="weight" type="Weight"/>
+        <array name="items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Chest" action="Get">
+        <comment>Reply to removing an item from a chest</comment>
+        <field name="taken_item" type="ThreeItem"/>
+        <field name="weight" type="Weight"/>
+        <array name="items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Chest" action="Agree">
+        <comment>Chest contents updating</comment>
+        <array name="items" type="ThreeItem"/>
+    </packet>
+
+    <packet family="Chest" action="Spec">
+        <comment>Reply to trying to add an item to a full chest</comment>
+        <dummy type="string">0</dummy>
+    </packet>
+
+    <packet family="Chest" action="Close">
+        <comment>Reply to trying to interact with a locked or "broken" chest</comment>
+        <!--
+             If trying to interact with a locked chest, the key field is provided.
+             If trying to interact with a broken chest, the 'N' dummy data is provided. 
+             The official client assumes a broken chest if the packet is under 2 bytes in length.
+         -->
+        <field name="key" type="short" optional="true"/>
+        <dummy type="string">N</dummy>
+    </packet>
+
+    <packet family="Refresh" action="Reply">
+        <comment>Reply to request for new info about nearby objects</comment>
+        <field name="nearby" type="NearbyInfo"/>
+    </packet>
+
+    <packet family="Party" action="Accept">
+        <comment>Received party invite / join request</comment>
+        <field name="request_type" type="PartyRequestType"/>
+        <field name="inviter_player_id" type="short"/>
+        <field name="player_name" type="string"/>
+    </packet>
+
+    <packet family="Party" action="Create">
+        <comment>Member list received when party is first joined</comment>
+        <chunked>
+            <array name="members" type="PartyMember" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Party" action="Add">
+        <comment>New player joined the party</comment>
+        <field name="member" type="PartyMember"/>
+    </packet>
+
+    <packet family="Party" action="Remove">
+        <comment>Player left the party</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Party" action="Close">
+        <comment>Left / disbanded a party</comment>
+        <break/>
+    </packet>
+
+    <packet family="Party" action="List">
+        <comment>Party member list update</comment>
+        <chunked>
+            <array name="members" type="PartyMember" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Party" action="Agree">
+        <comment>Party member list update</comment>
+        <field name="player_id" type="short"/>
+        <field name="hp_percentage" type="char"/>
+    </packet>
+
+    <packet family="Party" action="TargetGroup">
+        <comment>Experience gained from party</comment>
+        <field name="player_id" type="short"/>
+        <field name="experience" type="int"/>
+        <field name="level_up" type="char"/>
+    </packet>
+
+    <packet family="Guild" action="Reply">
+        <comment>Generic guild reply messages</comment>
+        <field name="reply_code" type="GuildReply"/>
+        <switch field="reply_code">
+            <case value="CreateAdd">
+                <field name="name" type="string"/>
+            </case>
+            <case value="CreateAddConfirm">
+                <field name="name" type="string"/>
+            </case>
+            <case value="JoinRequest">
+                <field name="player_id" type="short"/>
+                <field name="name" type="string"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Guild" action="Request">
+        <comment>Guild create request</comment>
+        <field name="player_id" type="short"/>
+        <field name="guild_identity" type="string"/>
+    </packet>
+
+    <packet family="Guild" action="Create">
+        <comment>Guild created</comment>
+        <chunked>
+            <field name="leader_player_id" type="short"/>
+            <break/>
+            <field name="guild_tag" type="string"/>
+            <break/>
+            <field name="guild_name" type="string"/>
+            <break/>
+            <field name="rank_name" type="string"/>
+            <break/>
+            <field name="gold_amount" type="int"/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Take">
+        <comment>Get guild description reply</comment>
+        <field name="description" type="string"/>
+    </packet>
+
+    <packet family="Guild" action="Rank">
+        <comment>Get guild rank list reply</comment>
+        <chunked>
+            <array name="ranks" type="string" length="9" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Sell">
+        <comment>Get guild bank reply</comment>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="Guild" action="Buy">
+        <comment>Deposit guild bank list reply</comment>
+        <field name="gold_amount" type="int"/>
+    </packet>
+
+    <packet family="Guild" action="Open">
+        <comment>Talk to guild master NPC reply</comment>
+        <field name="session_id" type="three"/>
+    </packet>
+
+    <packet family="Guild" action="Tell">
+        <comment>Get guild member list reply</comment>
+        <chunked>
+            <field name="members_count" type="short"/>
+            <break/>
+            <array name="members" type="GuildMember" length="members_count" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Report">
+        <comment>Get guild info reply</comment>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="tag" type="string"/>
+            <break/>
+            <field name="create_date" type="string"/>
+            <break/>
+            <field name="description" type="string"/>
+            <break/>
+            <field name="wealth" type="string"/>
+            <break/>
+            <array name="ranks" type="string" length="9" delimited="true"/>
+            <break/>
+            <field name="staff_count" type="short"/>
+            <break/>
+            <array name="staff" type="GuildStaff" length="staff_count" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Guild" action="Agree">
+        <comment>Joined guild info</comment>
+        <chunked>
+            <field name="recruiter_id" type="short"/>
+            <break/>
+            <field name="guild_tag" type="string"/>
+            <break/>
+            <field name="guild_name" type="string"/>
+            <break/>
+            <field name="rank_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Spell" action="Request">
+        <comment>Nearby player chanting a spell</comment>
+        <field name="player_id" type="short"/>
+        <field name="spell_id" type="short"/>
+    </packet>
+
+    <packet family="Spell" action="TargetSelf">
+        <comment>Nearby player self-casted a spell</comment>
+        <field name="player_id" type="short"/>
+        <field name="spell_id" type="short"/>
+        <field name="spell_heal_hp" type="int"/>
+        <field name="hp_pct" type="char"/>
+
+        <!-- The official client reads these if byte_size > 12 -->
+        <field name="hp" type="short" optional="true"/>
+        <field name="tp" type="short" optional="true"/>
+    </packet>
+
+    <packet family="Spell" action="Player">
+        <comment>Nearby player raising their arm to cast a spell (vestigial)</comment>
+        <field name="player_id" type="short"/>
+        <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Avatar" action="Admin">
+        <comment>Nearby player hit by a spell from a player</comment>
+        <field name="caster_id" type="short"/>
+        <field name="victim_id" type="short"/>
+        <field name="caster_direction" type="Direction"/>
+        <field name="damage" type="three"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="victim_died" type="bool"/>
+        <field name="spell_id" type="short"/>
+    </packet>
+
+    <packet family="Spell" action="TargetGroup">
+        <comment>Nearby player(s) hit by a group spell from a player</comment>
+        <field name="spell_id" type="short"/>
+        <field name="caster_id" type="short"/>
+        <field name="caster_tp" type="short"/>
+        <field name="spell_heal_hp" type="short"/>
+        <array name="players" type="GroupHealTargetPlayer"/>
+    </packet>
+
+    <packet family="Trade" action="Request">
+        <comment>Trade request from another player</comment>
+        <field name="unk1" type="char"/>
+        <field name="partner_player_id" type="short"/>
+        <field name="partner_player_name" type="string"/>
+    </packet>
+
+    <packet family="Trade" action="Open">
+        <comment>Trade window opens</comment>
+        <chunked>
+            <field name="partner_player_id" type="short"/>
+            <field name="partner_player_name" type="string"/>
+            <break/>
+            <field name="your_player_id" type="short"/>
+            <field name="your_player_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Trade" action="Reply">
+        <comment>Trade items updated</comment>
+        <field name="trade_data" type="TradeItemData"/>
+    </packet>
+
+    <packet family="Trade" action="Use">
+        <comment>Trade items updated</comment>
+        <field name="trade_data" type="TradeItemData"/>
+    </packet>
+
+    <packet family="Trade" action="Spec">
+        <comment>Own agree state updated</comment>
+        <field name="agree" type="bool"/>
+    </packet>
+
+    <packet family="Trade" action="Agree">
+        <comment>Partner agree state updated</comment>
+        <field name="partner_player_id" type="short"/>
+        <field name="agree" type="bool"/>
+    </packet>
+
+    <packet family="Trade" action="Close">
+        <comment>Partner closed trade window</comment>
+        <field name="partner_player_id" type="short"/>
+    </packet>
+
+    <packet family="NPC" action="Reply">
+        <comment>Nearby NPC hit by a player</comment>
+        <field name="player_id" type="short"/>
+        <field name="player_direction" type="Direction"/>
+        <field name="npc_index" type="short"/>
+        <field name="damage" type="three"/>
+        <field name="hp_percentage" type="short"/>
+        <field type="char">1</field>
+    </packet>
+
+    <packet family="Cast" action="Reply">
+        <comment>Nearby NPC hit by a spell from a player</comment>
+        <field name="spell_id" type="short"/>
+        <field name="caster_id" type="short"/>
+        <field name="caster_direction" type="Direction"/>
+        <field name="npc_index" type="short"/>
+        <field name="damage" type="three"/>
+        <field name="hp_percentage" type="short"/>
+        <field name="caster_tp" type="short"/>
+    </packet>
+
+    <packet family="NPC" action="Spec">
+        <comment>Nearby NPC killed by player</comment>
+        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="experience" type="int" optional="true"/>
+    </packet>
+
+    <packet family="NPC" action="Accept">
+        <comment>Nearby NPC killed by player and you leveled up</comment>
+        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="experience" type="int"/>
+        <field name="level_up" type="LevelUpStats"/>
+    </packet>
+
+    <packet family="Cast" action="Spec">
+        <comment>Nearby NPC killed by player spell</comment>
+        <field name="spell_id" type="short"/>
+        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="caster_tp" type="short"/>
+        <field name="experience" type="int" optional="true"/>
+    </packet>
+
+    <packet family="Cast" action="Accept">
+        <comment>Nearby NPC killed by player spell and you leveled up</comment>
+        <field name="spell_id" type="short"/>
+        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="caster_tp" type="short"/>
+        <field name="experience" type="int"/>
+        <field name="level_up" type="LevelUpStats"/>
+    </packet>
+
+    <packet family="NPC" action="Junk">
+        <comment>Clearing all boss children</comment>
+        <field name="npc_id" type="short"/>
+    </packet>
+
+    <packet family="NPC" action="Player">
+        <comment>Main NPC update message</comment>
+        <chunked>
+            <array name="positions" type="NPCUpdatePosition"/>
+            <break/>
+            <array name="attacks" type="NPCUpdateAttack"/>
+            <break/>
+            <array name="chats" type="NPCUpdateChat"/>
+            <break/>
+            <field name="hp" type="short" optional="true"/>
+            <field name="tp" type="short" optional="true"/>
+        </chunked>
+    </packet>
+
+    <packet family="Quest" action="Dialog">
+        <comment>Quest selection dialog</comment>
+        <chunked>
+            <field name="quest_count" type="char"/>
+            <field name="behaviour_id" type="short"/>
+            <field name="quest_id" type="short"/>
+            <field name="session_id" type="short"/>
+            <field name="dialog_id" type="short"/>
+            <break/>
+            <array name="quest_entries" type="DialogQuestEntry" length="quest_count" delimited="true"/>
+            <break/>
+            <array name="dialog_entries" type="DialogEntry" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Quest" action="List">
+        <comment>Quest history / progress reply</comment>
+        <chunked>
+            <field name="page" type="QuestPage"/>
+            <field name="quests_count" type="short"/>
+            <switch field="page">
+                <case value="Progress">
+                    <array name="quest_progress_entries" type="QuestProgressEntry" delimited="true"/>
+                    <break/>
+                </case>
+                <case value="History">
+                    <array name="completed_quests" type="string" delimited="true"/>
+                    <break/>
+                </case>
+            </switch>
+        </chunked>
+    </packet>
+
+    <packet family="Item" action="Accept">
+        <comment>Nearby player leveled up from quest</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
+    <packet family="Arena" action="Drop">
+        <comment>"Arena is blocked" message</comment>
+        <dummy type="string">N</dummy>
+    </packet>
+
+    <packet family="Arena" action="Use">
+        <comment>Arena start message</comment>
+        <field name="players_count" type="char"/>
+    </packet>
+
+    <packet family="Arena" action="Spec">
+        <comment>Arena kill message</comment>
+        <chunked>
+            <field name="player_id" type="short"/>
+            <break/>
+            <field name="direction" type="Direction"/>
+            <break/>
+            <field name="kills_count" type="int"/>
+            <break/>
+            <field name="killer_name" type="string"/>
+            <break/>
+            <field name="victim_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Arena" action="Accept">
+        <comment>Arena win message</comment>
+        <chunked>
+            <field name="winner_name" type="string"/>
+            <break/>
+            <field name="kills_count" type="int"/>
+            <break/>
+            <field name="killer_name" type="string"/>
+            <break/>
+            <field name="victim_name" type="string"/>
+            <break/>
+        </chunked>
+    </packet>
+
+    <packet family="Marriage" action="Open">
+        <comment>Response from talking to a law NPC</comment>
+        <field name="session_id" type="three"/>
+    </packet>
+
+    <packet family="Marriage" action="Reply">
+        <comment>Reply to client Marriage-family packets</comment>
+        <field name="reply_code" type="MarriageReply"/>
+        <switch field="reply_code">
+            <case name="Success">
+                <field name="gold_amount" type="int"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Priest" action="Open">
+        <comment>Response from talking to a priest NPC</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Priest" action="Reply">
+        <comment>Reply to client Priest-family packets</comment>
+        <field name="reply_code" type="PriestReply"/>
+    </packet>
+
+    <packet family="Priest" action="Request">
+        <comment>Wedding request</comment>
+        <field name="session_id" type="short"/>
+        <field name="partner_name" type="string"/>
+    </packet>
+
+    <packet family="Recover" action="Player">
+        <comment>HP/TP update</comment>
+        <field name="hp" type="short"/>
+        <field name="tp" type="short"/>
+    </packet>
+
+    <packet family="Recover" action="List">
+        <comment>Stats update</comment>
+        <field name="class_id" type="short"/>
+        <field name="stats" type="CharacterStats3"/>
+    </packet>
+
+    <packet family="Recover" action="Reply">
+        <comment>Karma/experience update</comment>
+        <field name="experience" type="int"/>
+        <field name="karma" type="short"/>
+        <!-- The official client reads this if byte_size > 6 -->
+        <field name="level_up" type="char" optional="true"/>
+        <!-- The official client reads these if level_up > 0 -->
+        <field name="stat_points" type="short" optional="true"/>
+        <field name="skill_points" type="short" optional="true"/>
+    </packet>
+
+    <packet family="Effect" action="Use">
+        <comment>Map effect</comment>
+        <field name="effect" type="MapEffect"/>
+        <field name="param" type="char"/>
+    </packet>
+
+    <packet family="Effect" action="Agree">
+        <comment>Map tile effect</comment>
+        <field name="coords" type="Coords"/>
+        <field name="effect_id" type="short"/>
+    </packet>
+
+    <packet family="Effect" action="TargetOther">
+        <comment>Map drain damage</comment>
+        <field name="damage" type="short"/>
+        <field name="hp" type="short"/>
+        <field name="max_hp" type="short"/>
+        <array name="others" type="MapDrainDamageOther"/>
+    </packet>
+
+    <packet family="Effect" action="Report">
+        <comment>Map spike timer</comment>
+        <dummy type="string">S</dummy>
+    </packet>
+
+    <packet family="Effect" action="Spec">
+        <comment>Taking spike or tp drain damage</comment>
+        <field name="map_damage_type" type="MapDamageType"/>
+        <switch field="map_damage_type">
+            <case value="TPDrain">
+                <field name="tp_damage" type="short"/>
+                <field name="tp" type="short"/>
+                <field name="max_tp" type="short"/>
+            </case>
+            <case value="Spikes">
+                <field name="hp_damage" type="short"/>
+                <field name="hp" type="short"/>
+                <field name="max_hp" type="short"/>
+            </case>
+        </switch>
+    </packet>
+
+    <packet family="Effect" action="Admin">
+        <comment>Nearby character taking spike damage</comment>
+        <field name="player_id" type="short"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="died" type="bool"/>
+        <field name="damage" type="three"/>
+    </packet>
+
+    <packet family="Music" action="Player">
+        <comment>Sound effect</comment>
+        <field name="sound_id" type="char"/>
+    </packet>
+</protocol>

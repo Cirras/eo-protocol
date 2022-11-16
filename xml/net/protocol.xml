@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol>
+    <enum name="PacketFamily" type="byte">
+        <value name="Connection">1</value>
+        <value name="Account">2</value>
+        <value name="Character">3</value>
+        <value name="Login">4</value>
+        <value name="Welcome">5</value>
+        <value name="Walk">6</value>
+        <value name="Face">7</value>
+        <value name="Chair">8</value>
+        <value name="Emote">9</value>
+        <value name="Attack">11</value>
+        <value name="Spell">12</value>
+        <value name="Shop">13</value>
+        <value name="Item">14</value>
+        <value name="StatSkill">16</value>
+        <value name="Global">17</value>
+        <value name="Talk">18</value>
+        <value name="Warp">19</value>
+        <value name="Jukebox">21</value>
+        <value name="Players">22</value>
+        <value name="Avatar">23</value>
+        <value name="Party">24</value>
+        <value name="Refresh">25</value>
+        <value name="NPC">26</value>
+        <value name="PlayerRange">27</value>
+        <value name="NPCRange">28</value>
+        <value name="Range">29</value>
+        <value name="Paperdoll">30</value>
+        <value name="Effect">31</value>
+        <value name="Trade">32</value>
+        <value name="Chest">33</value>
+        <value name="Door">34</value>
+        <value name="Message">35</value>
+        <value name="Bank">36</value>
+        <value name="Locker">37</value>
+        <value name="Barber">38</value>
+        <value name="Guild">39</value>
+        <value name="Music">40</value>
+        <value name="Sit">41</value>
+        <value name="Recover">42</value>
+        <value name="Board">43</value>
+        <value name="Cast">44</value>
+        <value name="Arena">45</value>
+        <value name="Priest">46</value>
+        <value name="Marriage">47</value>
+        <value name="AdminInteract">48</value>
+        <value name="Citizen">49</value>
+        <value name="Quest">50</value>
+        <value name="Book">51</value>
+        <value name="Init">255</value>
+    </enum>
+
+    <enum name="PacketAction" type="byte">
+        <value name="Request">1</value>
+        <value name="Accept">2</value>
+        <value name="Reply">3</value>
+        <value name="Remove">4</value>
+        <value name="Agree">5</value>
+        <value name="Create">6</value>
+        <value name="Add">7</value>
+        <value name="Player">8</value>
+        <value name="Take">9</value>
+        <value name="Use">10</value>
+        <value name="Buy">11</value>
+        <value name="Sell">12</value>
+        <value name="Open">13</value>
+        <value name="Close">14</value>
+        <value name="Msg">15</value>
+        <value name="Spec">16</value>
+        <value name="Admin">17</value>
+        <value name="List">18</value>
+        <value name="Tell">20</value>
+        <value name="Report">21</value>
+        <value name="Announce">22</value>
+        <value name="Server">23</value>
+        <value name="Drop">24</value>
+        <value name="Junk">25</value>
+        <value name="Obtain">26</value>
+        <value name="Get">27</value>
+        <value name="Kick">28</value>
+        <value name="Rank">29</value>
+        <value name="TargetSelf">30</value>
+        <value name="TargetOther">31</value>
+        <value name="TargetGroup">33</value>
+        <value name="Dialog">34</value>
+        <value name="Ping">240</value>
+        <value name="Pong">241</value>
+        <value name="Net3">242</value>
+        <value name="Init">255</value>
+    </enum>
+
+    <struct name="Version">
+        <field name="major" type="char"/>
+        <field name="minor" type="char"/>
+        <field name="patch" type="char"/>
+    </struct>
+
+    <enum name="QuestPage" type="char">
+        <value name="Progress">1</value>
+        <value name="History">2</value>
+    </enum>
+
+    <struct name="PaperdollBAHWS">
+        <field name="boots" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="weapon" type="short"/>
+        <field name="shield" type="short"/>
+    </struct>
+
+    <struct name="PaperdollBAHSW">
+        <field name="boots" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+    </struct>
+
+    <struct name="PaperdollB000A0HSW">
+        <field name="boots" type="short"/>
+        <field type="short">0</field>
+        <field type="short">0</field>
+        <field type="short">0</field>
+        <field name="armor" type="short"/>
+        <field type="short">0</field>
+        <field name="hat" type="short"/>
+        <field name="weapon" type="short"/>
+        <field name="shield" type="short"/>
+    </struct>
+
+    <struct name="PaperdollWelcome">
+        <field name="boots" type="short"/>
+        <field name="gloves" type="short"/>
+        <field name="accessory" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="belt" type="short"/>
+        <field name="necklace" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+        <array name="ring" type="short" length="2"/>
+        <array name="armlet" type="short" length="2"/>
+        <array name="bracer" type="short" length="2"/>
+    </struct>
+
+    <struct name="Paperdoll">
+        <field name="boots" type="short"/>'
+        <field name="accessory" type="short"/>
+        <field name="gloves" type="short"/>
+        <field name="belt" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="necklace" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+        <array name="ring" type="short" length="2"/>
+        <array name="armlet" type="short" length="2"/>
+        <array name="bracer" type="short" length="2"/>
+    </struct>
+
+    <struct name="Weight">
+        <field name="current" type="char"/>
+        <field name="max" type="char"/>
+    </struct>
+
+    <struct name="Item">
+        <field name="id" type="short"/>
+        <field name="amount" type="int"/>
+    </struct>
+
+    <struct name="ThreeItem">
+        <comment>Used for shops, lockers, and various item transfers</comment>
+        <field name="id" type="short"/>
+        <field name="amount" type="three"/>
+    </struct>
+
+    <struct name="CharItem">
+        <comment>Used for craft ingredients</comment>
+        <field name="id" type="short"/>
+        <field name="amount" type="char"/>
+    </struct>
+
+    <struct name="Spell">
+        <field name="id" type="short"/>
+        <field name="level" type="short"/>
+    </struct>
+
+    <enum name="PartyRequestType" type="char">
+        <value name="Join">0</value>
+        <value name="Invite">1</value>
+    </enum>
+</protocol>

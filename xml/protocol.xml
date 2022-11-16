@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol>
+    <enum name="AdminLevel" type="char">
+        <value name="Player">0</value>
+        <value name="Guide">1</value>
+        <value name="Guardian">2</value>
+        <value name="GM">3</value>
+        <value name="HGM">4</value>
+        <value name="Reserved5">5</value>
+    </enum>
+
+    <enum name="Direction" type="char">
+        <value name="Down">0</value>
+        <value name="Left">1</value>
+        <value name="Up">2</value>
+        <value name="Right">3</value>
+    </enum>
+
+    <enum name="Emote" type="char">
+        <value name="Happy">1</value>
+        <value name="Depressed">2</value>
+        <value name="Sad">3</value>
+        <value name="Angry">4</value>
+        <value name="Confused">5</value>
+        <value name="Surprised">6</value>
+        <value name="Hearts">7</value>
+        <value name="Moon">8</value>
+        <value name="Suicidal">9</value>
+        <value name="Embarrassed">10</value>
+        <value name="Drunk">11</value>
+        <value name="Trade">12</value>
+        <value name="LevelUp">13</value>
+        <value name="Playful">14</value>
+    </enum>
+
+    <enum name="Gender" type="char">
+        <value name="Female">0</value>
+        <value name="Male">1</value>
+    </enum>
+
+    <enum name="Skin" type="char">
+        <value name="White">0</value>
+        <value name="Tan">1</value>
+        <value name="Yellow">2</value>
+        <value name="Orc">3</value>
+        <value name="Skeleton">4</value>
+        <value name="Panda">5</value>
+        <value name="Fish">6</value>
+    </enum>
+
+    <struct name="Coords">
+        <field name="x" type="char"/>
+        <field name="y" type="char"/>
+    </struct>
+</protocol>
