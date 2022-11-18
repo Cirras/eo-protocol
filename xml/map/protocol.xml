@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol>
+    <enum name="MapType" type="char">
+        <value name="Normal">0</value>
+        <value name="PK">3</value>
+    </enum>
+
+    <enum name="MapEffect" type="char">
+        <value name="None">0</value>
+        <value name="HPDrain">1</value>
+        <value name="TPDrain">2</value>
+        <value name="Quake1">3</value>
+        <value name="Quake2">4</value>
+        <value name="Quake3">5</value>
+        <value name="Quake4">6</value>
+    </enum>
+
+    <enum name="MapMusicControl" type="char">
+        <value name="InterruptIfDifferentPlayOnce">0</value>
+        <value name="InterruptPlayOnce">1</value>
+        <value name="FinishPlayOnce">2</value>
+        <value name="InterruptIfDifferentPlayRepeat">3</value>
+        <value name="InterruptPlayRepeat">4</value>
+        <value name="FinishPlayRepeat">5</value>
+        <value name="InterruptPlayNothing">6</value>
+    </enum>
+
+    <enum name="MapTileSpec" type="char">
+        <value name="Wall">0</value>
+        <value name="ChairDown">1</value>
+        <value name="ChairLeft">2</value>
+        <value name="ChairRight">3</value>
+        <value name="ChairUp">4</value>
+        <value name="ChairDownRight">5</value>
+        <value name="ChairUpLeft">6</value>
+        <value name="ChairAll">7</value>
+        <!-- Used internally in the official server -->
+        <value name="Reserved8">8</value>
+        <value name="Chest">9</value>
+        <!-- Used internally in the official server -->
+        <value name="Reserved10">10</value>
+        <!-- Used internally in the official server -->
+        <value name="Reserved11">11</value>
+        <!-- Used internally in the official server -->
+        <value name="Reserved12">12</value>
+        <value name="Reserved13">13</value>
+        <value name="Reserved14">14</value>
+        <value name="Reserved15">15</value>
+        <value name="BankVault">16</value>
+        <value name="NPCBoundary">17</value>
+        <value name="Edge">18</value>
+        <value name="FakeWall">19</value>
+        <value name="Board1">20</value>
+        <value name="Board2">21</value>
+        <value name="Board3">22</value>
+        <value name="Board4">23</value>
+        <value name="Board5">24</value>
+        <value name="Board6">25</value>
+        <value name="Board7">26</value>
+        <value name="Board8">27</value>
+        <value name="Jukebox">28</value>
+        <value name="Jump">29</value>
+        <value name="Water">30</value>
+        <!-- "Deep Water" according to vult-r. No behavior in the official client. -->
+        <value name="Reserved31">31</value>
+        <value name="Arena">32</value>
+        <value name="AmbientSource">33</value>
+        <value name="TimedSpikes">34</value>
+        <value name="Spikes">35</value>
+        <value name="HiddenSpikes">36</value>
+    </enum>
+
+    <struct name="MapNPC">
+        <field name="coords" type="Coords"/>
+        <field name="id" type="short"/>
+        <field name="spawn_type" type="char"/>
+        <field name="spawn_time" type="short"/>
+        <field name="amount" type="char"/>
+    </struct>
+
+    <struct name="MapLegacyDoorKey">
+        <comment>A legacy EMF entity used to specify a key on a door</comment>
+        <field name="coords" type="Coords"/>
+        <field name="key" type="short"/>
+    </struct>
+
+    <struct name="MapItem">
+        <field name="coords" type="Coords"/>
+        <field name="key" type="short"/>
+        <field name="chest_slot" type="char"/>
+        <field name="item_id" type="short"/>
+        <field name="spawn_time" type="short"/>
+        <field name="amount" type="three"/>
+    </struct>
+
+    <struct name="MapWarp">
+        <field name="destination_map" type="short"/>
+        <field name="destination_coords" type="Coords"/>
+        <field name="level_required" type="char"/>
+        <field name="door" type="short"/>
+    </struct>
+
+    <struct name="MapSign">
+        <field name="coords" type="Coords"/>
+        <field name="string_data_length" type="short"/>
+        <field name="string_data" type="encoded_string" length="string_data_length" length-offset="-1"/>
+        <field name="title_length" type="char"/>
+    </struct>
+
+    <struct name="MapTileSpecRowTile">
+        <field name="x" type="char"/>
+        <field name="tile_spec" type="char"/>
+    </struct>
+
+    <struct name="MapTileSpecRow">
+        <field name="y" type="char"/>
+        <field name="tiles_count" type="char"/>
+        <array name="tiles" type="MapTileSpecRowTile" length="tiles_count"/>
+    </struct>
+
+    <struct name="MapWarpRowTile">
+        <field name="x" type="char"/>
+        <field name="warp" type="MapWarp"/>
+    </struct>
+
+    <struct name="MapWarpRow">
+        <field name="y" type="char"/>
+        <field name="tiles_count" type="char"/>
+        <array name="tiles" type="MapWarpRowTile" length="tiles_count"/>
+    </struct>
+
+    <struct name="MapGraphicRowTile">
+        <field name="x" type="char"/>
+        <field name="graphic" type="short"/>
+    </struct>
+
+    <struct name="MapGraphicRow">
+        <field name="y" type="char"/>
+        <field name="tiles_count" type="char"/>
+        <array name="tiles" type="MapGraphicRowTile" length="tiles_count"/>
+    </struct>
+
+    <struct name="MapGraphicLayer">
+        <field name="graphic_rows_count" type="char"/>
+        <array name="graphic_rows" type="MapGraphicRow" length="graphic_rows_count"/>
+    </struct>
+
+    <struct name="EMF">
+        <field type="string" length="3">EMF</field>
+        <array name="rid" type="short" length="2"/>
+        <field name="name" type="encoded_string" length="24"/>
+        <field name="type" type="MapType"/>
+        <field name="effect" type="MapEffect"/>
+        <field name="music_id" type="char"/>
+        <field name="music_control" type="MapMusicControl"/>
+        <field name="ambient_sound_id" type="short"/>
+        <field name="width" type="char"/>
+        <field name="height" type="char"/>
+        <field name="fill_tile" type="short"/>
+        <field name="map_available" type="bool"/>
+        <field name="can_scroll" type="bool"/>
+        <field name="relog_x" type="char"/>
+        <field name="relog_y" type="char"/>
+        <!-- The official client and server don't use this value. -->
+        <field type="char">0</field>
+        <field name="npcs_count" type="char"/>
+        <array name="npcs" type="MapNPC" length="npcs_count"/>
+        <field name="legacy_door_keys_count" type="char"/>
+        <array name="legacy_door_keys" type="MapLegacyDoorKey" length="legacy_door_keys_count"/>
+        <field name="items_count" type="char"/>
+        <array name="items" type="MapItem" length="items_count"/>
+        <field name="tile_spec_rows_count" type="char"/>
+        <array name="tile_spec_rows" type="MapTileSpecRow" length="tile_spec_rows_count"/>
+        <field name="warp_rows_count" type="char"/>
+        <array name="warp_rows" type="MapWarpRow" length="warp_rows_count"/>
+        <array name="graphic_layers" type="MapGraphicLayer" length="9"/>
+        <field name="signs_count" type="char"/>
+        <array name="signs" type="MapSign" length="signs_count"/>
+    </struct>
+</protocol>
