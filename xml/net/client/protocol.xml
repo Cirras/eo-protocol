@@ -850,7 +850,7 @@
         <field name="dialog_id" type="short"/>
         <field name="quest_id" type="short"/>
         <field name="npc_index" type="short"/>
-        <field name="reply_type" type="DialogReply"/>'
+        <field name="reply_type" type="DialogReply"/>
         <switch field="reply_type">
             <case value="Link">
                 <field name="action" type="char"/>

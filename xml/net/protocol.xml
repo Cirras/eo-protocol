@@ -146,7 +146,7 @@
     </struct>
 
     <struct name="Paperdoll">
-        <field name="boots" type="short"/>'
+        <field name="boots" type="short"/>
         <field name="accessory" type="short"/>
         <field name="gloves" type="short"/>
         <field name="belt" type="short"/>

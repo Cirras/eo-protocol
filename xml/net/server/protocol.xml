@@ -82,7 +82,7 @@
     <enum name="CharacterReply" type="short">
         <value name="Exists">1</value>
         <value name="Full">2</value>
-        <value name="Full3">'
+        <value name="Full3">
             <comment>Treated as CharacterReply.Full by the official client</comment>
             3
         </value>
