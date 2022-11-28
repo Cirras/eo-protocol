@@ -159,7 +159,7 @@
         <value name="Killed">2</value>
     </enum>
 
-    <enum name="MapDamageType">
+    <enum name="MapDamageType" type="char">
         <value name="TPDrain">1</value>
         <value name="Spikes">2</value>
     </enum>
@@ -903,7 +903,7 @@
         <field name="message" type="string"/>
     </packet>
 
-    <packet family="Talk" action="Open">
+    <packet family="Message" action="Open">
         <comment>Status bar message</comment>
         <field name="message" type="string"/>
     </packet>
@@ -1249,14 +1249,14 @@
         <comment>Reply to junking items</comment>
         <field name="junked_item" type="ThreeItem"/>
         <field name="remaining_amount" type="int"/>
-        <field name="weight" type="Amount"/>
+        <field name="weight" type="Weight"/>
     </packet>
 
     <packet family="Item" action="Get">
         <comment>Reply to taking items from the ground</comment>
         <field name="taken_item_index" type="short"/>
         <field name="taken_item" type="ThreeItem"/>
-        <field name="weight" type="Amount"/>
+        <field name="weight" type="Weight"/>
     </packet>
 
     <packet family="Item" action="Obtain">
@@ -1874,7 +1874,7 @@
         <comment>Reply to client Marriage-family packets</comment>
         <field name="reply_code" type="MarriageReply"/>
         <switch field="reply_code">
-            <case name="Success">
+            <case value="Success">
                 <field name="gold_amount" type="int"/>
             </case>
         </switch>

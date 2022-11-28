@@ -623,7 +623,7 @@
         <field name="inviter_player_id" type="short"/>
     </packet>
 
-    <packet family="Party" action="Accept">
+    <packet family="Party" action="Remove">
         <comment>Remove player from a party</comment>
         <field name="player_id" type="short"/>
     </packet>
