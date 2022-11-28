@@ -449,12 +449,13 @@
     <packet family="Item" action="Drop">
         <comment>Dropping items on the ground</comment>
         <field name="item" type="ThreeItem"/>
-        <!--
-            The official client sends 255 byte values for the coords if an item is dropped via the
-            GUI button.
-            254 char values here should be interpreted to mean "drop at current coords".
-        -->
-        <field name="coords" type="Coords"/>
+        <field name="coords" type="Coords">
+            <comment>
+                The official client sends 255 byte values for the coords if an item is dropped via
+                the GUI button.
+                254 char values here should be interpreted to mean "drop at current coords".
+            </comment>
+        </field>
     </packet>
 
     <packet family="Item" action="Junk">
@@ -836,8 +837,11 @@
     <packet family="Quest" action="Use">
         <comment>Talking to a quest NPC</comment>
         <field name="npc_index" type="short"/>
-        <!-- quest_id is 0 unless the player explicitly selects a quest from the quest switcher -->
-        <field name="quest_id" type="short"/>
+        <field name="quest_id" type="short">
+            <comment>
+                Quest ID is 0 unless the player explicitly selects a quest from the quest switcher
+            </comment>
+        </field>
     </packet>
 
     <packet family="Quest" action="Accept">

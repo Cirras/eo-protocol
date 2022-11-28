@@ -81,9 +81,11 @@
 
     <enum name="CharacterReply" type="short">
         <value name="Exists">1</value>
-        <value name="Full">2</value>'
-        <!-- Full3 behaves the same as Full -->
-        <value name="Full3">3</value>
+        <value name="Full">2</value>
+        <value name="Full3">'
+            <comment>Treated as CharacterReply.Full by the official client</comment>
+            3
+        </value>
         <value name="NotApproved">4</value>
         <value name="OK">5</value>
         <value name="Deleted">6</value>
@@ -188,8 +190,11 @@
         <field name="y" type="short"/>
     </struct>
 
-    <!-- The official client skips these if they're under 42 bytes in length -->
     <struct name="CharacterMapInfo">
+        <comment>
+            Information about a nearby character.
+            The official client skips these if they're under 42 bytes in length.
+        </comment>
         <field name="name" type="string"/>
         <break/>
         <field name="player_id" type="short"/>
@@ -606,33 +611,36 @@
     </packet>
 
     <packet family="Account" action="Reply">
-        <!-- This is sometimes an AccountReply code, and sometimes a session ID for account creation -->
         <comment>Reply to client Account-family packets</comment>
-        <field name="reply_code" type="short"/>
+        <field name="reply_code" type="short">
+            <comment>
+                Sometimes an AccountReply code, sometimes a session ID for account creation
+            </comment>
+        </field>
         <switch field="reply_code">
             <case value="0">
                 <!-- ??? -->
             </case>
             <case value="1">
-                <!-- AccountReply.Exists -->
+                <comment>AccountReply.Exists</comment>
             </case>
             <case value="2">
-                <!-- AccountReply.NotApproved -->
+                <comment>AccountReply.NotApproved</comment>
             </case>
             <case value="3">
-                <!-- AccountReply.Created -->
+                <comment>AccountReply.Created</comment>
             </case>
             <case value="4">
                 <!-- AccountReply.??? -->
             </case>
             <case value="5">
-                <!-- AccountReply.ChangeFailed -->
+                <comment>AccountReply.ChangeFailed</comment>
             </case>
             <case value="6">
-                <!-- AccountReply.Changed -->
+                <comment>AccountReply.Changed</comment>
             </case>
             <case value="7">
-                <!-- AccountReply.RequestDenied -->
+                <comment>AccountReply.RequestDenied</comment>
             </case>
             <case value="8">
                 <!-- ??? -->
@@ -641,7 +649,7 @@
                 <!-- ??? -->
             </case>
             <case default="true">
-                <!-- session ID -->
+                <comment>In this case, reply_code is a session ID for account creation</comment>
                 <field name="sequence_start" type="char"/>
             </case>
         </switch>
@@ -652,31 +660,36 @@
     <packet family="Character" action="Reply">
         <comment>Reply to client Character-family packets</comment>
         <chunked>
-            <!-- This is sometimes a CharacterReply code, and sometimes a session ID for character creation -->
-            <field name="reply_code" type="short"/>
+            <field name="reply_code" type="short">
+                <comment>
+                    Sometimes a CharacterReply code, sometimes a session ID for character creation
+                </comment>
+            </field>
             <switch field="reply_code">
                 <case value="1">
-                    <!-- CharacterReply.Exists -->
+                    <comment>CharacterReply.Exists</comment>
                 </case>
                 <case value="2">
-                    <!-- CharacterReply.Full -->
+                    <comment>CharacterReply.Full</comment>
                 </case>
                 <case value="3">
-                    <!-- CharacterReply.Full3 -->
+                    <comment>CharacterReply.Full3</comment>
                 </case>
                 <case value="4">
-                    <!-- CharacterReply.NotApproved -->
+                    <comment>CharacterReply.NotApproved</comment>
                 </case>
                 <case value="5">
-                    <!-- CharacterReply.OK -->
+                    <comment>CharacterReply.OK</comment>
                     <field name="character_list" type="CharacterList"/>
                 </case>
                 <case value="6">
-                    <!-- CharacterReply.Deleted -->
+                    <comment>CharacterReply.Deleted</comment>
                     <field name="character_list" type="CharacterList"/>
                 </case>
                 <case default="true">
-                    <!-- session ID -->
+                    <comment>
+                        In this case, reply_code is a session ID for character creation
+                    </comment>
                     <field type="string">OK</field>
                 </case>
             </switch>
@@ -1434,13 +1447,13 @@
     </packet>
 
     <packet family="Chest" action="Close">
-        <comment>Reply to trying to interact with a locked or "broken" chest</comment>
-        <!--
-             If trying to interact with a locked chest, the key field is provided.
-             If trying to interact with a broken chest, the 'N' dummy data is provided. 
-             The official client assumes a broken chest if the packet is under 2 bytes in length.
-         -->
-        <field name="key" type="short" optional="true"/>
+        <comment>
+            Reply to trying to interact with a locked or "broken" chest.
+            The official client assumes a broken chest if the packet is under 2 bytes in length.
+        </comment>
+        <field name="key" type="short" optional="true">
+            <comment>Sent if the player is trying to interact with a locked chest</comment>
+        </field>
         <dummy type="string">N</dummy>
     </packet>
 
@@ -1624,10 +1637,12 @@
         <field name="spell_id" type="short"/>
         <field name="spell_heal_hp" type="int"/>
         <field name="hp_pct" type="char"/>
-
-        <!-- The official client reads these if byte_size > 12 -->
-        <field name="hp" type="short" optional="true"/>
-        <field name="tp" type="short" optional="true"/>
+        <field name="hp" type="short" optional="true">
+            <comment>The official client reads this if the packet is larger than 12 bytes</comment>
+        </field>
+        <field name="tp" type="short" optional="true">
+            <comment>The official client reads this if the packet is larger than 12 bytes</comment>
+        </field>
     </packet>
 
     <packet family="Spell" action="Player">
@@ -1897,11 +1912,18 @@
         <comment>Karma/experience update</comment>
         <field name="experience" type="int"/>
         <field name="karma" type="short"/>
-        <!-- The official client reads this if byte_size > 6 -->
-        <field name="level_up" type="char" optional="true"/>
-        <!-- The official client reads these if level_up > 0 -->
-        <field name="stat_points" type="short" optional="true"/>
-        <field name="skill_points" type="short" optional="true"/>
+        <field name="level_up" type="char" optional="true">
+            <comment>
+                A value greater than 0 means the player leveled up.
+                The official client reads this if the packet is larger than 6 bytes.
+            </comment>
+        </field>
+        <field name="stat_points" type="short" optional="true">
+            <comment>The official client reads this if the player leveled up</comment>
+        </field>
+        <field name="skill_points" type="short" optional="true">
+            <comment>The official client reads this if the player leveled up</comment>
+        </field>
     </packet>
 
     <packet family="Effect" action="Use">
