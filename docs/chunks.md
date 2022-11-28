@@ -25,9 +25,9 @@ The notable exception is the "chunked" reading mode, typically used for reading 
 void FooBar(PacketReader* reader)
 {
     // Read the reply_code directly from the packet data. This is how data is read in a standard case.
-    unsigned char reply_code = reader->data.SubString(0, 1);
+    unsigned char reply_code = DecodeNumber(reader->data.SubString(0, 1));
 
-    // Active chunked reading
+    // Activate chunked reading
     reader->StartChunking();
 
     // discard the first chunk containing the reply code
@@ -140,7 +140,7 @@ void DoubleRead(DataReader* reader)
     unsigned char bar = DecodeNumber(bar_chunk.SubString(1, 1));
 
     // [0xCA, 0x31, 0xFE, 0xFE] decodes to 12345.
-    unsigned short bar = DecodeNumber(bar_chunk.SubString(2, 2));
+    unsigned short baz = DecodeNumber(bar_chunk.SubString(2, 2));
 }
 ```
 
@@ -149,7 +149,7 @@ void DoubleRead(DataReader* reader)
 
 The official client and server *rely* on the aforementioned peculiarities for correct behavior.
 
-A prominent example (and good litmus test for a correct double-read implementation) is the 
+A prominent example (and good litmus test for a correct double-read implementation) is the
 `PLAYERS_AGREE` packet.
 
 ### The client expects...
