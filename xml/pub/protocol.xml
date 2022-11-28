@@ -194,7 +194,7 @@
         <array name="classes" type="ECFRecord" length="classes_count"/>
     </struct>
 
-    <enum name="SkillType" type="char">
+    <enum name="SkillNature" type="char">
         <value name="Spell">0</value>
         <value name="Skill">1</value>
     </enum>
