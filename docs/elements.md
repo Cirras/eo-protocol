@@ -17,6 +17,7 @@ A specification of the XML elements used within `protocol.xml` files.
 | [\<case>](#the-case-element)     | Defines an optional portion of a `struct` or `packet` based on the value of the field specified in the parent `switch`.                                                      |
 | \<chunked>                       | Defines a section of a `struct` or `packet` where [chunked reading](chunks.md) is enabled.                                                                                   |
 | \<break>                         | Defines a break in a `chunked` section of a `struct` or `packet`.<br>A `break` is a raw `0xFF` byte, which has special meaning when [chunked reading](chunks.md) is enabled. |
+| \<comment>                       | Documentation for a particular element in the protocol document, with code/docs generation in mind.                                                                          |
 
 ## The \<enum> Element
 
