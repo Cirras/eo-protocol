@@ -23,7 +23,7 @@
     <enum name="FileType" type="char">
         <value name="EMF">1</value>
         <value name="EIF">2</value>
-        <value name="EIF">3</value>
+        <value name="ENF">3</value>
         <value name="ESF">4</value>
         <value name="ECF">5</value>
     </enum>
