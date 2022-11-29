@@ -33,7 +33,7 @@
         <value name="HairColor">3</value>
     </enum>
 
-    <enum name="TalkReply" type="char">
+    <enum name="TalkReply" type="short">
         <value name="NotFound">1</value>
     </enum>
 
@@ -875,6 +875,12 @@
         <comment>Public chat message</comment>
         <field name="player_id" type="short"/>
         <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Reply">
+        <comment>Reply to trying to send a private message</comment>
+        <field name="reply_code" type="TalkReply"/>
+        <field name="name" type="string"/>
     </packet>
 
     <packet family="Talk" action="Admin">
