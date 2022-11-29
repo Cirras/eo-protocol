@@ -702,24 +702,9 @@
     </packet>
 
     <packet family="Guild" action="Take">
-        <comment>Request guild bank / ranks / description</comment>
-        <chunked>
-            <field name="session_id" type="int"/>
-            <field name="info_type" type="GuildInfoType"/>
-            <switch field="info_type">
-                <case value="Description">
-                    <field name="description" type="string"/>
-                    <break/>
-                </case>
-                <case value="Ranks">
-                    <array name="ranks" type="string" length="9" delimited="true"/>
-                    <break/>
-                </case>
-                <case value="Bank">
-                    <field name="gold_amount" type="int"/>
-                </case>
-            </switch>
-        </chunked>
+        <comment>Request guild description, rank list, or bank balance</comment>
+        <field name="session_id" type="int"/>
+        <field name="info_type" type="GuildInfoType"/>
     </packet>
 
     <packet family="Guild" action="Use">
