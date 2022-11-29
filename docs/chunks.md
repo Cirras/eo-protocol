@@ -27,19 +27,19 @@ void FooBar(PacketReader* reader)
     // Read the reply_code directly from the packet data. This is how data is read in a standard case.
     unsigned char reply_code = DecodeNumber(reader->data.SubString(0, 1));
 
-    // Activate chunked reading
+    // Activate chunked reading.
     reader->StartChunking();
 
-    // discard the first chunk containing the reply code
+    // discard the first chunk containing the reply code.
     reader->GetChunk();
 
-    // Get the entire second chunk for the name field
+    // Get the entire second chunk for the name field.
     AnsiString name = reader->GetChunk();
 
-    // Get the third chunk, containing 2 number fields
+    // Get the third chunk, containing 2 number fields.
     AnsiString numbers = reader->GetChunk();
 
-    // Read number fields from the 3rd chunk
+    // Read number fields from the 3rd chunk.
     unsigned int session_id = DecodeNumber(numbers.SubString(0, 4));
     unsigned short class_id = DecodeNumber(numbers.SubString(4, 2));
 }
@@ -143,7 +143,6 @@ void DoubleRead(DataReader* reader)
 }
 ```
 
-
 ## A practical example
 
 The official client and server *rely* on the aforementioned peculiarities for correct behavior.
@@ -188,7 +187,7 @@ void PlayersAgree(DataReader* reader)
     // Intended to discard the characters_count char, but really just discards an empty chunk.
     reader->GetChunk();
 
-    // Read characters_count number of chunks as CharacterMapInfo records
+    // Read characters_count number of chunks as CharacterMapInfo records.
     for (unsigned char i = 0; i < characters_count; ++i)
     {
         AnsiString chunk = reader->GetChunk();
@@ -202,7 +201,6 @@ void PlayersAgree(DataReader* reader)
         }
         ReadCharacterMapInfo(chunk);
     }
-
 
     // Read the next chunk as a non-delimited array of NPCMapInfo.
     // There is no remaining data, so this chunk is empty and npcs_count = 0.
@@ -231,7 +229,6 @@ void PlayersAgree(DataReader* reader)
 ```
 
 The client ends up with the single intended `CharacterMapInfo` update, and everything _accidentally_ works out fine!
-
 
 ## Sanitization
 Some packets treat `0xFF` bytes as data, while others treat them as meaningful `break` bytes for data chunking.

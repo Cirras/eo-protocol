@@ -123,5 +123,4 @@ DecodeString(bytes)
     InvertCharacters(bytes);
     return bytes;
 }
-
 ```
