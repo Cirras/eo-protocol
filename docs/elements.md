@@ -94,7 +94,7 @@ Text content is optional and specifies a hardcoded field value.
 > **Implementation notes**
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `optional` is **true** and the field value is never set, then it should not be written by the serializer.
-> - `delimited` is only allowed when [chunked reading](chunks.md) is enabled.
+> - `delimited` is only allowed if the array is within a `<chunked>` element.
 > - If `delimited` is **false**, then the element type must have a fixed size.
 > - If `delimited` is **false** _and_ `length` is not provided...
 >   - The array must be the final field in the data structure (or in the chunk, if [chunked reading](chunks.md) is enabled)
