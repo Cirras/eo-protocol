@@ -292,7 +292,7 @@
         <field name="characters_count" type="char"/>
         <field type="char">1</field>
         <break/>
-        <array name="characters" type="CharacterInfo" delimited="true"/>
+        <array name="characters" type="CharacterInfo" length="characters_count" delimited="true"/>
         <break/>
     </struct>
 
