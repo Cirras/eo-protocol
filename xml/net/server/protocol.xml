@@ -1283,7 +1283,7 @@
     </packet>
 
     <packet family="Board" action="Player">
-        <comment>"Reply to opening a town board</comment>
+        <comment>Reply to opening a town board</comment>
         <chunked>
             <field name="board_id" type="char"/>
             <field name="posts_count" type="char"/>
