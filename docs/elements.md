@@ -3,21 +3,21 @@ A specification of the XML elements used within `protocol.xml` files.
 
 ## Glossary
 
-| element                          | description                                                                                                                                                                  |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| \<protocol>                      | The root element of a protocol document.                                                                                                                                     |
-| [\<enum>](#the-enum-element)     | Defines an enumeration type.                                                                                                                                                 |
-| [\<value>](#the-value-element)   | Defines a value in an `enum`.                                                                                                                                                |
-| [\<struct>](#the-struct-element) | Defines an object type.                                                                                                                                                      |
-| [\<packet>](#the-packet-element) | Defines a packet type. Similar to a `struct`, but a `packet` is mapped to a packet `family` and `action`.                                                                    |
-| [\<field>](#the-field-element)   | Defines a field in a `struct` or `packet`.                                                                                                                                   |
-| [\<array>](#the-array-element)   | Defines an array field in a `struct` or `packet`.                                                                                                                            |
-| [\<dummy>](#the-dummy-element)   | Defines a dummy data field in a `packet`. Similar to an unnamed `field`, but a `dummy` should only be written if the packet would otherwise be empty.                        |
-| [\<switch>](#the-switch-element) | Defines a section in a `struct` or `packet` where the structure may differ based on the value of a field.                                                                    |
-| [\<case>](#the-case-element)     | Defines an optional portion of a `struct` or `packet` based on the value of the field specified in the parent `switch`.                                                      |
-| \<chunked>                       | Defines a section of a `struct` or `packet` where [chunked reading](chunks.md) is enabled.                                                                                   |
-| \<break>                         | Defines a break in a `chunked` section of a `struct` or `packet`.<br>A `break` is a raw `0xFF` byte, which has special meaning when [chunked reading](chunks.md) is enabled. |
-| \<comment>                       | Documentation for a particular element in the protocol document, with code/docs generation in mind.                                                                          |
+| element                          | description                                                                                                                                           |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| \<protocol>                      | The root element of a protocol document.                                                                                                              |
+| [\<enum>](#the-enum-element)     | Defines an enumeration type.                                                                                                                          |
+| [\<value>](#the-value-element)   | Defines a value in an `enum`.                                                                                                                         |
+| [\<struct>](#the-struct-element) | Defines an object type.                                                                                                                               |
+| [\<packet>](#the-packet-element) | Defines a packet type. Similar to a `struct`, but a `packet` is mapped to a packet `family` and `action`.                                             |
+| [\<field>](#the-field-element)   | Defines a field in a `struct` or `packet`.                                                                                                            |
+| [\<array>](#the-array-element)   | Defines an array field in a `struct` or `packet`.                                                                                                     |
+| [\<dummy>](#the-dummy-element)   | Defines a dummy data field in a `packet`. Similar to an unnamed `field`, but a `dummy` should only be written if the packet would otherwise be empty. |
+| [\<switch>](#the-switch-element) | Defines a section in a `struct` or `packet` where the structure may differ based on the value of a field.                                             |
+| [\<case>](#the-case-element)     | Defines an optional portion of a `struct` or `packet` based on the value of the field specified in the parent `switch`.                               |
+| \<chunked>                       | Defines a section of a `struct` or `packet` where [chunked reading](chunks.md) is enabled.                                                            |
+| [\<break>](#the-break-element)   | Defines a break in a `chunked` section of a `struct` or `packet`.                                                                                     |
+| \<comment>                       | Documentation for a particular element in the protocol document, with code/docs generation in mind.                                                   |
 
 ## The \<enum> Element
 
@@ -135,3 +135,11 @@ Text content is required and specifies a hardcoded dummy value.
 > - Fields specified in different `case` elements of the same `switch` can have the same name if either of these conditions are met:
 >   - The fields all have the same type
 >   - The fields all have numeric types
+
+## The \<break> Element
+
+This element has no attributes.
+
+> **Implementation notes**
+> - A `break` is a raw `0xFF` byte, which has special meaning when [chunked reading](chunks.md) is enabled.
+> - `<break>` elements are not allowed outside of `<chunked>` elements.
