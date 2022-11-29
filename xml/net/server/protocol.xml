@@ -905,6 +905,14 @@
         <field name="message" type="string"/>
     </packet>
 
+    <packet family="Message" action="Accept">
+        <comment>Large message box</comment>
+        <chunked>
+            <array name="messages" type="string" length="4" delimited="true"/>
+            <break/>
+        </chunked>
+    </packet>
+
     <packet family="Talk" action="Spec">
         <comment>Temporary mute applied</comment>
         <field name="admin_name" type="string"/>
