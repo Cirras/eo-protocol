@@ -665,7 +665,6 @@
             <switch field="info_type">
                 <case value="Description">
                     <field name="description" type="string"/>
-                    <break/>
                 </case>
                 <case value="Ranks">
                     <array name="ranks" type="string" length="9" delimited="true"/>
