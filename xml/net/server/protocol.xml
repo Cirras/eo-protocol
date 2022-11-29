@@ -555,9 +555,6 @@
             <case value="Banned">
                 <field name="ban_type" type="InitBanType"/>
                 <switch field="ban_type">
-                    <case value="Temporary0">"
-                        <field name="minutes_remaining" type="byte"/>
-                    </case>
                     <case value="Temporary">
                         <field name="minutes_remaining" type="byte"/>
                     </case>
