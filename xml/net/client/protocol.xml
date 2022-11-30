@@ -65,7 +65,7 @@
 
     <packet family="Connection" action="Accept">
         <comment>Confirm initialization data</comment>
-        <field name="encode_multiple" type="short"/>
+        <field name="decode_multiple" type="short"/>
         <field name="encode_multiple" type="short"/>
         <field name="player_id" type="short"/>
     </packet>
