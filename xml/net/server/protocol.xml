@@ -550,7 +550,7 @@
                 <field name="decode_multiple" type="byte"/>
                 <field name="encode_multiple" type="byte"/>
                 <field name="player_id" type="short"/>
-                <field name="response" type="int"/>
+                <field name="response" type="three"/>
             </case>
             <case value="Banned">
                 <field name="ban_type" type="InitBanType"/>
