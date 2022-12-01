@@ -1256,7 +1256,7 @@
         <field name="reply_code" type="SkillMasterReply"/>
         <switch field="reply_code">
             <case value="WrongClass">
-                <field name="class_id" type="short"/>
+                <field name="class_id" type="char"/>
             </case>
         </switch>
     </packet>
