@@ -1466,6 +1466,14 @@
         </chunked>
     </packet>
 
+    <packet family="Paperdoll" action="Ping">
+        <comment>Failed to equip an item due to being the incorrect class</comment>
+        <!-- There is no visible effect in the client, it simply re-assigns the player's class -->
+        <field name="class_id" type="char">
+            <comment>The player's current class ID -- not the item's required class ID</comment>
+        </field>
+    </packet>
+
     <packet family="Paperdoll" action="Remove">
         <comment>Reply to unequipping an item</comment>
         <field name="change" type="AvatarChange"/>
