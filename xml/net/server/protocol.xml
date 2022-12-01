@@ -1354,9 +1354,11 @@
         <field name="gold_amount" type="int"/>
     </packet>
 
-    <packet family="Jukebox" action="Use">
+    <packet family="Jukebox" action="Reply">
         <comment>Reply to unsuccessfully requesting a song</comment>
-        <field name="track_id" type="short"/>
+        <!-- "Someone else already requested a song, please wait a moment." -->
+        <!-- (Official server erroneously sends this when you don't have enough gold) -->
+        <dummy type="short">1</dummy>
     </packet>
 
     <packet family="Jukebox" action="Open">
@@ -1376,6 +1378,11 @@
     <packet family="Jukebox" action="Player">
         <comment>Play background music</comment>
         <field name="mfx_id" type="char"/>
+    </packet>
+
+    <packet family="Jukebox" action="Use">
+        <comment>Play jukebox music</comment>
+        <field name="track_id" type="short"/>
     </packet>
 
     <packet family="Warp" action="Request">
