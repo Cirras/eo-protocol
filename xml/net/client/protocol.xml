@@ -498,6 +498,12 @@
         </chunked>
     </packet>
 
+    <packet family="Board" action="Take">
+        <comment>Reading a post on a town board</comment>
+        <field name="board_id" type="short"/>
+        <field name="post_id" type="short"/>
+    </packet>
+
     <packet family="Board" action="Open">
         <comment>Opening a town board</comment>
         <field name="board_id" type="short"/>

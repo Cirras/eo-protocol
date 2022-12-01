@@ -1332,6 +1332,14 @@
     </packet>
 
     <packet family="Board" action="Player">
+        <comment>Reply to reading a post on a town board</comment>
+        <chunked>
+            <field name="post_id" type="short"/>
+            <field name="post_body" type="string"/>
+        </chunked>
+    </packet>
+
+    <packet family="Board" action="Open">
         <comment>Reply to opening a town board</comment>
         <chunked>
             <field name="board_id" type="char"/>
