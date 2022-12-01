@@ -324,6 +324,18 @@
         <field name="amount" type="int"/>
     </packet>
 
+    <packet family="Barber" action="Buy">
+        <comment>Purchasing a hair-style</comment>
+        <field name="hair_style" type="char"/>
+        <field name="hair_color" type="char"/>
+        <field name="session_id" type="int"/>
+    </packet>
+
+    <packet family="Barber" action="Open">
+        <comment>Talking to a barber NPC</comment>
+        <field name="npc_index" type="short"/>
+    </packet>
+
     <packet family="Locker" action="Add">
         <comment>Adding an item to a bank locker</comment>
         <field name="locker_coords" type="Coords"/>

@@ -1095,6 +1095,17 @@
         <field name="gold_bank" type="int"/>
     </packet>
 
+    <packet family="Barber" action="Agree">
+        <comment>Purchasing a new hair style</comment>
+        <field name="gold_amount" type="int"/>
+        <field name="change" type="AvatarChange"/>
+    </packet>
+
+    <packet family="Barber" action="Open">
+        <comment>Response from talking to a barber NPC</comment>
+        <field name="session_id" type="int"/>
+    </packet>
+
     <packet family="Locker" action="Reply">
         <comment>Response to adding an item to a bank locker</comment>
         <field name="deposited_item" type="Item"/>
