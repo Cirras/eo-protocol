@@ -453,6 +453,16 @@
         <field name="name" type="string"/>
     </struct>
 
+    <struct name="PartyExpShare">
+        <field name="player_id" type="short"/>
+        <field name="experience" type="int"/>
+        <field name="level_up" type="char">
+            <comment>
+                A value greater than 0 is "new level" and indicates the player leveled up.
+            </comment>
+        </field>
+    </struct>
+
     <struct name="GuildStaff">
         <chunked>
             <field name="rank" type="char"/>
@@ -1615,14 +1625,8 @@
     </packet>
 
     <packet family="Party" action="TargetGroup">
-        <comment>Experience gained from party</comment>
-        <field name="player_id" type="short"/>
-        <field name="experience" type="int"/>
-        <field name="level_up" type="char">
-            <comment>
-                A value greater than 0 is "new level" and indicates the player leveled up.
-            </comment>
-        </field>
+        <comment>Updated experience and level-ups from party experience</comment>
+        <array name="gains" type="PartyExpShare"/>
     </packet>
 
     <packet family="Guild" action="Reply">
@@ -2052,6 +2056,15 @@
         <field name="skill_points" type="short" optional="true">
             <comment>The official client reads this if the player leveled up</comment>
         </field>
+    </packet>
+
+    <packet family="Recover" action="TargetGroup">
+        <comment>Updated stats when levelling up from party experience</comment>
+        <field name="stat_points" type="short"/>
+        <field name="skill_points" type="short"/>
+        <field name="max_hp" type="short"/>
+        <field name="max_tp" type="short"/>
+        <field name="max_sp" type="short"/>
     </packet>
 
     <packet family="Effect" action="Use">
