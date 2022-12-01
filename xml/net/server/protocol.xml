@@ -1073,6 +1073,12 @@
         <field name="nearby" type="NearbyInfo"/>
     </packet>
 
+    <packet family="NPC" action="Agree">
+        <comment>Reply to request for information about nearby NPCs</comment>
+        <field name="npcs_count" type="short"/>
+        <array name="npcs" type="NPCMapInfo" length="npcs_count"/>
+    </packet>
+
     <packet family="Walk" action="Player">
         <comment>Nearby player has walked</comment>
         <field name="player_id" type="short"/>
@@ -1884,6 +1890,22 @@
             <break/>
             <field name="hp" type="short" optional="true"/>
             <field name="tp" type="short" optional="true"/>
+        </chunked>
+    </packet>
+
+    <packet family="NPC" action="Dialog">
+        <comment>NPC chat message</comment>
+        <field name="npc_index" type="short"/>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Quest" action="Report">
+        <comment>NPC chat messages</comment>
+        <chunked>
+            <field name="npc_id" type="short"/>
+            <break/>
+            <array name="messages" type="string" delimited="true"/>
+            <break/>
         </chunked>
     </packet>
 
