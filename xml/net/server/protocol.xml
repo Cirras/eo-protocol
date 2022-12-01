@@ -2034,6 +2034,13 @@
         <field name="tp" type="short"/>
     </packet>
 
+    <packet family="Recover" action="Agree">
+        <comment>Nearby player gained HP</comment>
+        <field name="player_id" type="short"/>
+        <field name="heal_hp" type="short"/>
+        <field name="hp_percentage" type="char"/>
+    </packet>
+
     <packet family="Recover" action="List">
         <comment>Stats update</comment>
         <field name="class_id" type="short"/>
