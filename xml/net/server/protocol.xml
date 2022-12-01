@@ -1068,6 +1068,11 @@
         <field name="nearby" type="NearbyInfo"/>
     </packet>
 
+    <packet family="Players" action="Remove">
+        <comment>Nearby player has logged out</comment>
+        <field name="player_id" type="short"/>
+    </packet>
+
     <packet family="Range" action="Reply">
         <comment>Reply to request for information about nearby players and NPCs</comment>
         <field name="nearby" type="NearbyInfo"/>
