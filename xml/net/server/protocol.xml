@@ -185,6 +185,12 @@
         <value name="NoPermission">8</value>
     </enum>
 
+    <enum name="PartyReplyCode" type="char">
+        <value name="AlreadyInAnotherParty">0</value>
+        <value name="AlreadyInYourParty">1</value>
+        <value name="PartyIsFull">2</value>
+    </enum>
+
     <struct name="BigCoords">
         <field name="x" type="short"/>
         <field name="y" type="short"/>
@@ -1495,11 +1501,24 @@
         <field name="nearby" type="NearbyInfo"/>
     </packet>
 
-    <packet family="Party" action="Accept">
+    <packet family="Party" action="Request">
         <comment>Received party invite / join request</comment>
         <field name="request_type" type="PartyRequestType"/>
         <field name="inviter_player_id" type="short"/>
         <field name="player_name" type="string"/>
+    </packet>
+
+    <packet family="Party" action="Reply">
+        <comment>Failed party invite / join request</comment>
+        <field name="reply_code" type="PartyReplyCode"/>
+        <switch field="reply_code">
+            <case value="AlreadyInAnotherParty">
+                <field name="player_name" type="string"/>
+            </case>
+            <case value="AlreadyInYourParty">
+                <field name="player_name" type="string"/>
+            </case>
+        </switch>
     </packet>
 
     <packet family="Party" action="Create">
