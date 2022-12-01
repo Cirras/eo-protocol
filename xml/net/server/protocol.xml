@@ -562,6 +562,15 @@
         <field name="damage" type="short"/>
     </struct>
 
+    <struct name="GlobalBackfillMessage">
+        <chunked>
+            <field name="player_name" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+            <break/>
+        </chunked>
+    </struct>
+
     <packet family="Init" action="Init">
         <comment>Reply to connection initialization and requests for unencoded data</comment>
         <field name="reply_code" type="InitReply"/>
@@ -928,6 +937,11 @@
     <packet family="Talk" action="Server">
         <comment>Server message</comment>
         <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="List">
+        <comment>Global chat backfill</comment>
+        <array name="messages" type="GlobalBackfillMessage"/>
     </packet>
 
     <packet family="Message" action="Open">
