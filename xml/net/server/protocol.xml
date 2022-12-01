@@ -935,6 +935,11 @@
         <field name="message" type="string"/>
     </packet>
 
+    <packet family="Message" action="Close">
+        <comment>Server is rebooting</comment>
+        <dummy type="string">r</dummy>
+    </packet>
+
     <packet family="Message" action="Accept">
         <comment>Large message box</comment>
         <chunked>
