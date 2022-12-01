@@ -1773,7 +1773,7 @@
     </packet>
 
     <packet family="Avatar" action="Admin">
-        <comment>Nearby player hit by a spell from a player</comment>
+        <comment>Nearby player hit by a damage spell from a player</comment>
         <field name="caster_id" type="short"/>
         <field name="victim_id" type="short"/>
         <field name="caster_direction" type="Direction"/>
@@ -1784,12 +1784,23 @@
     </packet>
 
     <packet family="Spell" action="TargetGroup">
-        <comment>Nearby player(s) hit by a group spell from a player</comment>
+        <comment>Nearby player(s) hit by a group heal spell from a player</comment>
         <field name="spell_id" type="short"/>
         <field name="caster_id" type="short"/>
         <field name="caster_tp" type="short"/>
         <field name="spell_heal_hp" type="short"/>
         <array name="players" type="GroupHealTargetPlayer"/>
+    </packet>
+
+    <packet family="Spell" action="TargetOther">
+        <comment>Nearby player hit by a heal spell from a player</comment>
+        <field name="victim_id" type="short"/>
+        <field name="caster_id" type="short"/>
+        <field name="caster_direction" type="Direction"/>
+        <field name="spell_id" type="short"/>
+        <field name="spell_heal_hp" type="int"/>
+        <field name="hp_percentage" type="char"/>
+        <field name="hp" type="short"/>
     </packet>
 
     <packet family="Trade" action="Request">
