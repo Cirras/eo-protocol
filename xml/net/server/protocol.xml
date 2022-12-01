@@ -1172,6 +1172,11 @@
         <field name="locker_upgrades" type="char"/>
     </packet>
 
+    <packet family="Locker" action="Spec">
+        <comment>Reply to trying to add an item to a full locker</comment>
+        <field name="locker_max_items" type="char"/>
+    </packet>
+
     <packet family="Citizen" action="Reply">
         <comment>Response to subscribing to a town</comment>
         <field name="questions_wrong" type="char"/>
