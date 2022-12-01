@@ -195,27 +195,29 @@
             Information about a nearby character.
             The official client skips these if they're under 42 bytes in length.
         </comment>
-        <field name="name" type="string"/>
-        <break/>
-        <field name="player_id" type="short"/>
-        <field name="map_id" type="short"/>
-        <field name="coords" type="BigCoords"/>
-        <field name="direction" type="Direction"/>
-        <field name="class_id" type="char"/>
-        <field name="guild_tag" type="string" length="3"/>
-        <field name="level" type="char"/>
-        <field name="gender" type="Gender"/>
-        <field name="hair_style" type="char"/>
-        <field name="hair_color" type="char"/>
-        <field name="skin_id" type="Skin"/>
-        <field name="max_hp" type="short"/>
-        <field name="hp" type="short"/>
-        <field name="max_tp" type="short"/>
-        <field name="tp" type="short"/>
-        <field name="paperdoll" type="PaperdollB000A0HSW"/>
-        <field name="sit_state" type="SitState"/>
-        <field name="invisible" type="bool"/>
-        <field name="animation" type="WarpAnimation" optional="true"/>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="player_id" type="short"/>
+            <field name="map_id" type="short"/>
+            <field name="coords" type="BigCoords"/>
+            <field name="direction" type="Direction"/>
+            <field name="class_id" type="char"/>
+            <field name="guild_tag" type="string" length="3"/>
+            <field name="level" type="char"/>
+            <field name="gender" type="Gender"/>
+            <field name="hair_style" type="char"/>
+            <field name="hair_color" type="char"/>
+            <field name="skin_id" type="Skin"/>
+            <field name="max_hp" type="short"/>
+            <field name="hp" type="short"/>
+            <field name="max_tp" type="short"/>
+            <field name="tp" type="short"/>
+            <field name="paperdoll" type="PaperdollB000A0HSW"/>
+            <field name="sit_state" type="SitState"/>
+            <field name="invisible" type="bool"/>
+            <field name="animation" type="WarpAnimation" optional="true"/>
+        </chunked>
     </struct>
 
     <struct name="NPCMapInfo">
@@ -263,37 +265,43 @@
     </struct>
 
     <struct name="OnlinePlayer">
-        <field name="name" type="string"/>
-        <break/>
-        <field name="title" type="string"/>
-        <break/>
-        <field type="char">0</field>
-        <field name="icon" type="PaperdollIcon"/>
-        <field name="class_id" type="char"/>
-        <field name="guild_tag" type="string"/>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="title" type="string"/>
+            <break/>
+            <field type="char">0</field>
+            <field name="icon" type="PaperdollIcon"/>
+            <field name="class_id" type="char"/>
+            <field name="guild_tag" type="string"/>
+        </chunked>
     </struct>
 
     <struct name="CharacterInfo">
         <comment>Character selection screen character info</comment>
-        <field name="name" type="string"/>
-        <break/>
-        <field name="id" type="int"/>
-        <field name="level" type="char"/>
-        <field name="gender" type="Gender"/>
-        <field name="hair_style" type="char"/>
-        <field name="hair_color" type="char"/>
-        <field name="skin" type="Skin"/>
-        <field name="admin" type="AdminLevel"/>
-        <field name="paperdoll" type="PaperdollBAHSW"/>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="id" type="int"/>
+            <field name="level" type="char"/>
+            <field name="gender" type="Gender"/>
+            <field name="hair_style" type="char"/>
+            <field name="hair_color" type="char"/>
+            <field name="skin" type="Skin"/>
+            <field name="admin" type="AdminLevel"/>
+            <field name="paperdoll" type="PaperdollBAHSW"/>
+        </chunked>
     </struct>
 
     <struct name="CharacterList">
         <comment>Character selection screen character info</comment>
-        <field name="characters_count" type="char"/>
-        <field type="char">1</field>
-        <break/>
-        <array name="characters" type="CharacterInfo" length="characters_count" delimited="true"/>
-        <break/>
+        <chunked>
+            <field name="characters_count" type="char"/>
+            <field type="char">1</field>
+            <break/>
+            <array name="characters" type="CharacterInfo" length="characters_count" delimited="true"/>
+            <break/>
+        </chunked>
     </struct>
 
     <struct name="ServerSettings">
@@ -401,30 +409,34 @@
     </struct>
 
     <struct name="BoardPostListing">
-        <field name="post_id" type="short"/>
-        <break/>
-        <field name="author" type="string"/>
-        <break/>
-        <field name="subject" type="string"/>
+        <chunked>
+            <field name="post_id" type="short"/>
+            <break/>
+            <field name="author" type="string"/>
+            <break/>
+            <field name="subject" type="string"/>
+        </chunked>
     </struct>
 
     <struct name="PaperdollInfo">
-        <field name="name" type="string"/>
-        <break/>
-        <field name="home" type="string"/>
-        <break/>
-        <field name="partner" type="string"/>
-        <break/>
-        <field name="title" type="string"/>
-        <break/>
-        <field name="guild" type="string"/>
-        <break/>
-        <field name="guild_rank" type="string"/>
-        <break/>
-        <field name="player_id" type="short"/>
-        <field name="class_id" type="char"/>
-        <field name="gender" type="Gender"/>
-        <field name="admin" type="AdminLevel"/>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="home" type="string"/>
+            <break/>
+            <field name="partner" type="string"/>
+            <break/>
+            <field name="title" type="string"/>
+            <break/>
+            <field name="guild" type="string"/>
+            <break/>
+            <field name="guild_rank" type="string"/>
+            <break/>
+            <field name="player_id" type="short"/>
+            <field name="class_id" type="char"/>
+            <field name="gender" type="Gender"/>
+            <field name="admin" type="AdminLevel"/>
+        </chunked>
     </struct>
 
     <struct name="PartyMember">
@@ -436,17 +448,21 @@
     </struct>
 
     <struct name="GuildStaff">
-        <field name="rank" type="char"/>
-        <break/>
-        <field name="name" type="string"/>
+        <chunked>
+            <field name="rank" type="char"/>
+            <break/>
+            <field name="name" type="string"/>
+        </chunked>
     </struct>
 
     <struct name="GuildMember">
-        <field name="rank" type="char"/>
-        <break/>
-        <field name="name" type="string"/>
-        <break/>
-        <field name="rank_name" type="string"/>
+        <chunked>
+            <field name="rank" type="char"/>
+            <break/>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="rank_name" type="string"/>
+        </chunked>
     </struct>
 
     <struct name="GroupHealTargetPlayer">
@@ -508,13 +524,15 @@
     </struct>
 
     <struct name="QuestProgressEntry">
-        <field name="name" type="string"/>
-        <break/>
-        <field name="description" type="string"/>
-        <break/>
-        <field name="icon" type="BookIcon"/>
-        <field name="progress" type="short"/>
-        <field name="target" type="short"/>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="description" type="string"/>
+            <break/>
+            <field name="icon" type="BookIcon"/>
+            <field name="progress" type="short"/>
+            <field name="target" type="short"/>
+        </chunked>
     </struct>
 
     <struct name="DialogQuestEntry">
