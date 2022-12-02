@@ -3,6 +3,7 @@
         <value name="OutOfDate">1</value>
         <value name="OK">2</value>
         <value name="Banned">3</value>
+        <value name="WarpMap">4</value>
         <value name="FileEMF">5</value>
         <value name="FileEIF">6</value>
         <value name="FileENF">7</value>
@@ -602,6 +603,9 @@
                         <field name="minutes_remaining" type="byte"/>
                     </case>
                 </switch>
+            </case>
+            <case value="WarpMap">
+                <array name="content" type="byte"/>
             </case>
             <case value="FileEMF">
                 <array name="content" type="byte"/>
