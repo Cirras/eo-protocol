@@ -1754,6 +1754,11 @@
         </chunked>
     </packet>
 
+    <packet family="Guild" action="Accept">
+        <comment>Update guild rank</comment>
+        <field name="rank" type="char"/>
+    </packet>
+
     <packet family="Spell" action="Request">
         <comment>Nearby player chanting a spell</comment>
         <field name="player_id" type="short"/>
