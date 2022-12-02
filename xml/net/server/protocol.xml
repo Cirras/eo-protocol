@@ -1759,6 +1759,15 @@
         <field name="rank" type="char"/>
     </packet>
 
+    <packet family="Guild" action="Kick">
+        <comment>Left the guild</comment>
+        <!--
+            The official server never sends this packet, so the dummy byte is unknown.
+            This packet is only known as a result of decompiling the official client.
+        -->
+        <dummy type="byte">255</dummy>
+    </packet>
+
     <packet family="Spell" action="Request">
         <comment>Nearby player chanting a spell</comment>
         <field name="player_id" type="short"/>
