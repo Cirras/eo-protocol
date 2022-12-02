@@ -665,7 +665,7 @@
 
     <packet family="Guild" action="Accept">
         <comment>Accept pending guild creation invite</comment>
-         <!-- The official client really does send this random harcoded 20202 value -->
+        <!-- The official client really does send this random harcoded 20202 value -->
         <field type="int">20202</field>
         <field name="inviter_player_id" type="short"/>
     </packet>
