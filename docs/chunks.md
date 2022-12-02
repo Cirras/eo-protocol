@@ -103,7 +103,7 @@ The way this usually looks is:
 This can cause surprising and unexpected behavior in the official data reader.
 
 > **Implementation notes:**
-> - When a `<chunked>` section is reached...
+> - When the first `<chunked>` section is reached...
 >   - If the first expected element is a `<break>`, the reader should seek to the first `0xFF` byte in the input data before consuming it.
 
 #### Example:
