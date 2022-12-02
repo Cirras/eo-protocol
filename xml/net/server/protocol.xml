@@ -1202,6 +1202,11 @@
         </chunked>
     </packet>
 
+    <packet family="Citizen" action="Request">
+        <comment>Reply to requesting sleeping at an inn</comment>
+        <field name="cost" type="int"/>
+    </packet>
+
     <packet family="Citizen" action="Accept">
         <comment>Sleeping at an inn</comment>
         <field name="gold_amount" type="int"/>
