@@ -1784,7 +1784,7 @@
         <field name="player_id" type="short"/>
         <field name="spell_id" type="short"/>
         <field name="spell_heal_hp" type="int"/>
-        <field name="hp_pct" type="char"/>
+        <field name="hp_percentage" type="char"/>
         <field name="hp" type="short" optional="true">
             <comment>The official client reads this if the packet is larger than 12 bytes</comment>
         </field>
