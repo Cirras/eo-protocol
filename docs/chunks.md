@@ -25,7 +25,7 @@ The notable exception is the "chunked" reading mode, typically used for reading 
 void FooBar(PacketReader* reader)
 {
     // Read the reply_code directly from the packet data. This is how data is read in a standard case.
-    unsigned char reply_code = DecodeNumber(reader->data.SubString(0, 1));
+    unsigned char reply_code = DecodeNumber(reader->data.SubString(1, 1));
 
     // Activate chunked reading.
     reader->StartChunking();
@@ -40,7 +40,7 @@ void FooBar(PacketReader* reader)
     AnsiString numbers = reader->GetChunk();
 
     // Read number fields from the 3rd chunk.
-    unsigned int session_id = DecodeNumber(numbers.SubString(0, 4));
+    unsigned int session_id = DecodeNumber(numbers.SubString(1, 4));
     unsigned short class_id = DecodeNumber(numbers.SubString(4, 2));
 }
 ```
