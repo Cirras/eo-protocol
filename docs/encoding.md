@@ -49,28 +49,44 @@ EncodeNumber(number)
 
 ### Decode
 ```c
-GetByteValue(byte)
+DecodeNumber(bytes)
 {
-    if (byte === 254)
+    result = 0;
+    length = min(size(bytes), 4);
+
+    for (i = 0; i < length; ++i)
     {
-        byte = 1;
+        byte = bytes[i];
+
+        if (byte == 0xFE)
+            break;
+
+        value = byte - 1;
+
+        switch (i)
+        {
+            case 0:
+                result += value;
+                break;
+            case 1:
+                result += CHAR_MAX * value;
+                break;
+            case 2:
+                result += SHORT_MAX * value;
+                break;
+            case 3:
+                result += THREE_MAX * value;
+                break;
+        }
     }
 
-    --byte;
-
-    return byte;
-}
-
-DecodeNumber(a = 0xFE, b = 0xFE, c = 0xFE, d = 0xFE)
-{
-    a = GetByteValue(a);
-    b = GetByteValue(b);
-    c = GetByteValue(c);
-    d = GetByteValue(d);
-
-    return d * THREE_MAX + c * SHORT_MAX + b * CHAR_MAX + a;
+    return result;
 }
 ```
+
+> **Note:**
+>  - When encoding numbers, `0xFE` bytes are used as padding after the significant bytes.
+>  - When decoding numbers, a `0xFE` byte is treated as a terminator.
 
 ## Strings
 The core logic is shared between string encoding and decoding routines, with the only difference between them being a symmetrical reverse.
