@@ -45,6 +45,9 @@ void FooBar(PacketReader* reader)
 }
 ```
 
+> **Notes:**
+> - Indexing of the C++ builder `AnsiString` type is 1-based.
+>   - See: [System.AnsiString](https://docwiki.embarcadero.com/Libraries/en/System.AnsiString)
 ## Peculiarities
 There are two important peculariarities in this chunked reading method.
 
