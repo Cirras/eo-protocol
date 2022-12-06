@@ -82,9 +82,18 @@
 
     <enum name="CharacterReply" type="short">
         <value name="Exists">1</value>
-        <value name="Full">2</value>
+        <value name="Full">
+            <comment>
+                Only sent in reply to Character_Create packets.
+                Displays the same message as CharacterReply.Full3 in the official client.
+            </comment>
+            2
+        </value>
         <value name="Full3">
-            <comment>Treated as CharacterReply.Full by the official client</comment>
+            <comment>
+                Only sent in reply to Character_Request packets.
+                Displays the same message as CharacterReply.Full in the official client.
+            </comment>
             3
         </value>
         <value name="NotApproved">4</value>
