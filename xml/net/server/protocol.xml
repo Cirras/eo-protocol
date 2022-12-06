@@ -44,7 +44,7 @@
         <value name="Floor">2</value>
     </enum>
 
-    <enum name="MapEffect" type="char">
+    <enum name="MapEffectType" type="char">
         <value name="Quake">1</value>
     </enum>
 
@@ -2128,7 +2128,7 @@
 
     <packet family="Effect" action="Use">
         <comment>Map effect</comment>
-        <field name="effect" type="MapEffect"/>
+        <field name="effect" type="MapEffectType"/>
         <field name="param" type="char"/>
     </packet>
 
