@@ -71,10 +71,13 @@ Text content is optional and specifies a hardcoded field value.
 | optional      | If **true**, the field is considered optional for the purposes of data serialization.                  |
 
 > **Implementation notes**
-> - If `name` is not provided, neither getter nor setter should be generated for the field value.
-> - If text content is provided, a setter should not be generated for the field value.
-> - If `name` is not provided, then text content must be provided.
-> - `length` and `length-offset` are only valid for `string` and `encoded_string` types.
+> - If `name` is not provided...
+>   - text content must be provided.
+>   - neither getter nor setter should be generated for the field value.
+> - If text content is provided...
+>   - a setter should not be generated for the field value.
+>   - the field must have an integer or string type.
+> - `length` and `length-offset` are only valid for string types.
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `optional` is **true**...
 >   - An unset field value should not be written by the serializer.
@@ -105,12 +108,13 @@ Text content is required and specifies a hardcoded dummy value.
 
 | attribute     | description                                                                                            |
 |---------------|--------------------------------------------------------------------------------------------------------|
-| type          | The type of the field.<br>For more information, see documentation on [types](types.md).            |
+| type          | The type of the field.<br>For more information, see documentation on [types](types.md).                |
 
 > **Implementation notes**
 > - The official EO client and server never send empty packets.
 >   - When a packet would otherwise be empty, a dummy value is written instead.
 >   - These are typically single-byte strings or numbers.
+> - `type` must specify an integer or string type.
 > - `dummy` elements must not be followed by any other elements.
 > - If the packet ends up containing data (e.g. an optional field was provided), the dummy data should not be written by the serializer.
 
