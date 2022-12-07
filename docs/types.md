@@ -3,18 +3,22 @@ A specification of the data types that can be referenced in protocol files.
 
 ## Basic types
 
-| type           | size                                                                                  | description                 |
-|----------------|---------------------------------------------------------------------------------------|-----------------------------|
-| byte           | 1                                                                                     | An unencoded integer value. |
-| char           | 1                                                                                     | An encoded integer value.   |
-| short          | 2                                                                                     | An encoded integer value.   |
-| three          | 3                                                                                     | An encoded integer value.   |
-| int            | 4                                                                                     | An encoded integer value.   |
-| string         | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An unencoded string value.  |
-| encoded_string | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An encoded string value.    |
+| type           | size                                                                                  | description                                                       |
+|----------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| byte           | 1                                                                                     | An unencoded integer value.                                       |
+| char           | 1                                                                                     | An encoded integer value.                                         |
+| short          | 2                                                                                     | An encoded integer value.                                         |
+| three          | 3                                                                                     | An encoded integer value.                                         |
+| int            | 4                                                                                     | An encoded integer value.                                         |
+| bool           | 1                                                                                     | An encoded integer value that's interpreted as `true` or `false`. |
+| string         | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An unencoded string value.                                        |
+| encoded_string | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An encoded string value.                                          |
 
 > **Implementation notes:**
-> - See [encoding](encoding.md) for more information on the encoding routines used for integer and string types.
+> - The `bool` type is interpreted as:
+>   - `false` for a value of 0.
+>   - `true` for any other value.
+> - See [encoding](encoding.md) for more information on the encoding routines used for the basic types.
 
 ## Array types
 - Defined by [\<array>](elements.md#the-array-element) elements.
