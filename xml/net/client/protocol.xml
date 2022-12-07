@@ -28,7 +28,7 @@
         <value name="ECF">5</value>
     </enum>
 
-    <enum name="StatId" type="short">
+    <enum name="StatID" type="short">
         <value name="Str">1</value>
         <value name="Int">2</value>
         <value name="Wis">3</value>
@@ -440,7 +440,7 @@
         <field name="action_type" type="TrainType"/>
         <switch field="action_type">
             <case value="Stat">
-                <field name="stat_id" type="StatId"/>
+                <field name="stat_id" type="StatID"/>
             </case>
             <case value="Skill">
                 <field name="spell_id" type="short"/>
