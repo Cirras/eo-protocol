@@ -5,7 +5,7 @@
         <value name="PK">3</value>
     </enum>
 
-    <enum name="MapEffect" type="char">
+    <enum name="MapTimedEffect" type="char">
         <value name="None">0</value>
         <value name="HPDrain">1</value>
         <value name="TPDrain">2</value>
@@ -150,7 +150,7 @@
         <array name="rid" type="short" length="2"/>
         <field name="name" type="encoded_string" length="24"/>
         <field name="type" type="MapType"/>
-        <field name="effect" type="MapEffect"/>
+        <field name="timed_effect" type="MapTimedEffect"/>
         <field name="music_id" type="char"/>
         <field name="music_control" type="MapMusicControl"/>
         <field name="ambient_sound_id" type="short"/>
