@@ -1270,7 +1270,7 @@
     </packet>
 
     <packet family="StatSkill" action="Reply">
-        <comment>Response from unsuccessful attempt to learn a skill from a skill master</comment>
+        <comment>Response from unsuccessful action at a skill master</comment>
         <field name="reply_code" type="SkillMasterReply"/>
         <switch field="reply_code">
             <case value="WrongClass">
