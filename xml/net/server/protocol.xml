@@ -2138,7 +2138,11 @@
     <packet family="Effect" action="Use">
         <comment>Map effect</comment>
         <field name="effect" type="MapEffect"/>
-        <field name="param" type="char"/>
+        <switch>
+            <value type="Quake">
+                <field name="quake_strength" type="char"/>
+            </value>
+        </switch>
     </packet>
 
     <packet family="Effect" action="Agree">
