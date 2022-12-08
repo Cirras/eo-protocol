@@ -33,7 +33,7 @@ A specification of the data types that can be referenced in protocol files.
 
 ### Enumerations
 - Defined by [\<enum>](elements.md#the-enum-element) elements.
-- Their size is specified by the base type.
+- Their size is specified by the underlying type.
 
 ### Structs
 - Defined by [\<struct>](elements.md#the-struct-element) elements.
@@ -49,3 +49,13 @@ A specification of the data types that can be referenced in protocol files.
         - See the documentation on [chunked reading](chunks.md) for more information.
      - `switch`
 - Fixed size can be calculated by adding the length of all fields.
+
+## Underlying types
+- An underlying type specifies how a type will be treated for serialization purposes.
+  - **Example:** The `FileType` enum has an underlying type of `char`, so it will be serialized and deserialized as a single-byte encoded integer.
+- Only enumeration and `bool` types have underlying types.
+  - Enumeration types specify their default underlying type on the [\<enum>](elements.md#the-enum-element) element via the `type` attribute.
+  - `bool` types have a default underlying type of `char`.
+- Underlying types can be overriden with a special `type:underlying_type` syntax in type references.
+  - **Example:** `bool:short` specifies a `bool` with an underlying type of `short`.
+- Only numeric types are allowed to be underlying types.

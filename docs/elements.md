@@ -21,11 +21,11 @@ A specification of the XML elements used within `protocol.xml` files.
 
 ## The \<enum> Element
 
-| attribute | description                                                                                                                        |
-|-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| name      | The name of the enumeration type.<br>`PascalCase` should be used.                                                                  |
-| type      | The base type of the enumeration.<br>This must be a numeric type.<br>For more information, see documentation on [types](types.md). |
-| clamp     | If **true**, then an out-of-bounds value should be clamped to the nearest expected value.                                          |
+| attribute | description                                                                                                                          |
+|-----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| name      | The name of the enumeration type.<br>`PascalCase` should be used.                                                                    |
+| type      | The underlying type of the enumeration.<br>For more information, see documentation on [underlying types](types.md#underlying-types). |
+| clamp     | If **true**, then an out-of-bounds value should be clamped to the nearest expected value.                                            |
 
 > **Implementation notes**
 > - An "out-of-bounds" value is smaller than the smallest possible value, or larger than the largest possible value.
