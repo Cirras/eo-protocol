@@ -1,5 +1,5 @@
 # Encoding Routines
-Pseudo-code for the encoding routines used with encoded integer and string types.
+Pseudo-code for the encoding routines used with encoded [basic types](types.md#basic-types).
 
 ## Numeric limits
 ```c

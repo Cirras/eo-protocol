@@ -76,7 +76,7 @@ Text content is optional and specifies a hardcoded field value.
 >   - neither getter nor setter should be generated for the field value.
 > - If text content is provided...
 >   - a setter should not be generated for the field value.
->   - the field must have an integer or string type.
+>   - the field type must be one of the [basic types](types.md#basic-types).
 > - `length` and `length-offset` are only valid for string types.
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `optional` is **true**...
@@ -114,7 +114,7 @@ Text content is required and specifies a hardcoded dummy value.
 > - The official EO client and server never send empty packets.
 >   - When a packet would otherwise be empty, a dummy value is written instead.
 >   - These are typically single-byte strings or numbers.
-> - `type` must specify an integer or string type.
+> - `type` must be one of the [basic types](types.md#basic-types).
 > - `dummy` elements must not be followed by any other elements.
 > - If the packet ends up containing data (e.g. an optional field was provided), the dummy data should not be written by the serializer.
 
