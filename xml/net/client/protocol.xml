@@ -874,9 +874,9 @@
         <comment>Requesting marriage approval</comment>
         <chunked>
             <field name="request_type" type="MarriageRequestType"/>
-            <field name="session_id" type="string"/>
+            <field name="session_id" type="int"/>
             <break/>
-            <field name="name" type="int"/>
+            <field name="name" type="string"/>
         </chunked>
     </packet>
 
