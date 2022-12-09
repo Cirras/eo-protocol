@@ -136,9 +136,9 @@ Text content is required and specifies a hardcoded dummy value.
 | default       | If **true**, then this switch case will be considered active if the field value does not match any other `case` elements. Only one switch case can be the default. |
 
 > **Implementation notes**
-> - Fields specified in different `case` elements of the same `switch` can have the same name if either of these conditions are met:
->   - The fields all have the same type
->   - The fields all have numeric types
+> - If `default` is true...
+>   - `value` cannot be specified.
+>   - the case must appear at the end of the switch.
 
 ## The \<break> Element
 
