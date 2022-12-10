@@ -77,11 +77,14 @@ Text content is optional and specifies a hardcoded field value.
 > - If text content is provided...
 >   - a setter should not be generated for the field value.
 >   - the field type must be one of the [basic types](types.md#basic-types).
-> - `length` and `length-offset` are only valid for string types.
+>   - `length` must not be a field reference.
+> - `length` and `length-offset` are only allowed for string types.
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `optional` is **true**...
+>   - `name` must be provided.
 >   - An unset field value should not be written by the serializer.
->   - The field must not be followed by any element other than an optional `field` or `dummy`.
+>   - Non-optional fields are forbidden afterwards.
+>     - This only applies within the current chunk if [chunked reading](chunks.md) is enabled.
 
 ## The \<array> Element
 
@@ -96,7 +99,10 @@ Text content is optional and specifies a hardcoded field value.
 
 > **Implementation notes**
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
-> - If `optional` is **true** and the field value is never set, then it should not be written by the serializer.
+> - If `optional` is **true**...
+>   - An unset field value should not be written by the serializer.
+>   - Non-optional fields are forbidden afterwards.
+>     - This only applies within the current chunk if [chunked reading](chunks.md) is enabled.
 > - `delimited` is only allowed if the array is within a `<chunked>` element.
 > - If `delimited` is **false**, then the element type must have a fixed size.
 > - If `delimited` is **false** _and_ `length` is not provided...
