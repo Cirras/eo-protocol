@@ -587,7 +587,6 @@
             <field name="player_name" type="string"/>
             <break/>
             <field name="message" type="string"/>
-            <break/>
         </chunked>
     </struct>
 
@@ -964,7 +963,10 @@
 
     <packet family="Talk" action="List">
         <comment>Global chat backfill</comment>
-        <array name="messages" type="GlobalBackfillMessage"/>
+        <chunked>
+            <array name="messages" type="GlobalBackfillMessage" delimited="true"/>
+            <break/>
+        </chunked>
     </packet>
 
     <packet family="Message" action="Open">
