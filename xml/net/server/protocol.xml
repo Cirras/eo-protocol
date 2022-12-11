@@ -1640,7 +1640,7 @@
 
     <packet family="Party" action="Close">
         <comment>Left / disbanded a party</comment>
-        <break/>
+        <dummy type="byte">255</dummy>
     </packet>
 
     <packet family="Party" action="List">
