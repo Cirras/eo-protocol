@@ -2140,10 +2140,10 @@
     <packet family="Effect" action="Use">
         <comment>Map effect</comment>
         <field name="effect" type="MapEffect"/>
-        <switch>
-            <value type="Quake">
+        <switch field="effect">
+            <case value="Quake">
                 <field name="quake_strength" type="char"/>
-            </value>
+            </case>
         </switch>
     </packet>
 
