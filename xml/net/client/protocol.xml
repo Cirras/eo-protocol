@@ -199,9 +199,11 @@
 
     <packet family="AdminInteract" action="Report">
         <comment>Report character</comment>
-        <field name="reportee" type="string"/>
-        <break/>
-        <field name="message" type="string"/>
+        <chunked>
+            <field name="reportee" type="string"/>
+            <break/>
+            <field name="message" type="string"/>
+        </chunked>
     </packet>
 
     <packet family="Global" action="Remove">
