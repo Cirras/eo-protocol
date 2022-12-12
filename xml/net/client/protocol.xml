@@ -284,6 +284,13 @@
     <packet family="Sit" action="Request">
         <comment>Sit/stand request</comment>
         <field name="sit_action" type="SitAction"/>
+        <switch field="sit_action">
+            <case value="Sit">
+                <field name="cursor_coords" type="Coords">
+                    <comment>The coordinates of the map cursor</comment>
+                </field>
+            </case>
+        </switch>
     </packet>
 
     <packet family="Emote" action="Report">
