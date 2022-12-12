@@ -22,7 +22,7 @@ The notable exception is the "chunked" reading mode, typically used for reading 
 //   break
 //   int session_id
 //   short class_id
-void FooBar(PacketReader* reader)
+void FooBar(DataReader* reader)
 {
     // Read the reply_code directly from the packet data. This is how data is read in a standard case.
     unsigned char reply_code = DecodeNumber(reader->data.SubString(1, 1));
