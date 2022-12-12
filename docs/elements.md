@@ -57,7 +57,7 @@ Text content is required and must be a numeric value.
 
 > **Implementation notes**
 > - The `family`/`action` pair forms the identifier for each packet.
-> - Duplicate `family`/`action` pairs should be considered an error.
+> - Duplicate `family`/`action` pairs in the same file should be considered an error.
 
 ## The \<field> Element
 Text content is optional and specifies a hardcoded field value.
