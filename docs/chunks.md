@@ -237,8 +237,8 @@ The client ends up with the single intended `CharacterMapInfo` update, and every
 Some packets treat `0xFF` bytes as data, while others treat them as meaningful `break` bytes for data chunking.
 
 A problematic scenario presents itself:
-- A client sends a string containing `0xFF` (the ÿ character) in a packet where `0xFF` is treated as data.
-- The server sends that string back out to clients in a packet where `0xFF` is treated as a `break` bytes.
+- A client sends a string containing `0xFF` (the ÿ character) in a packet where `0xFF` bytes are treated as data.
+- The server sends that string back out to clients in a packet where `0xFF` bytes are treated as `break` bytes.
 - The clients receiving those packets are unable to read them correctly due to the unexpected `break` bytes.
 
 > **Implementation notes:**
