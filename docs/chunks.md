@@ -48,10 +48,53 @@ void FooBar(DataReader* reader)
 > **Notes:**
 > - Indexing of the C++ builder `AnsiString` type is 1-based.
 >   - See: [System.AnsiString](https://docwiki.embarcadero.com/Libraries/en/System.AnsiString)
-## Peculiarities
-There are two important peculariarities in this chunked reading method.
 
-### 1. Over-read
+## Peculiarities
+There are 3 notable peculariarities in this chunked reading mode.
+
+### 1. Under-read
+In chunked reading mode, the official data reader splits the data string on `0xFF` bytes.
+- Typically, consumers of these chunks will read the **expected** data out of a chunk, then discard it and move on to the next chunk.
+- This means it's possible to insert **unexpected** data at the end of a chunk. The chunk will get discarded and the garbage data will be ignored.
+
+> **Implementation notes:**
+> - When a `<break>` is reached...
+>   - The reader should seek from the current position to the next `0xFF` byte and consume it, ignoring any data in between.
+
+#### Example:
+``` cpp
+// Expected data:
+//   char foo
+//   break
+//   char bar
+//
+// Actual data:
+//   char = 123
+//   string = "garbage"
+//   break
+//   short = 12345
+void GarbageData(DataReader* reader)
+{
+    // Activate chunked reading.
+    reader->StartChunking();
+
+    // The first chunk contains our expected char, and some unexpected garbage data too.
+    // This will return "|garbage", which is [0x7C, 0x67, 0x61, 0x72, 0x62, 0x61, 0x67, 0x65].
+    AnsiString foo_chunk = reader->GetChunk();
+
+    // [0x7C, 0xFE, 0xFE, 0xFE] decodes to 123.
+    unsigned char foo = DecodeNumber(foo_chunk.SubString(1, 1));
+
+    // The "garbage" string gets ignored, as we've moved on to the next chunk.
+    // This will return "Ê1", which is [0xCA, 0x31].
+    AnsiString bar_chunk = reader->GetChunk();
+
+    // [0xCA, 0x31, 0xFE, 0xFE] decodes to 12345.
+    unsigned short baz = DecodeNumber(bar_chunk.SubString(1, 2));
+}
+```
+
+### 2. Over-read
 The result of overreading past a chunk (or the end of the input data) is a truncated ansi string.
 - For a string field, this would just mean truncation.
 - For numeric fields, the missing bytes are effectively 0.
@@ -94,7 +137,7 @@ void TruncatedNumbers(DataReader* reader)
 }
 ```
 
-### 2. Double-read
+### 3. Double-read
 As shown with `reply_code` in the `FooBar` example, the official software sometimes mixes "standard" reading with chunked reading.
 
 The way this usually looks is:
