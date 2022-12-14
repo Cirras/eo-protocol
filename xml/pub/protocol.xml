@@ -248,7 +248,7 @@
         <field name="armor" type="short"/>
         <field name="return_damage" type="char"/>
         <field name="hp_heal" type="short"/>
-        <field name="hp_heal" type="short"/>
+        <field name="tp_heal" type="short"/>
         <field name="sp_heal" type="char"/>
         <field name="str" type="short"/>
         <field name="intl" type="short"/>
