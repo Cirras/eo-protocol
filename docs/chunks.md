@@ -30,7 +30,7 @@ void FooBar(DataReader* reader)
     // Activate chunked reading.
     reader->StartChunking();
 
-    // discard the first chunk containing the reply code.
+    // Discard the first chunk containing the reply code.
     reader->GetChunk();
 
     // Get the entire second chunk for the name field.
@@ -226,7 +226,7 @@ void PlayersAgree(DataReader* reader)
     // This reads the break byte (!) and the `0xFF` byte is interpreted by the number decoder as 254.
     unsigned char characters_count = DecodeNumber(reader->data.SubString(1, 1));
 
-    // Activate chunked reading
+    // Activate chunked reading.
     reader->StartChunking();
 
     // Discard the first chunk.
@@ -287,5 +287,5 @@ A problematic scenario presents itself:
 > **Implementation notes:**
 > - The serializer should sanitize `0xFF` bytes when writing strings if:
 >    - the packet contains a `<chunked>` section.
->    - the packet contains a `struct` field that itself contains a `<chunked>` section (transitive).
+>    - the packet contains a `struct` field that itself contains a `<chunked>` section (recursive).
 > - Since `0xFF` maps to character **ÿ** in ansi codepage 1252, it can simply be swapped to **y** (`0x79`).
