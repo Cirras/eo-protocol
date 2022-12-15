@@ -59,7 +59,7 @@ In chunked reading mode, the official data reader splits the data string on `0xF
 
 > **Implementation notes:**
 > - When a `<break>` is reached...
->   - The reader should seek from the current position to the next `0xFF` byte and consume it, ignoring any data in between.
+>   - The deserializer should seek from the current position to the next `0xFF` byte and consume it, ignoring any data in between.
 
 #### Example:
 ``` cpp
@@ -150,7 +150,7 @@ This can cause surprising and unexpected behavior in the official data reader.
 
 > **Implementation notes:**
 > - When the first `<chunked>` section is reached...
->   - If the first expected element is a `<break>`, the reader should seek to the first `0xFF` byte in the input data before consuming it.
+>   - If the first expected element is a `<break>`, the deserializer should seek to the first `0xFF` byte in the input data before consuming it.
 
 #### Example:
 ``` cpp
