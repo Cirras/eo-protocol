@@ -66,7 +66,7 @@ In chunked reading mode, the official data reader splits the data string on `0xF
 // Expected data:
 //   char foo
 //   break
-//   char bar
+//   short bar
 //
 // Actual data:
 //   char = 123
