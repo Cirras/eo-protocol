@@ -148,7 +148,7 @@
     <struct name="EMF">
         <field type="string" length="3">EMF</field>
         <array name="rid" type="short" length="2"/>
-        <field name="name" type="encoded_string" length="24"/>
+        <field name="name" type="encoded_string" length="24" padded="true"/>
         <field name="type" type="MapType"/>
         <field name="timed_effect" type="MapTimedEffect"/>
         <field name="music_id" type="char"/>

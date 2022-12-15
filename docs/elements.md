@@ -68,6 +68,7 @@ Text content is optional and specifies a hardcoded field value.
 | type          | The type of the field.<br>For more information, see documentation on [types](types.md).                |
 | length        | The length of the field.<br>The value should either be a numeric literal or the name of another field. |
 | length-offset | An offset that will be applied to the value of `length`.<br>The value should be a numeric literal.     |
+| padded        | If **true**, the field is padded with `0xFF` bytes.                                                    |
 | optional      | If **true**, the field is considered optional for the purposes of data serialization.                  |
 
 > **Implementation notes**
@@ -78,8 +79,12 @@ Text content is optional and specifies a hardcoded field value.
 >   - a setter should not be generated for the field value.
 >   - the field type must be one of the [basic types](types.md#basic-types).
 >   - `length` must not be a field reference.
-> - `length` and `length-offset` are only allowed for string types.
+> - `length`, `length-offset`, and `padded` are only allowed for string types.
 > - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
+> - If `padded` is **true**...
+>   - `length` must be provided.
+>   - The serializer should pad the string with `0xFF` bytes up to the specific `length` (before encoding, if applicable).
+>   - The deserializer should treat `0xFF` as a terminator (after decoding, if applicable).
 > - If `optional` is **true**...
 >   - `name` must be provided.
 >   - An unset field value should not be written by the serializer.
