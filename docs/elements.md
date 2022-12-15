@@ -80,7 +80,6 @@ Text content is optional and specifies a hardcoded field value.
 >   - the field type must be one of the [basic types](types.md#basic-types).
 >   - `length` must not be a field reference.
 > - `length`, `length-offset`, and `padded` are only allowed for string types.
-> - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `padded` is **true**...
 >   - `length` must be provided.
 >   - The serializer should pad the string with `0xFF` bytes up to the specific `length` (before encoding, if applicable).
@@ -103,7 +102,6 @@ Text content is optional and specifies a hardcoded field value.
 | delimited     | If **true**, the elements of the array will be delimited with `0xFF` break bytes (without trailing delimiter). |
 
 > **Implementation notes**
-> - Since `length-offset` can be negative, length should be calculated as `max(length + offset, 0)`.
 > - If `optional` is **true**...
 >   - An unset field value should not be written by the serializer.
 >   - Non-optional fields are forbidden afterwards.
