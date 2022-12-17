@@ -6,6 +6,7 @@
     </enum>
 
     <enum name="MapTimedEffect" type="char">
+        <comment>A timed effect that can occur on a map</comment>
         <value name="None">0</value>
         <value name="HPDrain">1</value>
         <value name="TPDrain">2</value>
@@ -16,6 +17,7 @@
     </enum>
 
     <enum name="MapMusicControl" type="char">
+        <comment>How background music should be played on a map</comment>
         <value name="InterruptIfDifferentPlayOnce">0</value>
         <value name="InterruptPlayOnce">1</value>
         <value name="FinishPlayOnce">2</value>
@@ -26,6 +28,7 @@
     </enum>
 
     <enum name="MapTileSpec" type="char">
+        <comment>The type of a tile on a map</comment>
         <value name="Wall">0</value>
         <value name="ChairDown">1</value>
         <value name="ChairLeft">2</value>
@@ -71,6 +74,7 @@
     </enum>
 
     <struct name="MapNPC">
+        <comment>NPC spawn EMF entity</comment>
         <field name="coords" type="Coords"/>
         <field name="id" type="short"/>
         <field name="spawn_type" type="char"/>
@@ -79,12 +83,13 @@
     </struct>
 
     <struct name="MapLegacyDoorKey">
-        <comment>A legacy EMF entity used to specify a key on a door</comment>
+        <comment>Legacy EMF entity used to specify a key on a door</comment>
         <field name="coords" type="Coords"/>
         <field name="key" type="short"/>
     </struct>
 
     <struct name="MapItem">
+        <comment>Item spawn EMF entity</comment>
         <field name="coords" type="Coords"/>
         <field name="key" type="short"/>
         <field name="chest_slot" type="char"/>
@@ -94,6 +99,7 @@
     </struct>
 
     <struct name="MapWarp">
+        <comment>Warp EMF entity</comment>
         <field name="destination_map" type="short"/>
         <field name="destination_coords" type="Coords"/>
         <field name="level_required" type="char"/>
@@ -101,6 +107,7 @@
     </struct>
 
     <struct name="MapSign">
+        <comment>Sign EMF entity</comment>
         <field name="coords" type="Coords"/>
         <field name="string_data_length" type="short"/>
         <field name="string_data" type="encoded_string" length="string_data_length" length-offset="-1"/>
@@ -108,44 +115,52 @@
     </struct>
 
     <struct name="MapTileSpecRowTile">
+        <comment>A single tile in a row of tilespecs</comment>
         <field name="x" type="char"/>
         <field name="tile_spec" type="char"/>
     </struct>
 
     <struct name="MapTileSpecRow">
+        <comment>A row of tilespecs</comment>
         <field name="y" type="char"/>
         <field name="tiles_count" type="char"/>
         <array name="tiles" type="MapTileSpecRowTile" length="tiles_count"/>
     </struct>
 
     <struct name="MapWarpRowTile">
+        <comment>A single tile in a row of warp entities</comment>
         <field name="x" type="char"/>
         <field name="warp" type="MapWarp"/>
     </struct>
 
     <struct name="MapWarpRow">
+        <comment>A row of warp entities</comment>
         <field name="y" type="char"/>
         <field name="tiles_count" type="char"/>
         <array name="tiles" type="MapWarpRowTile" length="tiles_count"/>
     </struct>
 
     <struct name="MapGraphicRowTile">
+        <comment>A single tile in a row of map graphics</comment>
         <field name="x" type="char"/>
         <field name="graphic" type="short"/>
     </struct>
 
     <struct name="MapGraphicRow">
+        <comment>A row in a layer of map graphics</comment>
         <field name="y" type="char"/>
         <field name="tiles_count" type="char"/>
         <array name="tiles" type="MapGraphicRowTile" length="tiles_count"/>
     </struct>
 
     <struct name="MapGraphicLayer">
+        <comment>A layer of map graphics</comment>
         <field name="graphic_rows_count" type="char"/>
         <array name="graphic_rows" type="MapGraphicRow" length="graphic_rows_count"/>
     </struct>
 
     <struct name="EMF">
+        <comment>Endless Map File</comment>
         <field type="string" length="3">EMF</field>
         <array name="rid" type="short" length="2"/>
         <field name="name" type="encoded_string" length="24" padded="true"/>

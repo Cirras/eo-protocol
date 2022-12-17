@@ -47,6 +47,7 @@
     </enum>
 
     <enum name="ItemSize" type="char">
+        <comment>Size of an item in the inventory</comment>
         <value name="Size1x1">0</value>
         <value name="Size1x2">1</value>
         <value name="Size1x3">2</value>
@@ -58,6 +59,7 @@
     </enum>
 
     <struct name="EIFRecord">
+        <comment>Record of Item data in an Endless Item File</comment>
         <field name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="graphic_id" type="short"/>
@@ -110,6 +112,7 @@
     </struct>
 
     <struct name="EIF">
+        <comment>Endless Item File</comment>
         <field type="string" length="3">EIF</field>
         <array name="rid" type="short" length="2"/>
         <field name="items_count" type="short"/>
@@ -141,6 +144,7 @@
     </enum>
 
     <struct name="ENFRecord">
+        <comment>Record of NPC data in an Endless NPC File</comment>
         <field name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="graphic_id" type="short"/>
@@ -166,6 +170,7 @@
     </struct>
 
     <struct name="ENF">
+        <comment>Endless NPC File</comment>
         <field type="string" length="3">ENF</field>
         <array name="rid" type="short" length="2"/>
         <field name="npcs_count" type="short"/>
@@ -174,6 +179,7 @@
     </struct>
 
     <struct name="ECFRecord">
+        <comment>Record of Class data in an Endless Class File</comment>
         <field name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="parent_type" type="char"/>
@@ -187,6 +193,7 @@
     </struct>
 
     <struct name="ECF">
+        <comment>Endless Class File</comment>
         <field type="string" length="3">ECF</field>
         <array name="rid" type="short" length="2"/>
         <field name="classes_count" type="short"/>
@@ -219,6 +226,7 @@
     </enum>
 
     <struct name="ESFRecord">
+        <comment>Record of Skill data in an Endless Skill File</comment>
         <field name="name_length" type="char"/>
         <field name="chant_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
@@ -259,6 +267,7 @@
     </struct>
 
     <struct name="ESF">
+        <comment>Endless Skill File</comment>
         <field type="string" length="3">ESF</field>
         <array name="rid" type="short" length="2"/>
         <field name="skills_count" type="short"/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <protocol>
     <enum name="AdminLevel" type="char">
+        <comment>The admin level of a player</comment>
         <value name="Player">0</value>
         <value name="Guide">1</value>
         <value name="Guardian">2</value>
@@ -10,6 +11,7 @@
     </enum>
 
     <enum name="Direction" type="char">
+        <comment>The admin level of a player</comment>
         <value name="Down">0</value>
         <value name="Left">1</value>
         <value name="Up">2</value>
@@ -17,6 +19,7 @@
     </enum>
 
     <enum name="Emote" type="char">
+        <comment>Emote that can be played over a player's head</comment>
         <value name="Happy">1</value>
         <value name="Depressed">2</value>
         <value name="Sad">3</value>
@@ -34,11 +37,13 @@
     </enum>
 
     <enum name="Gender" type="char">
+        <comment>The gender of a player</comment>
         <value name="Female">0</value>
         <value name="Male">1</value>
     </enum>
 
     <enum name="Skin" type="char">
+        <comment>The race of a player</comment>
         <value name="White">0</value>
         <value name="Tan">1</value>
         <value name="Yellow">2</value>
@@ -49,6 +54,7 @@
     </enum>
 
     <struct name="Coords">
+        <comment>Map coordinates</comment>
         <field name="x" type="char"/>
         <field name="y" type="char"/>
     </struct>

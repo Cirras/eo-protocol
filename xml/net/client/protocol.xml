@@ -1,26 +1,31 @@
 <protocol>
     <enum name="SitAction" type="char">
+        <comment>Whether the player wants to sit or stand</comment>
         <value name="Sit">1</value>
         <value name="Stand">2</value>
     </enum>
 
     <enum name="GuildInfoType" type="short">
+        <comment>The type of guild info being interacted with</comment>
         <value name="Description">1</value>
         <value name="Ranks">2</value>
         <value name="Bank">3</value>
     </enum>
 
     <enum name="TrainType" type="char">
+        <comment>Whether the player is spending a stat point or a skill point</comment>
         <value name="Stat">1</value>
         <value name="Skill">2</value>
     </enum>
 
     <enum name="DialogReply" type="char">
+        <comment>Whether the player has clicked the OK button or a link in a quest dialog</comment>
         <value name="OK">1</value>
         <value name="Link">2</value>
     </enum>
 
     <enum name="FileType" type="char">
+        <comment>Data file type</comment>
         <value name="EMF">1</value>
         <value name="EIF">2</value>
         <value name="ENF">3</value>
@@ -29,6 +34,7 @@
     </enum>
 
     <enum name="StatID" type="short">
+        <comment>Base character stat</comment>
         <value name="Str">1</value>
         <value name="Int">2</value>
         <value name="Wis">3</value>
@@ -38,16 +44,19 @@
     </enum>
 
     <enum name="SpellTargetType" type="char">
+        <comment>Target type of a spell cast</comment>
         <value name="Player">1</value>
         <value name="NPC">2</value>
     </enum>
 
     <enum name="MarriageRequestType" type="char">
+        <comment>Request type sent with MARRIAGE_REQUEST packet</comment>
         <value name="MarriageApproval">1</value>
         <value name="Divorce">2</value>
     </enum>
 
     <struct name="WalkAction">
+        <comment>Common data between walk packets</comment>
         <field name="direction" type="Direction"/>
         <field name="timestamp" type="three"/>
         <field name="coords" type="Coords"/>

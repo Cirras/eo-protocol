@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <protocol>
     <enum name="PacketFamily" type="byte">
+        <comment>Part of the unique ID that identifies each packet</comment>
         <value name="Connection">1</value>
         <value name="Account">2</value>
         <value name="Character">3</value>
@@ -53,6 +54,7 @@
     </enum>
 
     <enum name="PacketAction" type="byte">
+        <comment>Part of the unique ID that identifies each packet</comment>
         <value name="Request">1</value>
         <value name="Accept">2</value>
         <value name="Reply">3</value>
@@ -91,18 +93,29 @@
         <value name="Init">255</value>
     </enum>
 
+    <enum name="QuestPage" type="char">
+        <comment>A page in the Quest menu</comment>
+        <value name="Progress">1</value>
+        <value name="History">2</value>
+    </enum>
+
+    <enum name="PartyRequestType" type="char">
+        <comment>
+            Whether a player is requesting to join a party, or inviting someone to join theirs
+        </comment>
+        <value name="Join">0</value>
+        <value name="Invite">1</value>
+    </enum>
+
     <struct name="Version">
+        <comment>Client version</comment>
         <field name="major" type="char"/>
         <field name="minor" type="char"/>
         <field name="patch" type="char"/>
     </struct>
 
-    <enum name="QuestPage" type="char">
-        <value name="Progress">1</value>
-        <value name="History">2</value>
-    </enum>
-
     <struct name="PaperdollBAHWS">
+        <comment>Player equipment data</comment>
         <field name="boots" type="short"/>
         <field name="armor" type="short"/>
         <field name="hat" type="short"/>
@@ -111,6 +124,7 @@
     </struct>
 
     <struct name="PaperdollBAHSW">
+        <comment>Player equipment data</comment>
         <field name="boots" type="short"/>
         <field name="armor" type="short"/>
         <field name="hat" type="short"/>
@@ -119,6 +133,7 @@
     </struct>
 
     <struct name="PaperdollB000A0HSW">
+        <comment>Player equipment data</comment>
         <field name="boots" type="short"/>
         <field type="short">0</field>
         <field type="short">0</field>
@@ -131,6 +146,7 @@
     </struct>
 
     <struct name="PaperdollWelcome">
+        <comment>Player equipment data</comment>
         <field name="boots" type="short"/>
         <field name="gloves" type="short"/>
         <field name="accessory" type="short"/>
@@ -146,6 +162,7 @@
     </struct>
 
     <struct name="Paperdoll">
+        <comment>Player equipment data</comment>
         <field name="boots" type="short"/>
         <field name="accessory" type="short"/>
         <field name="gloves" type="short"/>
@@ -161,34 +178,38 @@
     </struct>
 
     <struct name="Weight">
+        <comment>Weight of items held by the player</comment>
         <field name="current" type="char"/>
         <field name="max" type="char"/>
     </struct>
 
     <struct name="Item">
+        <comment>An item reference with a 4-byte amount</comment>
         <field name="id" type="short"/>
         <field name="amount" type="int"/>
     </struct>
 
     <struct name="ThreeItem">
-        <comment>Used for shops, lockers, and various item transfers</comment>
+        <comment>
+            An item reference with a 3-byte amount.
+            Used for shops, lockers, and various item transfers.
+        </comment>
         <field name="id" type="short"/>
         <field name="amount" type="three"/>
     </struct>
 
     <struct name="CharItem">
-        <comment>Used for craft ingredients</comment>
+        <comment>
+            An item reference with a 1-byte amount.
+            Used for craft ingredients.
+        </comment>
         <field name="id" type="short"/>
         <field name="amount" type="char"/>
     </struct>
 
     <struct name="Spell">
+        <comment>A spell known by the player</comment>
         <field name="id" type="short"/>
         <field name="level" type="short"/>
     </struct>
-
-    <enum name="PartyRequestType" type="char">
-        <value name="Join">0</value>
-        <value name="Invite">1</value>
-    </enum>
 </protocol>
