@@ -1,5 +1,6 @@
 <protocol>
     <enum name="InitReply" type="byte">
+        <comment>Reply code sent with INIT_INIT packet</comment>
         <value name="OutOfDate">1</value>
         <value name="OK">2</value>
         <value name="Banned">3</value>
@@ -15,11 +16,13 @@
     </enum>
 
     <enum name="InitBanType" type="byte" clamp="true">
+        <comment>Ban type sent with INIT_INIT packet</comment>
         <value name="Temporary">1</value>
         <value name="Permanent">2</value>
     </enum>
 
     <enum name="CharacterIcon" type="char">
+        <comment>Icon displayed in paperdolls, books, and the online list</comment>
         <value name="Player" default="true">1</value>
         <value name="GM">4</value>
         <value name="HGM">5</value>
@@ -29,26 +32,31 @@
     </enum>
 
     <enum name="AvatarChangeType" type="char">
+        <comment>How a player's appearance is changing</comment>
         <value name="Clothes">1</value>
         <value name="Hair">2</value>
         <value name="HairColor">3</value>
     </enum>
 
     <enum name="TalkReply" type="short">
+        <comment>Reply code sent with TALK_REPLY packet</comment>
         <value name="NotFound">1</value>
     </enum>
 
     <enum name="SitState" type="char">
+        <comment>Indicates how a player is sitting (or not sitting)</comment>
         <value name="Stand">0</value>
         <value name="Chair">1</value>
         <value name="Floor">2</value>
     </enum>
 
     <enum name="MapEffect" type="char">
+        <comment>An effect that occurs on a map</comment>
         <value name="Quake">1</value>
     </enum>
 
     <enum name="GuildReply" type="short">
+        <comment>Reply code sent with GUILD_REPLY</comment>
         <value name="Busy">1</value>
         <value name="NotApproved">2</value>
         <value name="AlreadyMember">3</value>
@@ -76,11 +84,16 @@
     </enum>
 
     <enum name="InnUnsubscribeReply" type="char">
+        <comment>
+            Reply code sent with CITIZEN_REMOVE packet.
+            Indicates the result of trying to give up citizenship to a town.
+        </comment>
         <value name="NotCitizen">0</value>
         <value name="Unsubscribed">1</value>
     </enum>
 
     <enum name="CharacterReply" type="short">
+        <comment>Reply code sent with CHARACTER_REPLY packet</comment>
         <value name="Exists">1</value>
         <value name="Full">
             <comment>
@@ -102,11 +115,16 @@
     </enum>
 
     <enum name="SkillMasterReply" type="short">
+        <comment>
+            Reply code sent with STATSKILL_REPLY packet.
+            Indicates why an action was unsuccessful.
+        </comment>
         <value name="RemoveItems">1</value>
         <value name="WrongClass">2</value>
     </enum>
 
     <enum name="AccountReply" type="short">
+        <comment>Reply code sent with ACCOUNT_REPLY packet</comment>
         <value name="Exists">1</value>
         <value name="NotApproved">2</value>
         <value name="Created">3</value>
@@ -116,6 +134,10 @@
     </enum>
 
     <enum name="LoginReply" type="short">
+        <comment>
+            Reply code sent with LOGIN_REPLY packet.
+            Indicates the result of a login attempt.
+        </comment>
         <value name="WrongUser">1</value>
         <value name="WrongUserPassword">2</value>
         <value name="OK">3</value>
@@ -125,11 +147,13 @@
     </enum>
 
     <enum name="DialogEntryType" type="char">
+        <comment>The type of an entry in a quest dialog</comment>
         <value name="Text">1</value>
         <value name="Link">2</value>
     </enum>
 
     <enum name="QuestRequirementIcon" type="char">
+        <comment>Icon displayed for each quest in the Quest Progress window</comment>
         <value name="Item">3</value>
         <value name="Talk">5</value>
         <value name="Kill">8</value>
@@ -137,17 +161,28 @@
     </enum>
 
     <enum name="WarpEffect" type="char">
+        <comment>An effect that accompanies a player warp</comment>
         <value name="None" default="true">0</value>
-        <value name="Scroll">1</value>
-        <value name="Admin">2</value>
+        <value name="Scroll">
+            <comment>Plays the scroll sound effect</comment>
+            1
+        </value>
+        <value name="Admin">
+            <comment>Plays the admin warp sound effect and animation</comment>
+            2
+        </value>
     </enum>
 
     <enum name="WarpType" type="char">
+        <comment>
+            Indicates whether a warp is within the current map, or switching to another map
+        </comment>
         <value name="Local">1</value>
         <value name="MapSwitch">2</value>
     </enum>
 
     <enum name="WelcomeCode" type="short">
+        <comment>Reply code sent with WELCOME_REPLY packet</comment>
         <value name="SelectCharacter">1</value>
         <value name="EnterGame">2</value>
         <value name="ServerBusy">3</value>
@@ -155,26 +190,31 @@
     </enum>
 
     <enum name="LoginMessageCode" type="char">
+        <comment>Whether a warning message should be displayed upon entering the game</comment>
         <value name="No">0</value>
         <value name="Yes">2</value>
     </enum>
 
     <enum name="AdminMessageType" type="char">
+        <comment>Type of message sent to admins via the Help menu</comment>
         <value name="Message">1</value>
         <value name="Report">2</value>
     </enum>
 
     <enum name="NPCKilledState" type="char">
+        <comment>Flag to indicate that an NPC has been killed</comment>
         <value name="Alive">1</value>
         <value name="Killed">2</value>
     </enum>
 
     <enum name="MapDamageType" type="char">
+        <comment>Type of damage being caused by the environment</comment>
         <value name="TPDrain">1</value>
         <value name="Spikes">2</value>
     </enum>
 
     <enum name="MarriageReply" type="short">
+        <comment>Reply code sent with MARRIAGE_REPLY packet</comment>
         <value name="AlreadyMarried">1</value>
         <value name="NotMarried">2</value>
         <value name="Success">3</value>
@@ -185,6 +225,7 @@
     </enum>
 
     <enum name="PriestReply" type="short">
+        <comment>Reply code sent with PRIEST_REPLY packet</comment>
         <value name="NotDressed">1</value>
         <value name="LowLevel">2</value>
         <value name="PartnerNotPresent">3</value>
@@ -196,12 +237,17 @@
     </enum>
 
     <enum name="PartyReplyCode" type="char">
+        <comment>
+            Reply code sent with PARTY_REPLY packet.
+            Indicates why an invite or join request failed.
+        </comment>
         <value name="AlreadyInAnotherParty">0</value>
         <value name="AlreadyInYourParty">1</value>
         <value name="PartyIsFull">2</value>
     </enum>
 
     <struct name="BigCoords">
+        <comment>Map coordinates</comment>
         <field name="x" type="short"/>
         <field name="y" type="short"/>
     </struct>
@@ -237,6 +283,7 @@
     </struct>
 
     <struct name="NPCMapInfo">
+        <comment>Information about a nearby NPC</comment>
         <field name="index" type="char"/>
         <field name="id" type="short"/>
         <field name="coords" type="Coords"/>
@@ -244,6 +291,7 @@
     </struct>
 
     <struct name="ItemMapInfo">
+        <comment>Information about a nearby item on the ground</comment>
         <field name="uid" type="short"/>
         <field name="id" type="short"/>
         <field name="coords" type="Coords"/>
@@ -251,6 +299,7 @@
     </struct>
 
     <struct name="AvatarChange">
+        <comment>Information about a nearby player's appearance changing</comment>
         <field name="player_id" type="short"/>
         <field name="change_type" type="AvatarChangeType"/>
         <field name="sound" type="bool"/>
@@ -269,6 +318,7 @@
     </struct>
 
     <struct name="NearbyInfo">
+        <comment>Information about nearby entities</comment>
         <field name="characters_count" type="char"/>
         <chunked>
             <break/>
@@ -281,6 +331,7 @@
     </struct>
 
     <struct name="OnlinePlayer">
+        <comment>A player in the online list</comment>
         <chunked>
             <field name="name" type="string"/>
             <break/>
@@ -321,6 +372,7 @@
     </struct>
 
     <struct name="ServerSettings">
+        <comment>Settings sent with WELCOME_REPLY packet</comment>
         <field name="jail_map" type="short"/>
         <field name="rescue_map" type="short"/>
         <field name="rescue_coords" type="Coords"/>
@@ -331,6 +383,7 @@
     </struct>
 
     <struct name="ShopTradeItem">
+        <comment>An item that a shop can buy or sell</comment>
         <field name="item_id" type="short"/>
         <field name="buy_price" type="three"/>
         <field name="sell_price" type="three"/>
@@ -338,17 +391,19 @@
     </struct>
 
     <struct name="ShopCraftItem">
+        <comment>An item that a shop can craft</comment>
         <field name="item_id" type="short"/>
         <array name="ingredients" type="CharItem" length="4"/>
     </struct>
 
     <struct name="ShopSoldItem">
-        <comment>Used to represent a sold item when selling an item to a shop</comment>
+        <comment>A sold item when selling an item to a shop</comment>
         <field name="amount" type="int"/>
         <field name="id" type="short"/>
     </struct>
 
     <struct name="CharacterBaseStats">
+        <comment>The 6 base character stats</comment>
         <field name="str" type="short"/>
         <field name="intl" type="short"/>
         <field name="wis" type="short"/>
@@ -358,6 +413,7 @@
     </struct>
 
     <struct name="CharacterSecondaryStats">
+        <comment>The 5 secondary character stats</comment>
         <field name="min_damage" type="short"/>
         <field name="max_damage" type="short"/>
         <field name="accuracy" type="short"/>
@@ -366,6 +422,7 @@
     </struct>
 
     <struct name="CharacterStats1">
+        <comment>Character stats data</comment>
         <field name="stat_points" type="short"/>
         <field name="skill_points" type="short"/>
         <field name="hp" type="short"/>
@@ -378,6 +435,7 @@
     </struct>
 
     <struct name="CharacterStats2">
+        <comment>Character stats data</comment>
         <field name="hp" type="short"/>
         <field name="max_hp" type="short"/>
         <field name="tp" type="short"/>
@@ -391,6 +449,7 @@
     </struct>
 
     <struct name="CharacterStats3">
+        <comment>Character stats data</comment>
         <field name="base_stats" type="CharacterBaseStats"/>
         <field name="max_hp" type="short"/>
         <field name="max_tp" type="short"/>
@@ -400,6 +459,7 @@
     </struct>
 
     <struct name="CharacterStats4">
+        <comment>Character stats data</comment>
         <field name="hp" type="short"/>
         <field name="max_hp" type="short"/>
         <field name="tp" type="short"/>
@@ -409,6 +469,7 @@
     </struct>
 
     <struct name="ItemCharacterStats">
+        <comment>Character stats data</comment>
         <field name="max_hp" type="short"/>
         <field name="max_tp" type="short"/>
         <field name="base_stats" type="CharacterBaseStats"/>
@@ -416,6 +477,7 @@
     </struct>
 
     <struct name="SkillLearn">
+        <comment>A skill that can be learned from a skill master NPC</comment>
         <field name="id" type="short"/>
         <field name="level_req" type="char"/>
         <field name="class_req" type="char"/>
@@ -425,6 +487,7 @@
     </struct>
 
     <struct name="BoardPostListing">
+        <comment>An entry in the list of town board posts</comment>
         <chunked>
             <field name="post_id" type="short"/>
             <break/>
@@ -435,6 +498,7 @@
     </struct>
 
     <struct name="PaperdollInfo">
+        <comment>Information displayed on the paperdoll and book</comment>
         <chunked>
             <field name="name" type="string"/>
             <break/>
@@ -456,6 +520,7 @@
     </struct>
 
     <struct name="PartyMember">
+        <comment>A member of the player's party</comment>
         <field name="player_id" type="short"/>
         <field name="leader" type="char"/>
         <field name="level" type="bool"/>
@@ -464,6 +529,7 @@
     </struct>
 
     <struct name="PartyExpShare">
+        <comment>EXP gain for a member of the player's party</comment>
         <field name="player_id" type="short"/>
         <field name="experience" type="int"/>
         <field name="level_up" type="char">
@@ -474,6 +540,7 @@
     </struct>
 
     <struct name="GuildStaff">
+        <comment>Information about a guild staff member (recruiter or leader)</comment>
         <chunked>
             <field name="rank" type="char"/>
             <break/>
@@ -482,6 +549,7 @@
     </struct>
 
     <struct name="GuildMember">
+        <comment>Information about a guild member</comment>
         <chunked>
             <field name="rank" type="char"/>
             <break/>
@@ -492,12 +560,14 @@
     </struct>
 
     <struct name="GroupHealTargetPlayer">
+        <comment>Nearby player hit by a group heal spell</comment>
         <field name="player_id" type="short"/>
         <field name="hp_percentage" type="char"/>
         <field name="hp" type="short"/>
     </struct>
 
     <struct name="TradeItemData">
+        <comment>Trade window item data</comment>
         <chunked>
             <field name="partner_player_id" type="short"/>
             <array name="partner_items" type="Item"/>
@@ -509,6 +579,7 @@
     </struct>
 
     <struct name="NPCKilledData">
+        <comment>Information about an NPC that has been killed</comment>
         <field name="killer_id" type="short"/>
         <field name="killer_direction" type="Direction"/>
         <field name="npc_index" type="short"/>
@@ -520,6 +591,7 @@
     </struct>
 
     <struct name="LevelUpStats">
+        <comment>Level and stat updates</comment>
         <field name="level" type="char"/>
         <field name="stat_points" type="short"/>
         <field name="skill_points" type="short"/>
@@ -529,12 +601,14 @@
     </struct>
 
     <struct name="NPCUpdatePosition">
+        <comment>An NPC walking</comment>
         <field name="npc_index" type="short"/>
         <field name="coords" type="Coords"/>
         <field name="direction" type="Direction"/>
     </struct>
 
     <struct name="NPCUpdateAttack">
+        <comment>An NPC attacking</comment>
         <field name="npc_index" type="short"/>
         <field name="killed" type="NPCKilledState"/>
         <field name="direction" type="Direction"/>
@@ -544,12 +618,14 @@
     </struct>
 
     <struct name="NPCUpdateChat">
+        <comment>An NPC talking</comment>
         <field name="npc_index" type="short"/>
         <field name="message_length" type="char"/>
         <field name="message" type="string" length="message_length"/>
     </struct>
 
     <struct name="QuestProgressEntry">
+        <comment>An entry in the Quest Progress window</comment>
         <chunked>
             <field name="name" type="string"/>
             <break/>
@@ -562,11 +638,13 @@
     </struct>
 
     <struct name="DialogQuestEntry">
+        <comment>An entry in the quest switcher</comment>
         <field name="quest_id" type="short"/>
         <field name="quest_name" type="string"/>
     </struct>
 
     <struct name="DialogEntry">
+        <comment>An entry in a quest dialog</comment>
         <field name="entry_type" type="DialogEntryType"/>
         <switch field="entry_type">
             <case value="Link">
@@ -577,12 +655,14 @@
     </struct>
 
     <struct name="MapDrainDamageOther">
+        <comment>Another player taking damage from a map HP drain</comment>
         <field name="player_id" type="short"/>
         <field name="hp_percentage" type="char"/>
         <field name="damage" type="short"/>
     </struct>
 
     <struct name="GlobalBackfillMessage">
+        <comment>A global chat message</comment>
         <chunked>
             <field name="player_name" type="string"/>
             <break/>
@@ -701,12 +781,15 @@
                 <!-- ??? -->
             </case>
             <case default="true">
-                <comment>In this case, reply_code is a session ID for account creation</comment>
+                <comment>
+                    In this case (reply_code > 9), reply_code is a session ID for account creation
+                </comment>
                 <field name="sequence_start" type="char"/>
             </case>
         </switch>
-        <!-- "OK" or "NO" -->
-        <field name="reply_string" type="string"/>
+        <field name="reply_string" type="string">
+            <comment>"OK" or "NO"</comment>
+        </field>
     </packet>
 
     <packet family="Character" action="Reply">
@@ -1490,7 +1573,7 @@
         <comment>Failed to equip an item due to being the incorrect class</comment>
         <!-- There is no visible effect in the client, it simply re-assigns the player's class -->
         <field name="class_id" type="char">
-            <comment>The player's current class ID -- not the item's required class ID</comment>
+            <comment>The player's current class ID (not the item's required class ID)</comment>
         </field>
     </packet>
 
