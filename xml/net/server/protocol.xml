@@ -595,7 +595,7 @@
         </chunked>
     </struct>
 
-    <struct name="PaperdollInfo">
+    <struct name="CharacterDetails">
         <comment>Information displayed on the paperdoll and book</comment>
         <chunked>
             <field name="name" type="string"/>
@@ -1664,7 +1664,7 @@
     <packet family="Paperdoll" action="Reply">
         <comment>Reply to requesting a paperdoll</comment>
         <chunked>
-            <field name="info" type="PaperdollInfo"/>
+            <field name="details" type="CharacterDetails"/>
             <field name="equipment" type="EquipmentPaperdoll"/>
             <field name="icon" type="CharacterIcon"/>
         </chunked>
@@ -1698,7 +1698,7 @@
     <packet family="Book" action="Reply">
         <comment>Reply to requesting a book</comment>
         <chunked>
-            <field name="info" type="PaperdollInfo"/>
+            <field name="details" type="CharacterDetails"/>
             <field name="icon" type="CharacterIcon"/>
             <break/>
             <array name="quest_names" type="string" delimited="true"/>
