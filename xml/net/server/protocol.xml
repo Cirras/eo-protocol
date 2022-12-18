@@ -19,7 +19,7 @@
         <value name="Permanent">2</value>
     </enum>
 
-    <enum name="PaperdollIcon" type="char">
+    <enum name="CharacterIcon" type="char">
         <value name="Player" default="true">1</value>
         <value name="GM">4</value>
         <value name="HGM">5</value>
@@ -28,7 +28,7 @@
         <value name="HGMParty">10</value>
     </enum>
 
-    <enum name="AvatarSlot" type="char">
+    <enum name="AvatarChangeType" type="char">
         <value name="Clothes">1</value>
         <value name="Hair">2</value>
         <value name="HairColor">3</value>
@@ -129,14 +129,14 @@
         <value name="Link">2</value>
     </enum>
 
-    <enum name="BookIcon" type="char">
+    <enum name="QuestRequirementIcon" type="char">
         <value name="Item">3</value>
         <value name="Talk">5</value>
         <value name="Kill">8</value>
         <value name="Step">10</value>
     </enum>
 
-    <enum name="WarpAnimation" type="char">
+    <enum name="WarpEffect" type="char">
         <value name="None" default="true">0</value>
         <value name="Scroll">1</value>
         <value name="Admin">2</value>
@@ -232,7 +232,7 @@
             <field name="paperdoll" type="PaperdollB000A0HSW"/>
             <field name="sit_state" type="SitState"/>
             <field name="invisible" type="bool"/>
-            <field name="animation" type="WarpAnimation" optional="true"/>
+            <field name="warp_effect" type="WarpEffect" optional="true"/>
         </chunked>
     </struct>
 
@@ -252,9 +252,9 @@
 
     <struct name="AvatarChange">
         <field name="player_id" type="short"/>
-        <field name="slot" type="AvatarSlot"/>
+        <field name="change_type" type="AvatarChangeType"/>
         <field name="sound" type="bool"/>
-        <switch field="slot">
+        <switch field="change_type">
             <case value="Clothes">
                 <field name="paperdoll" type="PaperdollBAHWS"/>
             </case>
@@ -287,7 +287,7 @@
             <field name="title" type="string"/>
             <break/>
             <field type="char">0</field>
-            <field name="icon" type="PaperdollIcon"/>
+            <field name="icon" type="CharacterIcon"/>
             <field name="class_id" type="char"/>
             <field name="guild_tag" type="string"/>
         </chunked>
@@ -555,7 +555,7 @@
             <break/>
             <field name="description" type="string"/>
             <break/>
-            <field name="icon" type="BookIcon"/>
+            <field name="icon" type="QuestRequirementIcon"/>
             <field name="progress" type="short"/>
             <field name="target" type="short"/>
         </chunked>
@@ -1085,7 +1085,7 @@
     <packet family="Avatar" action="Remove">
         <comment>Nearby player has disappeared from view</comment>
         <field name="player_id" type="short"/>
-        <field name="animation" type="WarpAnimation" optional="true"/>
+        <field name="warp_effect" type="WarpEffect" optional="true"/>
     </packet>
 
     <packet family="Players" action="Agree">
@@ -1470,7 +1470,7 @@
             <switch field="warp_type">
                 <case value="MapSwitch">
                     <field name="map_id" type="short"/>
-                    <field name="animation" type="WarpAnimation"/>
+                    <field name="warp_effect" type="WarpEffect"/>
                 </case>
             </switch>
             <field name="nearby" type="NearbyInfo"/>
@@ -1482,7 +1482,7 @@
         <chunked>
             <field name="info" type="PaperdollInfo"/>
             <field name="paperdoll" type="Paperdoll"/>
-            <field name="icon" type="PaperdollIcon"/>
+            <field name="icon" type="CharacterIcon"/>
         </chunked>
     </packet>
 
@@ -1515,7 +1515,7 @@
         <comment>Reply to requesting a book</comment>
         <chunked>
             <field name="info" type="PaperdollInfo"/>
-            <field name="icon" type="PaperdollIcon"/>
+            <field name="icon" type="CharacterIcon"/>
             <break/>
             <array name="quest_names" type="string" delimited="true"/>
             <break/>
