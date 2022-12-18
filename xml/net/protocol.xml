@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <protocol>
     <enum name="PacketFamily" type="byte">
-        <comment>Part of the unique ID that identifies each packet</comment>
+        <comment>
+            The type of operation that a packet performs.
+            Part of the unique packet ID.
+        </comment>
         <value name="Connection">1</value>
         <value name="Account">2</value>
         <value name="Character">3</value>
@@ -54,7 +57,10 @@
     </enum>
 
     <enum name="PacketAction" type="byte">
-        <comment>Part of the unique ID that identifies each packet</comment>
+        <comment>
+            The specific action that a packet performs.
+            Part of the unique packet ID.
+        </comment>
         <value name="Request">1</value>
         <value name="Accept">2</value>
         <value name="Reply">3</value>
