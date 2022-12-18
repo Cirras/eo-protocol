@@ -51,7 +51,7 @@
     </enum>
 
     <enum name="MapEffect" type="char">
-        <comment>An effect that occurs on a map</comment>
+        <comment>An effect that occurs for all players on a map</comment>
         <value name="Quake">1</value>
     </enum>
 
