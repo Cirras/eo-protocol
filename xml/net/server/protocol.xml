@@ -247,7 +247,7 @@
     </enum>
 
     <struct name="BigCoords">
-        <comment>Map coordinates</comment>
+        <comment>Map coordinates with 2-byte values</comment>
         <field name="x" type="short"/>
         <field name="y" type="short"/>
     </struct>
