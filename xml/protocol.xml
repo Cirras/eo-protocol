@@ -11,7 +11,7 @@
     </enum>
 
     <enum name="Direction" type="char">
-        <comment>The admin level of a player</comment>
+        <comment>The direction a player or NPC is facing</comment>
         <value name="Down">0</value>
         <value name="Left">1</value>
         <value name="Up">2</value>
