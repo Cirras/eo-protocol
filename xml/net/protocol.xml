@@ -184,7 +184,7 @@
     </struct>
 
     <struct name="Weight">
-        <comment>Weight of items held by the player</comment>
+        <comment>Current carry weight and maximum carry capacity of a player</comment>
         <field name="current" type="char"/>
         <field name="max" type="char"/>
     </struct>
