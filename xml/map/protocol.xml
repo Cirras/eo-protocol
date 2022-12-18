@@ -109,8 +109,8 @@
     <struct name="MapSign">
         <comment>Sign EMF entity</comment>
         <field name="coords" type="Coords"/>
-        <field name="string_data_length" type="short"/>
-        <field name="string_data" type="encoded_string" length="string_data_length" length-offset="-1"/>
+        <length name="string_data_length" type="short" offset="-1"/>
+        <field name="string_data" type="encoded_string" length="string_data_length"/>
         <field name="title_length" type="char"/>
     </struct>
 
@@ -123,7 +123,7 @@
     <struct name="MapTileSpecRow">
         <comment>A row of tilespecs</comment>
         <field name="y" type="char"/>
-        <field name="tiles_count" type="char"/>
+        <length name="tiles_count" type="char"/>
         <array name="tiles" type="MapTileSpecRowTile" length="tiles_count"/>
     </struct>
 
@@ -136,7 +136,7 @@
     <struct name="MapWarpRow">
         <comment>A row of warp entities</comment>
         <field name="y" type="char"/>
-        <field name="tiles_count" type="char"/>
+        <length name="tiles_count" type="char"/>
         <array name="tiles" type="MapWarpRowTile" length="tiles_count"/>
     </struct>
 
@@ -149,13 +149,13 @@
     <struct name="MapGraphicRow">
         <comment>A row in a layer of map graphics</comment>
         <field name="y" type="char"/>
-        <field name="tiles_count" type="char"/>
+        <length name="tiles_count" type="char"/>
         <array name="tiles" type="MapGraphicRowTile" length="tiles_count"/>
     </struct>
 
     <struct name="MapGraphicLayer">
         <comment>A layer of map graphics</comment>
-        <field name="graphic_rows_count" type="char"/>
+        <length name="graphic_rows_count" type="char"/>
         <array name="graphic_rows" type="MapGraphicRow" length="graphic_rows_count"/>
     </struct>
 
@@ -178,18 +178,18 @@
         <field name="relog_y" type="char"/>
         <!-- The official client and server don't use this value. -->
         <field type="char">0</field>
-        <field name="npcs_count" type="char"/>
+        <length name="npcs_count" type="char"/>
         <array name="npcs" type="MapNPC" length="npcs_count"/>
-        <field name="legacy_door_keys_count" type="char"/>
+        <length name="legacy_door_keys_count" type="char"/>
         <array name="legacy_door_keys" type="MapLegacyDoorKey" length="legacy_door_keys_count"/>
-        <field name="items_count" type="char"/>
+        <length name="items_count" type="char"/>
         <array name="items" type="MapItem" length="items_count"/>
-        <field name="tile_spec_rows_count" type="char"/>
+        <length name="tile_spec_rows_count" type="char"/>
         <array name="tile_spec_rows" type="MapTileSpecRow" length="tile_spec_rows_count"/>
-        <field name="warp_rows_count" type="char"/>
+        <length name="warp_rows_count" type="char"/>
         <array name="warp_rows" type="MapWarpRow" length="warp_rows_count"/>
         <array name="graphic_layers" type="MapGraphicLayer" length="9"/>
-        <field name="signs_count" type="char"/>
+        <length name="signs_count" type="char"/>
         <array name="signs" type="MapSign" length="signs_count"/>
     </struct>
 </protocol>

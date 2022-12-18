@@ -67,7 +67,6 @@ Text content is optional and specifies a hardcoded field value.
 | name          | The name of the field.<br>`snake_case` should be used.                                                 |
 | type          | The type of the field.<br>For more information, see documentation on [types](types.md).                |
 | length        | The length of the field.<br>The value should either be a numeric literal or the name of another field. |
-| length-offset | An offset that will be applied to the value of `length`.<br>The value should be a numeric literal.     |
 | padded        | If **true**, the field is padded with `0xFF` bytes.                                                    |
 | optional      | If **true**, the field is considered optional for the purposes of data serialization.                  |
 
@@ -78,11 +77,11 @@ Text content is optional and specifies a hardcoded field value.
 > - If text content is provided...
 >   - a setter should not be generated for the field value.
 >   - the field type must be one of the [basic types](types.md#basic-types).
->   - `length` must not be a field reference.
-> - `length`, `length-offset`, and `padded` are only allowed for string types.
+>   - `length` must not be a `<length>` field reference.
+> - `length` and and `padded` are only allowed for string types.
 > - If `padded` is **true**...
 >   - `length` must be provided.
->   - The serializer should pad the string with `0xFF` bytes up to the specific `length` (before encoding, if applicable).
+>   - The serializer should pad the string with `0xFF` bytes up to the specified `length` (before encoding, if applicable).
 >   - The deserializer should treat `0xFF` as a terminator (after decoding, if applicable).
 > - If `optional` is **true**...
 >   - `name` must be provided.
@@ -96,8 +95,7 @@ Text content is optional and specifies a hardcoded field value.
 |---------------|----------------------------------------------------------------------------------------------------------------|
 | name          | The name of the array field.<br>`snake_case` should be used.                                                   |
 | type          | The element type of the array.<br>For more information, see documentation on [types](types.md).                |
-| length        | The length of the array.<br>The value should either be a numeric literal or the name of another field.         |
-| length-offset | An offset that will be applied to the value of `length`.<br>The value should be a numeric literal.             |
+| length        | The length of the array.<br>The value should either be a numeric literal or the name of a `<length>` field.    |
 | optional      | If **true**, the field is considered optional for the purposes of data serialization.                          |
 | delimited     | If **true**, the elements of the array will be delimited with `0xFF` break bytes (without trailing delimiter). |
 
@@ -112,6 +110,24 @@ Text content is optional and specifies a hardcoded field value.
 >   - The array must be the final field in the data structure (or in the chunk, if [chunked reading](chunks.md) is enabled)
 >   - Assuming integer division, the number of elements can be calculated as `remaining_length / element_size`.
 
+## The \<length> Element
+
+| attribute     | description                                                                                |
+|---------------|--------------------------------------------------------------------------------------------|
+| name          | The name of the field.<br>`snake_case` should be used.                                     |
+| type          | The type of the field.<br>For more information, see documentation on [types](types.md).    |
+| optional      | If **true**, the field is considered optional for the purposes of data serialization.      |
+| offset        | An offset that will be applied to the field value.<br>The value must be a numeric literal. |
+
+> **Implementation notes**
+> - Must be referenced via the `length` attribute of exactly 1 other field.
+> - A setter should not be generated for the field value.
+>   - Instead, the value should be computed based on the referencing field.
+> - `type` must be one of the numeric [basic types](types.md#basic-types).
+> - If `optional` is **true**...
+>   - An unset field value should not be written by the serializer.
+>   - Non-optional fields are forbidden afterwards.
+>     - This only applies within the current chunk if [chunked reading](chunks.md) is enabled.
 ## The \<dummy> Element
 Text content is required and specifies a hardcoded dummy value.
 

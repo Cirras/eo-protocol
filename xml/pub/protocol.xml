@@ -60,7 +60,7 @@
 
     <struct name="EIFRecord">
         <comment>Record of Item data in an Endless Item File</comment>
-        <field name="name_length" type="char"/>
+        <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="graphic_id" type="short"/>
         <field name="type" type="ItemType"/>
@@ -115,7 +115,7 @@
         <comment>Endless Item File</comment>
         <field type="string" length="3">EIF</field>
         <array name="rid" type="short" length="2"/>
-        <field name="items_count" type="short"/>
+        <length name="items_count" type="short"/>
         <field name="version" type="char"/>
         <array name="items" type="EIFRecord" length="items_count"/>
     </struct>
@@ -145,7 +145,7 @@
 
     <struct name="ENFRecord">
         <comment>Record of NPC data in an Endless NPC File</comment>
-        <field name="name_length" type="char"/>
+        <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="graphic_id" type="short"/>
         <field name="race" type="char"/>
@@ -173,14 +173,14 @@
         <comment>Endless NPC File</comment>
         <field type="string" length="3">ENF</field>
         <array name="rid" type="short" length="2"/>
-        <field name="npcs_count" type="short"/>
+        <length name="npcs_count" type="short"/>
         <field name="version" type="char"/>
         <array name="npcs" type="ENFRecord" length="npcs_count"/>
     </struct>
 
     <struct name="ECFRecord">
         <comment>Record of Class data in an Endless Class File</comment>
-        <field name="name_length" type="char"/>
+        <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="parent_type" type="char"/>
         <field name="stat_group" type="char"/>
@@ -196,7 +196,7 @@
         <comment>Endless Class File</comment>
         <field type="string" length="3">ECF</field>
         <array name="rid" type="short" length="2"/>
-        <field name="classes_count" type="short"/>
+        <length name="classes_count" type="short"/>
         <field name="version" type="char"/>
         <array name="classes" type="ECFRecord" length="classes_count"/>
     </struct>
@@ -227,8 +227,8 @@
 
     <struct name="ESFRecord">
         <comment>Record of Skill data in an Endless Skill File</comment>
-        <field name="name_length" type="char"/>
-        <field name="chant_length" type="char"/>
+        <length name="name_length" type="char"/>
+        <length name="chant_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
         <field name="chant" type="string" length="chant_length"/>
         <field name="icon_id" type="short"/>
@@ -270,7 +270,7 @@
         <comment>Endless Skill File</comment>
         <field type="string" length="3">ESF</field>
         <array name="rid" type="short" length="2"/>
-        <field name="skills_count" type="short"/>
+        <length name="skills_count" type="short"/>
         <field name="version" type="char"/>
         <array name="skills" type="ESFRecord" length="skills_count"/>
     </struct>

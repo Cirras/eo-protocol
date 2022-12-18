@@ -402,7 +402,7 @@
 
     <struct name="NearbyInfo">
         <comment>Information about nearby entities</comment>
-        <field name="characters_count" type="char"/>
+        <length name="characters_count" type="char"/>
         <chunked>
             <break/>
             <array name="characters" type="CharacterMapInfo" length="characters_count" delimited="true"/>
@@ -446,7 +446,7 @@
     <struct name="CharacterSelectionList">
         <comment>Character selection screen character list</comment>
         <chunked>
-            <field name="characters_count" type="char"/>
+            <length name="characters_count" type="char"/>
             <field type="char">1</field>
             <break/>
             <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
@@ -718,7 +718,7 @@
     <struct name="NPCUpdateChat">
         <comment>An NPC talking</comment>
         <field name="npc_index" type="short"/>
-        <field name="message_length" type="char"/>
+        <length name="message_length" type="char"/>
         <field name="message" type="string" length="message_length"/>
     </struct>
 
@@ -1289,7 +1289,7 @@
 
     <packet family="NPC" action="Agree">
         <comment>Reply to request for information about nearby NPCs</comment>
-        <field name="npcs_count" type="short"/>
+        <length name="npcs_count" type="short"/>
         <array name="npcs" type="NPCMapInfo" length="npcs_count"/>
     </packet>
 
@@ -1592,7 +1592,7 @@
         <comment>Reply to opening a town board</comment>
         <chunked>
             <field name="board_id" type="char"/>
-            <field name="posts_count" type="char"/>
+            <length name="posts_count" type="char"/>
             <array name="posts" type="BoardPostListing" length="posts_count" delimited="true"/>
             <break/>
         </chunked>
@@ -1915,7 +1915,7 @@
     <packet family="Guild" action="Tell">
         <comment>Get guild member list reply</comment>
         <chunked>
-            <field name="members_count" type="short"/>
+            <length name="members_count" type="short"/>
             <break/>
             <array name="members" type="GuildMember" length="members_count" delimited="true"/>
             <break/>
@@ -1937,7 +1937,7 @@
             <break/>
             <array name="ranks" type="string" length="9" delimited="true"/>
             <break/>
-            <field name="staff_count" type="short"/>
+            <length name="staff_count" type="short"/>
             <break/>
             <array name="staff" type="GuildStaff" length="staff_count" delimited="true"/>
             <break/>
@@ -2168,7 +2168,7 @@
     <packet family="Quest" action="Dialog">
         <comment>Quest selection dialog</comment>
         <chunked>
-            <field name="quest_count" type="char"/>
+            <length name="quest_count" type="char"/>
             <field name="behaviour_id" type="short"/>
             <field name="quest_id" type="short"/>
             <field name="session_id" type="short"/>

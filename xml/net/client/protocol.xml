@@ -68,7 +68,7 @@
         <field name="version" type="Version"/>
         <!-- The official server verifies that this number is 112 -->
         <field type="char">112</field>
-        <field name="hdid_length" type="char"/>
+        <length name="hdid_length" type="char"/>
         <field name="hdid" type="string" length="hdid_length"/>
     </packet>
 
