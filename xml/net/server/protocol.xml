@@ -422,7 +422,10 @@
     </struct>
 
     <struct name="CharacterStats1">
-        <comment>Character stats data</comment>
+        <comment>
+            Character stats data.
+            Sent when resetting stats and skills at a skill master.
+        </comment>
         <field name="stat_points" type="short"/>
         <field name="skill_points" type="short"/>
         <field name="hp" type="short"/>
@@ -435,7 +438,10 @@
     </struct>
 
     <struct name="CharacterStats2">
-        <comment>Character stats data</comment>
+        <comment>
+            Character stats data.
+            Sent upon selecting a character and entering the game.
+        </comment>
         <field name="hp" type="short"/>
         <field name="max_hp" type="short"/>
         <field name="tp" type="short"/>
@@ -449,7 +455,10 @@
     </struct>
 
     <struct name="CharacterStats3">
-        <comment>Character stats data</comment>
+        <comment>
+            Character stats data.
+            Sent when stats are updated.
+        </comment>
         <field name="base_stats" type="CharacterBaseStats"/>
         <field name="max_hp" type="short"/>
         <field name="max_tp" type="short"/>
@@ -459,7 +468,10 @@
     </struct>
 
     <struct name="CharacterStats4">
-        <comment>Character stats data</comment>
+        <comment>
+            Character stats data.
+            Sent with character info lookups.
+        </comment>
         <field name="hp" type="short"/>
         <field name="max_hp" type="short"/>
         <field name="tp" type="short"/>
@@ -469,7 +481,10 @@
     </struct>
 
     <struct name="ItemCharacterStats">
-        <comment>Character stats data</comment>
+        <comment>
+            Character stats data.
+            Sent when an item is equipped or unequipped.
+        </comment>
         <field name="max_hp" type="short"/>
         <field name="max_tp" type="short"/>
         <field name="base_stats" type="CharacterBaseStats"/>
@@ -1388,7 +1403,7 @@
     </packet>
 
     <packet family="StatSkill" action="Junk">
-        <comment>Response to resetting character</comment>
+        <comment>Response to resetting stats and skills at a skill master</comment>
         <field name="stats" type="CharacterStats1"/>
     </packet>
 
