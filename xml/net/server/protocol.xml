@@ -56,7 +56,7 @@
     </enum>
 
     <enum name="GuildReply" type="short">
-        <comment>Reply code sent with GUILD_REPLY</comment>
+        <comment>Reply code sent with GUILD_REPLY packet</comment>
         <value name="Busy">1</value>
         <value name="NotApproved">2</value>
         <value name="AlreadyMember">3</value>
