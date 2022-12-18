@@ -33,7 +33,7 @@
 
     <enum name="AvatarChangeType" type="char">
         <comment>How a player's appearance is changing</comment>
-        <value name="Clothes">1</value>
+        <value name="Equipment">1</value>
         <value name="Hair">2</value>
         <value name="HairColor">3</value>
     </enum>
@@ -252,6 +252,89 @@
         <field name="y" type="short"/>
     </struct>
 
+    <struct name="EquipmentChange">
+        <comment>
+            Player equipment data.
+            Sent when a player's visible equipment changes.
+            Note that these values are graphic IDs.
+        </comment>
+        <field name="boots" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="weapon" type="short"/>
+        <field name="shield" type="short"/>
+    </struct>
+
+    <struct name="EquipmentMapInfo">
+        <comment>
+            Player equipment data.
+            Sent with map information about a nearby character.
+            Note that these values are graphic IDs.
+        </comment>
+        <field name="boots" type="short"/>
+        <field type="short">0</field>
+        <field type="short">0</field>
+        <field type="short">0</field>
+        <field name="armor" type="short"/>
+        <field type="short">0</field>
+        <field name="hat" type="short"/>
+        <field name="weapon" type="short"/>
+        <field name="shield" type="short"/>
+    </struct>
+
+    <struct name="EquipmentCharacterSelect">
+        <comment>
+            Player equipment data.
+            Sent with a character in the character selection list.
+            Note that these values are graphic IDs.
+        </comment>
+        <field name="boots" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+    </struct>
+
+    <struct name="EquipmentWelcome">
+        <comment>
+            Player equipment data.
+            Sent upon selecting a character and entering the game.
+            Note that these values are item IDs.
+        </comment>
+        <field name="boots" type="short"/>
+        <field name="gloves" type="short"/>
+        <field name="accessory" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="belt" type="short"/>
+        <field name="necklace" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+        <array name="ring" type="short" length="2"/>
+        <array name="armlet" type="short" length="2"/>
+        <array name="bracer" type="short" length="2"/>
+    </struct>
+
+    <struct name="EquipmentPaperdoll">
+        <comment>
+            Player equipment data.
+            Sent with information about a player's paperdoll.
+            Note that these values are item IDs.
+        </comment>
+        <field name="boots" type="short"/>
+        <field name="accessory" type="short"/>
+        <field name="gloves" type="short"/>
+        <field name="belt" type="short"/>
+        <field name="armor" type="short"/>
+        <field name="necklace" type="short"/>
+        <field name="hat" type="short"/>
+        <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
+        <array name="ring" type="short" length="2"/>
+        <array name="armlet" type="short" length="2"/>
+        <array name="bracer" type="short" length="2"/>
+    </struct>
+
     <struct name="CharacterMapInfo">
         <comment>
             Information about a nearby character.
@@ -275,7 +358,7 @@
             <field name="hp" type="short"/>
             <field name="max_tp" type="short"/>
             <field name="tp" type="short"/>
-            <field name="paperdoll" type="PaperdollB000A0HSW"/>
+            <field name="equipment" type="EquipmentMapInfo"/>
             <field name="sit_state" type="SitState"/>
             <field name="invisible" type="bool"/>
             <field name="warp_effect" type="WarpEffect" optional="true"/>
@@ -304,8 +387,8 @@
         <field name="change_type" type="AvatarChangeType"/>
         <field name="sound" type="bool"/>
         <switch field="change_type">
-            <case value="Clothes">
-                <field name="paperdoll" type="PaperdollBAHWS"/>
+            <case value="Equipment">
+                <field name="equipment" type="EquipmentChange"/>
             </case>
             <case value="Hair">
                 <field name="hair_style" type="char"/>
@@ -356,7 +439,7 @@
             <field name="hair_color" type="char"/>
             <field name="skin" type="Skin"/>
             <field name="admin" type="AdminLevel"/>
-            <field name="paperdoll" type="PaperdollBAHSW"/>
+            <field name="equipment" type="EquipmentCharacterSelect"/>
         </chunked>
     </struct>
 
@@ -898,7 +981,7 @@
                     <field name="experience" type="int"/>
                     <field name="usage" type="int"/>
                     <field name="stats" type="CharacterStatsWelcome"/>
-                    <field name="paperdoll" type="Paperdoll"/>
+                    <field name="equipment" type="EquipmentWelcome"/>
                     <field name="guild_rank" type="char"/>
                     <field name="settings" type="ServerSettings"/>
                     <field name="login_message_code" type="LoginMessageCode"/>
@@ -1582,7 +1665,7 @@
         <comment>Reply to requesting a paperdoll</comment>
         <chunked>
             <field name="info" type="PaperdollInfo"/>
-            <field name="paperdoll" type="Paperdoll"/>
+            <field name="equipment" type="EquipmentPaperdoll"/>
             <field name="icon" type="CharacterIcon"/>
         </chunked>
     </packet>
@@ -1608,7 +1691,7 @@
     </packet>
 
     <packet family="Avatar" action="Agree">
-        <comment>Nearby player changed clothes</comment>
+        <comment>Nearby player changed appearance</comment>
         <field name="change" type="AvatarChange"/>
     </packet>
 

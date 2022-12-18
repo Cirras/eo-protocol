@@ -120,69 +120,6 @@
         <field name="patch" type="char"/>
     </struct>
 
-    <struct name="PaperdollBAHWS">
-        <comment>Player equipment data</comment>
-        <field name="boots" type="short"/>
-        <field name="armor" type="short"/>
-        <field name="hat" type="short"/>
-        <field name="weapon" type="short"/>
-        <field name="shield" type="short"/>
-    </struct>
-
-    <struct name="PaperdollBAHSW">
-        <comment>Player equipment data</comment>
-        <field name="boots" type="short"/>
-        <field name="armor" type="short"/>
-        <field name="hat" type="short"/>
-        <field name="shield" type="short"/>
-        <field name="weapon" type="short"/>
-    </struct>
-
-    <struct name="PaperdollB000A0HSW">
-        <comment>Player equipment data</comment>
-        <field name="boots" type="short"/>
-        <field type="short">0</field>
-        <field type="short">0</field>
-        <field type="short">0</field>
-        <field name="armor" type="short"/>
-        <field type="short">0</field>
-        <field name="hat" type="short"/>
-        <field name="weapon" type="short"/>
-        <field name="shield" type="short"/>
-    </struct>
-
-    <struct name="PaperdollWelcome">
-        <comment>Player equipment data</comment>
-        <field name="boots" type="short"/>
-        <field name="gloves" type="short"/>
-        <field name="accessory" type="short"/>
-        <field name="armor" type="short"/>
-        <field name="belt" type="short"/>
-        <field name="necklace" type="short"/>
-        <field name="hat" type="short"/>
-        <field name="shield" type="short"/>
-        <field name="weapon" type="short"/>
-        <array name="ring" type="short" length="2"/>
-        <array name="armlet" type="short" length="2"/>
-        <array name="bracer" type="short" length="2"/>
-    </struct>
-
-    <struct name="Paperdoll">
-        <comment>Player equipment data</comment>
-        <field name="boots" type="short"/>
-        <field name="accessory" type="short"/>
-        <field name="gloves" type="short"/>
-        <field name="belt" type="short"/>
-        <field name="armor" type="short"/>
-        <field name="necklace" type="short"/>
-        <field name="hat" type="short"/>
-        <field name="shield" type="short"/>
-        <field name="weapon" type="short"/>
-        <array name="ring" type="short" length="2"/>
-        <array name="armlet" type="short" length="2"/>
-        <array name="bracer" type="short" length="2"/>
-    </struct>
-
     <struct name="Weight">
         <comment>Current carry weight and maximum carry capacity of a player</comment>
         <field name="current" type="char"/>
