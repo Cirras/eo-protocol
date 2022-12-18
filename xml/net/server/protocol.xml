@@ -677,7 +677,7 @@
     </struct>
 
     <struct name="GlobalBackfillMessage">
-        <comment>A global chat message</comment>
+        <comment>A backfilled global chat message</comment>
         <chunked>
             <field name="player_name" type="string"/>
             <break/>
@@ -1060,7 +1060,10 @@
     </packet>
 
     <packet family="Talk" action="List">
-        <comment>Global chat backfill</comment>
+        <comment>
+            Global chat backfill.
+            Sent by the official game server when a player opens the global chat tab.
+        </comment>
         <chunked>
             <array name="messages" type="GlobalBackfillMessage" delimited="true"/>
             <break/>
