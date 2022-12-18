@@ -421,10 +421,10 @@
         <field name="armor" type="short"/>
     </struct>
 
-    <struct name="CharacterStats1">
+    <struct name="CharacterStatsReset">
         <comment>
             Character stats data.
-            Sent when resetting stats and skills at a skill master.
+            Sent when resetting stats and skills at a skill master NPC.
         </comment>
         <field name="stat_points" type="short"/>
         <field name="skill_points" type="short"/>
@@ -437,7 +437,7 @@
         <field name="secondary" type="CharacterSecondaryStats"/>
     </struct>
 
-    <struct name="CharacterStats2">
+    <struct name="CharacterStatsWelcome">
         <comment>
             Character stats data.
             Sent upon selecting a character and entering the game.
@@ -454,7 +454,7 @@
         <field name="secondary" type="CharacterSecondaryStats"/>
     </struct>
 
-    <struct name="CharacterStats3">
+    <struct name="CharacterStatsUpdate">
         <comment>
             Character stats data.
             Sent when stats are updated.
@@ -467,7 +467,7 @@
         <field name="secondary_stats" type="CharacterSecondaryStats"/>
     </struct>
 
-    <struct name="CharacterStats4">
+    <struct name="CharacterStatsInfoLookup">
         <comment>
             Character stats data.
             Sent with character info lookups.
@@ -480,7 +480,7 @@
         <field name="secondary_stats" type="CharacterSecondaryStats"/>
     </struct>
 
-    <struct name="ItemCharacterStats">
+    <struct name="CharacterStatsEquipmentChange">
         <comment>
             Character stats data.
             Sent when an item is equipped or unequipped.
@@ -897,7 +897,7 @@
                     <field name="level" type="char"/>
                     <field name="experience" type="int"/>
                     <field name="usage" type="int"/>
-                    <field name="stats" type="CharacterStats2"/>
+                    <field name="stats" type="CharacterStatsWelcome"/>
                     <field name="paperdoll" type="Paperdoll"/>
                     <field name="guild_rank" type="char"/>
                     <field name="settings" type="ServerSettings"/>
@@ -969,7 +969,7 @@
     </packet>
 
     <packet family="AdminInteract" action="Tell">
-        <comment>Admin character info popup</comment>
+        <comment>Admin character info lookup</comment>
         <chunked>
             <field name="name" type="string"/>
             <break/>
@@ -980,7 +980,7 @@
             <field name="level" type="char"/>
             <field name="map_id" type="short"/>
             <field name="map_coords" type="BigCoords"/>
-            <field name="stats" type="CharacterStats4"/>
+            <field name="stats" type="CharacterStatsInfoLookup"/>
             <field name="light" type="short"/>
             <field name="dark" type="short"/>
             <field name="fire" type="short"/>
@@ -1393,7 +1393,7 @@
     <packet family="StatSkill" action="Player">
         <comment>Response to spending stat points</comment>
         <field name="stat_points" type="short"/>
-        <field name="stats" type="CharacterStats3"/>
+        <field name="stats" type="CharacterStatsUpdate"/>
     </packet>
 
     <packet family="StatSkill" action="Accept">
@@ -1404,7 +1404,7 @@
 
     <packet family="StatSkill" action="Junk">
         <comment>Response to resetting stats and skills at a skill master</comment>
-        <field name="stats" type="CharacterStats1"/>
+        <field name="stats" type="CharacterStatsReset"/>
     </packet>
 
     <packet family="Item" action="Reply">
@@ -1423,7 +1423,7 @@
                 <field name="effect_id" type="short"/>
             </case>
             <case value="CureCurse">
-                <field name="stats" type="ItemCharacterStats"/>
+                <field name="stats" type="CharacterStatsEquipmentChange"/>
             </case>
             <case value="EXPReward">
                 <field name="experience" type="int"/>
@@ -1595,13 +1595,13 @@
     <packet family="Paperdoll" action="Remove">
         <comment>Reply to unequipping an item</comment>
         <field name="change" type="AvatarChange"/>
-        <field name="stats" type="ItemCharacterStats"/>
+        <field name="stats" type="CharacterStatsEquipmentChange"/>
     </packet>
 
     <packet family="Paperdoll" action="Agree">
         <comment>Reply to equipping an item</comment>
         <field name="change" type="AvatarChange"/>
-        <field name="stats" type="ItemCharacterStats"/>
+        <field name="stats" type="CharacterStatsEquipmentChange"/>
     </packet>
 
     <packet family="Avatar" action="Agree">
@@ -2205,7 +2205,7 @@
     <packet family="Recover" action="List">
         <comment>Stats update</comment>
         <field name="class_id" type="short"/>
-        <field name="stats" type="CharacterStats3"/>
+        <field name="stats" type="CharacterStatsUpdate"/>
     </packet>
 
     <packet family="Recover" action="Reply">
