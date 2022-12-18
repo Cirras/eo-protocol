@@ -344,8 +344,8 @@
         </chunked>
     </struct>
 
-    <struct name="CharacterInfo">
-        <comment>Character selection screen character info</comment>
+    <struct name="CharacterSelectionListEntry">
+        <comment>Character selection screen character</comment>
         <chunked>
             <field name="name" type="string"/>
             <break/>
@@ -360,13 +360,13 @@
         </chunked>
     </struct>
 
-    <struct name="CharacterList">
-        <comment>Character selection screen character info</comment>
+    <struct name="CharacterSelectionList">
+        <comment>Character selection screen character list</comment>
         <chunked>
             <field name="characters_count" type="char"/>
             <field type="char">1</field>
             <break/>
-            <array name="characters" type="CharacterInfo" length="characters_count" delimited="true"/>
+            <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
             <break/>
         </chunked>
     </struct>
@@ -830,11 +830,11 @@
                 </case>
                 <case value="5">
                     <comment>CharacterReply.OK</comment>
-                    <field name="character_list" type="CharacterList"/>
+                    <field name="character_list" type="CharacterSelectionList"/>
                 </case>
                 <case value="6">
                     <comment>CharacterReply.Deleted</comment>
-                    <field name="character_list" type="CharacterList"/>
+                    <field name="character_list" type="CharacterSelectionList"/>
                 </case>
                 <case default="true">
                     <comment>
@@ -858,7 +858,7 @@
             <field name="reply_code" type="LoginReply"/>
             <switch field="reply_code">
                 <case value="OK">
-                    <field name="character_list" type="CharacterList"/>
+                    <field name="character_list" type="CharacterSelectionList"/>
                 </case>
             </switch>
         </chunked>
