@@ -43,7 +43,7 @@
     </enum>
 
     <enum name="Skin" type="char">
-        <comment>The race of a player</comment>
+        <comment>The skin of a player</comment>
         <value name="White">0</value>
         <value name="Tan">1</value>
         <value name="Yellow">2</value>
