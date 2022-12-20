@@ -928,6 +928,9 @@
                 </comment>
             </field>
             <switch field="reply_code">
+                <case value="0">
+                    <!-- No effect in the official client -->
+                </case>
                 <case value="1">
                     <comment>CharacterReply.Exists</comment>
                 </case>
@@ -948,9 +951,18 @@
                     <comment>CharacterReply.Deleted</comment>
                     <field name="character_list" type="CharacterSelectionList"/>
                 </case>
+                <case value="7">
+                    <!-- No effect in the official client -->
+                </case>
+                 <case value="8">
+                    <!-- No effect in the official client -->
+                </case>
+                <case value="9">
+                    <!-- No effect in the official client -->
+                </case>
                 <case default="true">
                     <comment>
-                        In this case, reply_code is a session ID for character creation
+                        In this case (reply_code > 9), reply_code is a session ID for character creation
                     </comment>
                     <field type="string">OK</field>
                 </case>
