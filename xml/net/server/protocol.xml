@@ -874,7 +874,7 @@
         </field>
         <switch field="reply_code">
             <case value="0">
-                <!-- ??? -->
+                <!-- No effect in the official client -->
             </case>
             <case value="1">
                 <comment>AccountReply.Exists</comment>
@@ -889,7 +889,7 @@
                 <field type="string">GO</field>
             </case>
             <case value="4">
-                <!-- AccountReply.??? -->
+                <!-- No effect in the official client -->
             </case>
             <case value="5">
                 <comment>AccountReply.ChangeFailed</comment>
@@ -904,10 +904,10 @@
                 <field type="string">NO</field>
             </case>
             <case value="8">
-                <!-- ??? -->
+                <!-- No effect in the official client -->
             </case>
             <case value="9">
-                <!-- ??? -->
+                <!-- No effect in the official client -->
             </case>
             <case default="true">
                 <comment>
