@@ -495,10 +495,35 @@
         <field name="cha" type="short"/>
     </struct>
 
+    <struct name="CharacterBaseStatsWelcome">
+        <comment>
+            The 6 base character stats.
+            Sent upon selecting a character and entering the game.
+        </comment>
+        <field name="str" type="short"/>
+        <field name="wis" type="short"/>
+        <field name="intl" type="short"/>
+        <field name="agi" type="short"/>
+        <field name="con" type="short"/>
+        <field name="cha" type="short"/>
+    </struct>
+
     <struct name="CharacterSecondaryStats">
         <comment>The 5 secondary character stats</comment>
         <field name="min_damage" type="short"/>
         <field name="max_damage" type="short"/>
+        <field name="accuracy" type="short"/>
+        <field name="evade" type="short"/>
+        <field name="armor" type="short"/>
+    </struct>
+
+    <struct name="CharacterSecondaryStatsInfoLookup">
+        <comment>
+            The 5 secondary character stats.
+            Sent with character info lookups.
+        </comment>
+        <field name="max_damage" type="short"/>
+        <field name="min_damage" type="short"/>
         <field name="accuracy" type="short"/>
         <field name="evade" type="short"/>
         <field name="armor" type="short"/>
@@ -533,8 +558,8 @@
         <field name="stat_points" type="short"/>
         <field name="skill_points" type="short"/>
         <field name="karma" type="short"/>
-        <field name="base" type="CharacterBaseStats"/>
         <field name="secondary" type="CharacterSecondaryStats"/>
+        <field name="base" type="CharacterBaseStatsWelcome"/>
     </struct>
 
     <struct name="CharacterStatsUpdate">
