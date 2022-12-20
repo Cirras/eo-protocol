@@ -878,24 +878,30 @@
             </case>
             <case value="1">
                 <comment>AccountReply.Exists</comment>
+                <field type="string">NO</field>
             </case>
             <case value="2">
                 <comment>AccountReply.NotApproved</comment>
+                <field type="string">NO</field>
             </case>
             <case value="3">
                 <comment>AccountReply.Created</comment>
+                <field type="string">GO</field>
             </case>
             <case value="4">
                 <!-- AccountReply.??? -->
             </case>
             <case value="5">
                 <comment>AccountReply.ChangeFailed</comment>
+                <field type="string">NO</field>
             </case>
             <case value="6">
                 <comment>AccountReply.Changed</comment>
+                <field type="string">NO</field>
             </case>
             <case value="7">
                 <comment>AccountReply.RequestDenied</comment>
+                <field type="string">NO</field>
             </case>
             <case value="8">
                 <!-- ??? -->
@@ -908,11 +914,9 @@
                     In this case (reply_code > 9), reply_code is a session ID for account creation
                 </comment>
                 <field name="sequence_start" type="char"/>
+                <field type="string">OK</field>
             </case>
         </switch>
-        <field name="reply_string" type="string">
-            <comment>"OK" or "NO"</comment>
-        </field>
     </packet>
 
     <packet family="Character" action="Reply">
