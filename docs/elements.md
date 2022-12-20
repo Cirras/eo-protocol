@@ -78,7 +78,7 @@ Text content is optional and specifies a hardcoded field value.
 >   - a setter should not be generated for the field value.
 >   - the field type must be one of the [basic types](types.md#basic-types).
 >   - `length` must not be a `<length>` field reference.
-> - `length` and and `padded` are only allowed for string types.
+> - `length` and `padded` are only allowed for string types.
 > - If `padded` is **true**...
 >   - `length` must be provided.
 >   - The serializer should pad the string with `0xFF` bytes up to the specified `length` (before encoding, if applicable).
