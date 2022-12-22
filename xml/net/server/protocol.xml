@@ -801,7 +801,8 @@
                 <field name="version" type="Version"/>
             </case>
             <case value="OK">
-                <array name="sequence_bytes" type="byte" length="2"/>
+                <field name="seq1" type="byte"/>
+                <field name="seq2" type="byte"/>
                 <field name="decode_multiple" type="byte"/>
                 <field name="encode_multiple" type="byte"/>
                 <field name="player_id" type="short"/>
