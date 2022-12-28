@@ -9,7 +9,9 @@
         <value name="Teleport">4</value>
         <value name="Spell">5</value>
         <value name="EXPReward">6</value>
+        <!-- "skill book" in the official pub editor -->
         <value name="Reserved7">7</value>
+        <!-- "reserved" in the official pub editor -->
         <value name="Reserved8">8</value>
         <value name="Key">9</value>
         <value name="Weapon">10</value>
@@ -28,6 +30,14 @@
         <value name="EffectPotion">23</value>
         <value name="HairDye">24</value>
         <value name="CureCurse">25</value>
+        <!-- "buff*" in the official pub editor -->
+        <value name="Reserved26">26</value>
+        <!-- "debuff*" in the official pub editor -->
+        <value name="Reserved27">27</value>
+        <!-- "title" in the official pub editor -->
+        <value name="Reserved28">28</value>
+        <!-- "hairtool" in the official pub editor -->
+        <value name="Reserved29">29</value>
     </enum>
 
     <enum name="ItemSubtype" type="char">
@@ -35,6 +45,8 @@
         <value name="Ranged">1</value>
         <value name="Arrows">2</value>
         <value name="Wings">3</value>
+        <!-- "2handed" in the official pub editor -->
+        <value name="Reserved4">4</value>
     </enum>
 
     <enum name="ItemSpecial" type="char">
