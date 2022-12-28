@@ -912,7 +912,7 @@
             </case>
             <case default="true">
                 <comment>
-                    In this case (reply_code > 9), reply_code is a session ID for account creation
+                    In this case (reply_code &gt; 9), reply_code is a session ID for account creation
                 </comment>
                 <field name="sequence_start" type="char"/>
                 <field type="string">OK</field>
@@ -963,7 +963,7 @@
                 </case>
                 <case default="true">
                     <comment>
-                        In this case (reply_code > 9), reply_code is a session ID for character creation
+                        In this case (reply_code &gt; 9), reply_code is a session ID for character creation
                     </comment>
                     <field type="string">OK</field>
                 </case>
