@@ -794,7 +794,7 @@
     </struct>
 
     <packet family="Init" action="Init">
-        <comment>Reply to connection initialization and requests for unencoded data</comment>
+        <comment>Reply to connection initialization and requests for unencrypted data</comment>
         <field name="reply_code" type="InitReply"/>
         <switch field="reply_code">
             <case value="OutOfDate">
