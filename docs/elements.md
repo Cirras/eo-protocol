@@ -137,11 +137,11 @@ Text content is required and specifies a hardcoded dummy value.
 
 > **Implementation notes**
 > - The official EO client and server never send empty packets.
->   - When a packet would otherwise be empty, a dummy value is written instead.
+>   - When the data structure would otherwise be empty, a dummy value is written instead.
 >   - These are typically single-byte strings or numbers.
 > - `type` must be one of the [basic types](types.md#basic-types).
 > - `dummy` elements must not be followed by any other elements.
-> - If the packet ends up containing data (e.g. an optional field was provided), the dummy data should not be written by the serializer.
+> - If the data structure ends up containing data (e.g. an optional field was provided), the dummy data should not be written by the serializer.
 
 ## The \<switch> Element
 
