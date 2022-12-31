@@ -803,8 +803,8 @@
             <case value="OK">
                 <field name="seq1" type="byte"/>
                 <field name="seq2" type="byte"/>
-                <field name="decode_multiple" type="byte"/>
-                <field name="encode_multiple" type="byte"/>
+                <field name="server_encryption_multiple" type="byte"/>
+                <field name="client_encryption_multiple" type="byte"/>
                 <field name="player_id" type="short"/>
                 <field name="response" type="three"/>
             </case>
