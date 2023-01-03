@@ -420,7 +420,7 @@
             <break/>
             <field name="title" type="string"/>
             <break/>
-            <field type="char">0</field>
+            <field name="level" type="char"/>
             <field name="icon" type="CharacterIcon"/>
             <field name="class_id" type="char"/>
             <field name="guild_tag" type="string"/>
