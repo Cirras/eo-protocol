@@ -147,7 +147,7 @@
 
     <packet family="Character" action="Take">
         <comment>Request to delete a character from an account</comment>
-        <field name="session_id" type="short"/>
+        <field name="character_id" type="int"/>
     </packet>
 
     <packet family="Character" action="Remove">
