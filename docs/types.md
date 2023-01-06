@@ -48,6 +48,7 @@ A specification of the data types that can be referenced in protocol files.
     - `array` where any of the following are true:
         - variable-sized according to the conditions listed [above](#array-types).
         - the `optional` attribute is true.
+    - `dummy` where the type is variable-sized.
     - `chunked`
         - It's possible to omit data or insert garbage data at the end of each chunk.
         - See the documentation on [chunked reading](chunks.md) for more information.
@@ -55,6 +56,7 @@ A specification of the data types that can be referenced in protocol files.
 - Their size is **unbounded** when any of the following are present:
     - `field` with unbounded type.
     - `array` with unbounded size according to the conditions listed [above](#array-types).
+    - `dummy` with unbounded type.
 - If applicable, the **fixed** size can be calculated by adding the length of all fields.
 
 ## Underlying types
