@@ -105,7 +105,7 @@ Text content is optional and specifies a hardcoded field value.
 >   - Non-optional fields are forbidden afterwards.
 >     - This only applies within the current chunk if [chunked reading](chunks.md) is enabled.
 > - `delimited` is only allowed if the array is within a `<chunked>` element.
-> - If `delimited` is **false**, then the element type must have a fixed size.
+> - If `delimited` is **false**, then the element type must have a bounded size.
 > - If `delimited` is **false** _and_ `length` is not provided...
 >   - The array must be the final field in the data structure (or in the chunk, if [chunked reading](chunks.md) is enabled)
 >   - Assuming integer division, the number of elements can be calculated as `remaining_length / element_size`.

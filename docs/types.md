@@ -3,16 +3,16 @@ A specification of the data types that can be referenced in protocol files.
 
 ## Basic types
 
-| type           | size                                                                                  | description                                                       |
-|----------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| byte           | 1                                                                                     | An unencoded integer value.                                       |
-| char           | 1                                                                                     | An encoded integer value.                                         |
-| short          | 2                                                                                     | An encoded integer value.                                         |
-| three          | 3                                                                                     | An encoded integer value.                                         |
-| int            | 4                                                                                     | An encoded integer value.                                         |
-| bool           | 1                                                                                     | An encoded integer value that's interpreted as `true` or `false`. |
-| string         | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An unencoded string value.                                        |
-| encoded_string | variable, or fixed `length` from a [\<field>](elements.md#the-field-element) element. | An encoded string value.                                          |
+| type           | size                                                                                                                            | description                                                       |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| byte           | 1                                                                                                                               | An unencoded integer value.                                       |
+| char           | 1                                                                                                                               | An encoded integer value.                                         |
+| short          | 2                                                                                                                               | An encoded integer value.                                         |
+| three          | 3                                                                                                                               | An encoded integer value.                                         |
+| int            | 4                                                                                                                               | An encoded integer value.                                         |
+| bool           | 1                                                                                                                               | An encoded integer value that's interpreted as `true` or `false`. |
+| string         | variable or fixed `length` from a [\<field>](elements.md#the-field-element) element.<br>unbounded if `length` is not specified. | An unencoded string value.                                        |
+| encoded_string | variable or fixed `length` from a [\<field>](elements.md#the-field-element) element.<br>unbounded if `length` is not specified. | An encoded string value.                                          |
 
 > **Implementation notes:**
 > - The `bool` type is interpreted as:
@@ -22,12 +22,16 @@ A specification of the data types that can be referenced in protocol files.
 
 ## Array types
 - Defined by [\<array>](elements.md#the-array-element) elements.
-- They are variable-sized if any of the following are true:
-    - the `length` attribute is not provided.
+- Their size is **variable** if any of the following are true:
+    - the element type has variable size.
+    - the `length` attribute is not a numeric literal.
     - the `delimited` attribute is true.
         - It's possible to omit data or insert garbage data at the end of each chunk.
         - See the documentation on [chunked reading](chunks.md) for more information.
-- Fixed size can be calculated as `element_size * length`.
+- Their size is **unbounded** if any of the following are true:
+    - the element type has unbounded size.
+    - the `length` attribute is not provided.
+- If applicable, **fixed** size can be calculated as `element_size * length`.
 
 ## Custom types
 
@@ -37,7 +41,7 @@ A specification of the data types that can be referenced in protocol files.
 
 ### Structs
 - Defined by [\<struct>](elements.md#the-struct-element) elements.
-- They are variable-sized when any of the following are present:
+- Their size is **variable** when any of the following are present:
     - `field` where any of the following are true:
         - the type is variable-sized.
         - the `optional` attribute is true.
@@ -48,7 +52,10 @@ A specification of the data types that can be referenced in protocol files.
         - It's possible to omit data or insert garbage data at the end of each chunk.
         - See the documentation on [chunked reading](chunks.md) for more information.
      - `switch`
-- Fixed size can be calculated by adding the length of all fields.
+- Their size is **unbounded** when any of the following are present:
+    - `field` with unbounded type.
+    - `array` with unbounded size according to the conditions listed [above](#array-types).
+- If applicable, the **fixed** size can be calculated by adding the length of all fields.
 
 ## Underlying types
 - An underlying type specifies how a type will be treated for serialization purposes.
