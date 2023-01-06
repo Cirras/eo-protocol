@@ -841,7 +841,7 @@
 
     <packet family="Trade" action="Agree">
         <comment>Mark trade as agreed</comment>
-        <field name="agree_state" type="char"/>
+        <field name="agree" type="bool"/>
     </packet>
 
     <packet family="Trade" action="Add">
