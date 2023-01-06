@@ -395,11 +395,7 @@
             <break/>
             <field name="behaviour_id" type="short"/>
             <break/>
-            <field name="answer1" type="string"/>
-            <break/>
-            <field name="answer2" type="string"/>
-            <break/>
-            <field name="answer3" type="string"/>
+            <array name="answers" type="string" length="3" delimited="true"/>
         </chunked>
     </packet>
 

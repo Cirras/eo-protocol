@@ -1435,11 +1435,7 @@
             <field name="current_home_id" type="char"/>
             <field name="session_id" type="short"/>
             <break/>
-            <field name="question1" type="string"/>
-            <break/>
-            <field name="question2" type="string"/>
-            <break/>
-            <field name="question3" type="string"/>
+            <array name="questions" type="string" length="3" delimited="true"/>
         </chunked>
     </packet>
 
