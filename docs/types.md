@@ -54,8 +54,8 @@ A specification of the data types that can be referenced in protocol files.
         - See the documentation on [chunked reading](chunks.md) for more information.
      - `switch`
 - Their size is **unbounded** when any of the following are present:
-    - `field` with unbounded type.
-    - `array` with unbounded size according to the conditions listed [above](#array-types).
+    - `field` with unbounded type, which is not followed by a `break`.
+    - `array` with unbounded size according to the conditions listed [above](#array-types), which is not followed by a `break`.
     - `dummy` with unbounded type.
 - If applicable, the **fixed** size can be calculated by adding the length of all fields.
 
