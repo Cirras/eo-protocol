@@ -127,9 +127,9 @@
         <comment>Endless Item File</comment>
         <field type="string" length="3">EIF</field>
         <array name="rid" type="short" length="2"/>
-        <length name="items_count" type="short"/>
+        <field name="total_items_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="items" type="EIFRecord" length="items_count"/>
+        <array name="items" type="EIFRecord"/>
     </struct>
 
     <enum name="NPCType" type="char">
@@ -185,9 +185,9 @@
         <comment>Endless NPC File</comment>
         <field type="string" length="3">ENF</field>
         <array name="rid" type="short" length="2"/>
-        <length name="npcs_count" type="short"/>
+        <field name="total_npcs_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="npcs" type="ENFRecord" length="npcs_count"/>
+        <array name="npcs" type="ENFRecord"/>
     </struct>
 
     <struct name="ECFRecord">
@@ -208,9 +208,9 @@
         <comment>Endless Class File</comment>
         <field type="string" length="3">ECF</field>
         <array name="rid" type="short" length="2"/>
-        <length name="classes_count" type="short"/>
+        <field name="total_classes_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="classes" type="ECFRecord" length="classes_count"/>
+        <array name="classes" type="ECFRecord"/>
     </struct>
 
     <enum name="SkillNature" type="char">
@@ -282,8 +282,8 @@
         <comment>Endless Skill File</comment>
         <field type="string" length="3">ESF</field>
         <array name="rid" type="short" length="2"/>
-        <length name="skills_count" type="short"/>
+        <field name="total_skills_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="skills" type="ESFRecord" length="skills_count"/>
+        <array name="skills" type="ESFRecord"/>
     </struct>
 </protocol>
