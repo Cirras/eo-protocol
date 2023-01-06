@@ -417,7 +417,7 @@
 
     <packet family="Shop" action="Buy">
         <comment>Purchasing an item from a shop</comment>
-        <field name="buy_item_id" type="short"/>
+        <field name="buy_item" type="Item"/>
         <field name="session_id" type="int"/>
     </packet>
 
