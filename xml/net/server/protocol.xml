@@ -725,14 +725,14 @@
 
     <struct name="NPCUpdatePosition">
         <comment>An NPC walking</comment>
-        <field name="npc_index" type="short"/>
+        <field name="npc_index" type="char"/>
         <field name="coords" type="Coords"/>
         <field name="direction" type="Direction"/>
     </struct>
 
     <struct name="NPCUpdateAttack">
         <comment>An NPC attacking</comment>
-        <field name="npc_index" type="short"/>
+        <field name="npc_index" type="char"/>
         <field name="killed" type="NPCKilledState"/>
         <field name="direction" type="Direction"/>
         <field name="player_id" type="short"/>
@@ -742,7 +742,7 @@
 
     <struct name="NPCUpdateChat">
         <comment>An NPC talking</comment>
-        <field name="npc_index" type="short"/>
+        <field name="npc_index" type="char"/>
         <length name="message_length" type="char"/>
         <field name="message" type="string" length="message_length"/>
     </struct>
