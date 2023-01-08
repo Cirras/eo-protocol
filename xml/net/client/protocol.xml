@@ -138,7 +138,7 @@
             <field name="gender" type="Gender:short"/>
             <field name="hair_style" type="short"/>
             <field name="hair_color" type="short"/>
-            <field name="skin" type="Skin:short"/>
+            <field name="skin" type="short"/>
             <break/>
             <field name="name" type="string"/>
             <break/>

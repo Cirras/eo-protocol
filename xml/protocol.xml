@@ -42,17 +42,6 @@
         <value name="Male">1</value>
     </enum>
 
-    <enum name="Skin" type="char">
-        <comment>The skin of a player</comment>
-        <value name="White">0</value>
-        <value name="Tan">1</value>
-        <value name="Yellow">2</value>
-        <value name="Orc">3</value>
-        <value name="Skeleton">4</value>
-        <value name="Panda">5</value>
-        <value name="Fish">6</value>
-    </enum>
-
     <struct name="Coords">
         <comment>Map coordinates</comment>
         <field name="x" type="char"/>

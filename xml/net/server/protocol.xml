@@ -353,7 +353,7 @@
             <field name="gender" type="Gender"/>
             <field name="hair_style" type="char"/>
             <field name="hair_color" type="char"/>
-            <field name="skin_id" type="Skin"/>
+            <field name="skin_id" type="char"/>
             <field name="max_hp" type="short"/>
             <field name="hp" type="short"/>
             <field name="max_tp" type="short"/>
@@ -437,7 +437,7 @@
             <field name="gender" type="Gender"/>
             <field name="hair_style" type="char"/>
             <field name="hair_color" type="char"/>
-            <field name="skin" type="Skin"/>
+            <field name="skin" type="char"/>
             <field name="admin" type="AdminLevel"/>
             <field name="equipment" type="EquipmentCharacterSelect"/>
         </chunked>
