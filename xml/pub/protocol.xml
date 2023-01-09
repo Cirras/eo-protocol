@@ -132,7 +132,7 @@
         <array name="items" type="EIFRecord"/>
     </struct>
 
-    <enum name="NPCType" type="char">
+    <enum name="NPCType" type="short">
         <value name="Friendly">0</value>
         <value name="Passive">1</value>
         <value name="Aggressive">2</value>
