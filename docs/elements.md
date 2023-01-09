@@ -40,7 +40,7 @@ Text content is required and must be a numeric value.
 | default   | If **true**, then an unknown value should be treated as this value instead.<br>Only one enumeration value can be the default. |
 
 > **Implementation notes**
-> - An unknown value which is not handled by `clamp` or `default` should be considered a deserialization error.
+> - An unknown value should be persisted after deserialization, regardless of whether it's been translated by `clamp` or `default`.
 
 ## The \<struct> Element
 
