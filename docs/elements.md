@@ -29,7 +29,7 @@ A specification of the XML elements used within `protocol.xml` files.
 
 > **Implementation notes**
 > - An "out-of-bounds" value is smaller than the smallest possible value, or larger than the largest possible value.
-> - A value that's *within* the possible range but undefined in the enumeration should be considered unknown.
+> - A value that's *within* the possible range but undefined in the enumeration should be considered unrecognized.
 
 ## The \<value> Element
 Text content is required and must be a numeric value.
@@ -37,10 +37,10 @@ Text content is required and must be a numeric value.
 | attribute | description                                                                                                                   |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------|
 | name      | The name of the enumeration value.<br>`PascalCase` should be used.                                                            |
-| default   | If **true**, then an unknown value should be treated as this value instead.<br>Only one enumeration value can be the default. |
+| default   | If **true**, then an unrecognized value should be treated as this value instead.<br>Only one enumeration value can be the default. |
 
 > **Implementation notes**
-> - An unknown value should be persisted after deserialization, regardless of whether it's been translated by `clamp` or `default`.
+> - An unrecognized value should be persisted after deserialization, regardless of whether it's been translated by `clamp` or `default`.
 
 ## The \<struct> Element
 
