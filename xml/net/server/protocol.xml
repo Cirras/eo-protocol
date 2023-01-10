@@ -806,7 +806,7 @@
                 <field name="server_encryption_multiple" type="byte"/>
                 <field name="client_encryption_multiple" type="byte"/>
                 <field name="player_id" type="short"/>
-                <field name="response" type="three"/>
+                <field name="challenge_response" type="three"/>
             </case>
             <case value="Banned">
                 <field name="ban_type" type="InitBanType"/>
