@@ -188,7 +188,12 @@
         <array name="tile_spec_rows" type="MapTileSpecRow" length="tile_spec_rows_count"/>
         <length name="warp_rows_count" type="char"/>
         <array name="warp_rows" type="MapWarpRow" length="warp_rows_count"/>
-        <array name="graphic_layers" type="MapGraphicLayer" length="9"/>
+        <array name="graphic_layers" type="MapGraphicLayer" length="9">
+            <comment>
+                The 9 layers of map graphics.
+                Order is [Ground, Object, Overlay, Down Wall, Right Wall, Roof, Top, Shadow, Overlay2]
+            </comment>
+        </array>
         <length name="signs_count" type="char"/>
         <array name="signs" type="MapSign" length="signs_count"/>
     </struct>
