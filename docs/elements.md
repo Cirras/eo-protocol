@@ -37,10 +37,9 @@ Text content is required and must be a numeric value.
 | attribute | description                                                                                                                   |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------|
 | name      | The name of the enumeration value.<br>`PascalCase` should be used.                                                            |
-| default   | If **true**, then an unrecognized value should be treated as this value instead.<br>Only one enumeration value can be the default. |
 
 > **Implementation notes**
-> - An unrecognized value should be persisted after deserialization, regardless of whether it's been translated by `clamp` or `default`.
+> - An unrecognized value should be persisted after deserialization, regardless of whether it's been translated by `clamp`.
 
 ## The \<struct> Element
 

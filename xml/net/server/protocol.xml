@@ -23,7 +23,7 @@
 
     <enum name="CharacterIcon" type="char">
         <comment>Icon displayed in paperdolls, books, and the online list</comment>
-        <value name="Player" default="true">1</value>
+        <value name="Player">1</value>
         <value name="GM">4</value>
         <value name="HGM">5</value>
         <value name="Party">6</value>
@@ -162,7 +162,7 @@
 
     <enum name="WarpEffect" type="char">
         <comment>An effect that accompanies a player warp</comment>
-        <value name="None" default="true">0</value>
+        <value name="None">0</value>
         <value name="Scroll">
             <comment>Plays the scroll sound effect</comment>
             1
