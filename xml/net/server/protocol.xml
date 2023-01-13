@@ -15,8 +15,11 @@
         <value name="FileECF">12</value>
     </enum>
 
-    <enum name="InitBanType" type="byte" clamp="true">
-        <comment>Ban type sent with INIT_INIT packet</comment>
+    <enum name="InitBanType" type="byte">
+        <comment>
+            Ban type sent with INIT_INIT packet.
+            The official client treats a value &gt;= 2 as Permanent. Otherwise, it's Temporary.
+        </comment>
         <value name="Temporary">1</value>
         <value name="Permanent">2</value>
     </enum>

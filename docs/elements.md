@@ -25,11 +25,6 @@ A specification of the XML elements used within `protocol.xml` files.
 |-----------|--------------------------------------------------------------------------------------------------------------------------------------|
 | name      | The name of the enumeration type.<br>`PascalCase` should be used.                                                                    |
 | type      | The underlying type of the enumeration.<br>For more information, see documentation on [underlying types](types.md#underlying-types). |
-| clamp     | If **true**, then an out-of-bounds value should be clamped to the nearest expected value.                                            |
-
-> **Implementation notes**
-> - An "out-of-bounds" value is smaller than the smallest possible value, or larger than the largest possible value.
-> - A value that's *within* the possible range but undefined in the enumeration should be considered unrecognized.
 
 ## The \<value> Element
 Text content is required and must be a numeric value.
@@ -39,7 +34,7 @@ Text content is required and must be a numeric value.
 | name      | The name of the enumeration value.<br>`PascalCase` should be used.                                                            |
 
 > **Implementation notes**
-> - An unrecognized value should be persisted after deserialization, regardless of whether it's been translated by `clamp`.
+> - An unrecognized value should be persisted after deserialization.
 
 ## The \<struct> Element
 
