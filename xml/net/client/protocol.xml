@@ -55,6 +55,12 @@
         <value name="Divorce">2</value>
     </enum>
 
+    <struct name="ByteCoords">
+        <comment>Map coordinates with raw 1-byte values</comment>
+        <field name="x" type="short"/>
+        <field name="y" type="short"/>
+    </struct>
+
     <struct name="WalkAction">
         <comment>Common data between walk packets</comment>
         <field name="direction" type="Direction"/>
@@ -475,11 +481,13 @@
     <packet family="Item" action="Drop">
         <comment>Dropping items on the ground</comment>
         <field name="item" type="ThreeItem"/>
-        <field name="coords" type="Coords">
+        <field name="coords" type="ByteCoords">
             <comment>
                 The official client sends 255 byte values for the coords if an item is dropped via
                 the GUI button.
-                254 char values here should be interpreted to mean "drop at current coords".
+                255 values here should be interpreted to mean "drop at current coords".
+                Otherwise, the x and y fields contain encoded numbers that must be explicitly
+                decoded to get the actual x and y values.
             </comment>
         </field>
     </packet>
