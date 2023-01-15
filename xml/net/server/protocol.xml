@@ -985,12 +985,27 @@
         <chunked>
             <field name="reply_code" type="LoginReply"/>
             <switch field="reply_code">
+                <case value="WrongUser">
+                    <field type="string">NO</field>
+                </case>
+                <case value="WrongUserPassword">
+                    <field type="string">NO</field>
+                </case>
                 <case value="Ok">
                     <length name="characters_count" type="char"/>
                     <field type="char">0</field>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
                     <break/>
+                </case>
+                <case value="Banned">
+                    <field type="string">NO</field>
+                </case>
+                <case value="LoggedIn">
+                    <field type="string">NO</field>
+                </case>
+                <case value="Busy">
+                    <field type="string">NO</field>
                 </case>
             </switch>
         </chunked>
