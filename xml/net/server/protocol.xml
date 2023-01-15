@@ -937,15 +937,19 @@
                 </case>
                 <case value="1">
                     <comment>CharacterReply.Exists</comment>
+                    <field type="string">NO</field>
                 </case>
                 <case value="2">
                     <comment>CharacterReply.Full</comment>
+                    <field type="string">NO</field>
                 </case>
                 <case value="3">
                     <comment>CharacterReply.Full3</comment>
+                    <field type="string">NO</field>
                 </case>
                 <case value="4">
                     <comment>CharacterReply.NotApproved</comment>
+                    <field type="string">NO</field>
                 </case>
                 <case value="5">
                     <comment>CharacterReply.OK</comment>
