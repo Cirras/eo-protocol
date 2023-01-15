@@ -446,17 +446,6 @@
         </chunked>
     </struct>
 
-    <struct name="CharacterSelectionList">
-        <comment>Character selection screen character list</comment>
-        <chunked>
-            <length name="characters_count" type="char"/>
-            <field type="char">1</field>
-            <break/>
-            <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
-            <break/>
-        </chunked>
-    </struct>
-
     <struct name="ServerSettings">
         <comment>Settings sent with WELCOME_REPLY packet</comment>
         <field name="jail_map" type="short"/>
@@ -953,11 +942,18 @@
                 </case>
                 <case value="5">
                     <comment>CharacterReply.OK</comment>
-                    <field name="character_list" type="CharacterSelectionList"/>
+                    <length name="characters_count" type="char"/>
+                    <field type="char">0</field>
+                    <break/>
+                    <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
+                    <break/>
                 </case>
                 <case value="6">
                     <comment>CharacterReply.Deleted</comment>
-                    <field name="character_list" type="CharacterSelectionList"/>
+                    <length name="characters_count" type="char"/>
+                    <break/>
+                    <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
+                    <break/>
                 </case>
                 <case value="7">
                     <!-- No effect in the official client -->
@@ -990,7 +986,11 @@
             <field name="reply_code" type="LoginReply"/>
             <switch field="reply_code">
                 <case value="Ok">
-                    <field name="character_list" type="CharacterSelectionList"/>
+                    <length name="characters_count" type="char"/>
+                    <field type="char">0</field>
+                    <break/>
+                    <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
+                    <break/>
                 </case>
             </switch>
         </chunked>
