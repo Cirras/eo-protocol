@@ -5,8 +5,8 @@
         <value name="Player">0</value>
         <value name="Guide">1</value>
         <value name="Guardian">2</value>
-        <value name="GM">3</value>
-        <value name="HGM">4</value>
+        <value name="Gm">3</value>
+        <value name="Hgm">4</value>
         <value name="Reserved5">5</value>
     </enum>
 

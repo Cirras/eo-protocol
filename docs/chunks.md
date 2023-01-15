@@ -202,7 +202,7 @@ char characters_count
 break
 array of CharacterMapInfo[characters_count] (delimited by break)
 break
-array of NPCMapInfo
+array of NpcMapInfo
 break
 array of ItemMapInfo
 ```
@@ -248,16 +248,16 @@ void PlayersAgree(DataReader* reader)
         ReadCharacterMapInfo(chunk);
     }
 
-    // Read the next chunk as a non-delimited array of NPCMapInfo.
+    // Read the next chunk as a non-delimited array of NpcMapInfo.
     // There is no remaining data, so this chunk is empty and npcs_count = 0.
     AnsiString npcs = reader->GetChunk();
-    int npcs_count = npcs.Length() / NPCMapInfo::ByteSize();
+    int npcs_count = npcs.Length() / NpcMapInfo::ByteSize();
 
     for (int i = 0; i < npcs_count; ++i)
     {
-        int npc_pos = 1 + (i * NPCMapInfo::ByteSize());
-        AnsiString npc = chunk.SubString(npc_pos, NPCMapInfo::ByteSize());
-        ReadNPCMapInfo(npc);
+        int npc_pos = 1 + (i * NpcMapInfo::ByteSize());
+        AnsiString npc = chunk.SubString(npc_pos, NpcMapInfo::ByteSize());
+        ReadNpcMapInfo(npc);
     }
 
     // Read the next chunk as a non-delimited array of ItemMapInfo.

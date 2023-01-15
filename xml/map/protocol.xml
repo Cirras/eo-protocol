@@ -2,14 +2,14 @@
 <protocol>
     <enum name="MapType" type="char">
         <value name="Normal">0</value>
-        <value name="PK">3</value>
+        <value name="Pk">3</value>
     </enum>
 
     <enum name="MapTimedEffect" type="char">
         <comment>A timed effect that can occur on a map</comment>
         <value name="None">0</value>
-        <value name="HPDrain">1</value>
-        <value name="TPDrain">2</value>
+        <value name="HpDrain">1</value>
+        <value name="TpDrain">2</value>
         <value name="Quake1">3</value>
         <value name="Quake2">4</value>
         <value name="Quake3">5</value>
@@ -50,7 +50,7 @@
         <value name="Reserved14">14</value>
         <value name="Reserved15">15</value>
         <value name="BankVault">16</value>
-        <value name="NPCBoundary">17</value>
+        <value name="NpcBoundary">17</value>
         <value name="Edge">18</value>
         <value name="FakeWall">19</value>
         <value name="Board1">20</value>
@@ -73,7 +73,7 @@
         <value name="HiddenSpikes">36</value>
     </enum>
 
-    <struct name="MapNPC">
+    <struct name="MapNpc">
         <comment>NPC spawn EMF entity</comment>
         <field name="coords" type="Coords"/>
         <field name="id" type="short"/>
@@ -159,7 +159,7 @@
         <array name="graphic_rows" type="MapGraphicRow" length="graphic_rows_count"/>
     </struct>
 
-    <struct name="EMF">
+    <struct name="Emf">
         <comment>Endless Map File</comment>
         <field type="string" length="3">EMF</field>
         <array name="rid" type="short" length="2"/>
@@ -179,7 +179,7 @@
         <!-- The official client and server don't use this value. -->
         <field type="char">0</field>
         <length name="npcs_count" type="char"/>
-        <array name="npcs" type="MapNPC" length="npcs_count"/>
+        <array name="npcs" type="MapNpc" length="npcs_count"/>
         <length name="legacy_door_keys_count" type="char"/>
         <array name="legacy_door_keys" type="MapLegacyDoorKey" length="legacy_door_keys_count"/>
         <length name="items_count" type="char"/>

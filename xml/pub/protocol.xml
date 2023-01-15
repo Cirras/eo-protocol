@@ -8,7 +8,7 @@
         <value name="Heal">3</value>
         <value name="Teleport">4</value>
         <value name="Spell">5</value>
-        <value name="EXPReward">6</value>
+        <value name="ExpReward">6</value>
         <!-- "skill book" in the official pub editor -->
         <value name="Reserved7">7</value>
         <!-- "reserved" in the official pub editor -->
@@ -70,7 +70,7 @@
         <value name="Size2x4">7</value>
     </enum>
 
-    <struct name="EIFRecord">
+    <struct name="EifRecord">
         <comment>Record of Item data in an Endless Item File</comment>
         <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
@@ -123,16 +123,16 @@
         <field name="size" type="ItemSize"/>
     </struct>
 
-    <struct name="EIF">
+    <struct name="Eif">
         <comment>Endless Item File</comment>
         <field type="string" length="3">EIF</field>
         <array name="rid" type="short" length="2"/>
         <field name="total_items_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="items" type="EIFRecord"/>
+        <array name="items" type="EifRecord"/>
     </struct>
 
-    <enum name="NPCType" type="short">
+    <enum name="NpcType" type="short">
         <value name="Friendly">0</value>
         <value name="Passive">1</value>
         <value name="Aggressive">2</value>
@@ -155,7 +155,7 @@
         <value name="Quest">15</value>
     </enum>
 
-    <struct name="ENFRecord">
+    <struct name="EnfRecord">
         <comment>Record of NPC data in an Endless NPC File</comment>
         <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
@@ -163,7 +163,7 @@
         <field name="race" type="char"/>
         <field name="boss" type="bool:short"/>
         <field name="child" type="bool:short"/>
-        <field name="type" type="NPCType"/>
+        <field name="type" type="NpcType"/>
         <field name="behaviour_id" type="short"/>
         <field name="hp" type="three"/>
         <field name="tp" type="short"/>
@@ -181,16 +181,16 @@
         <field name="experience" type="three"/>
     </struct>
 
-    <struct name="ENF">
+    <struct name="Enf">
         <comment>Endless NPC File</comment>
         <field type="string" length="3">ENF</field>
         <array name="rid" type="short" length="2"/>
         <field name="total_npcs_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="npcs" type="ENFRecord"/>
+        <array name="npcs" type="EnfRecord"/>
     </struct>
 
-    <struct name="ECFRecord">
+    <struct name="EcfRecord">
         <comment>Record of Class data in an Endless Class File</comment>
         <length name="name_length" type="char"/>
         <field name="name" type="string" length="name_length"/>
@@ -204,13 +204,13 @@
         <field name="cha" type="short"/>
     </struct>
 
-    <struct name="ECF">
+    <struct name="Ecf">
         <comment>Endless Class File</comment>
         <field type="string" length="3">ECF</field>
         <array name="rid" type="short" length="2"/>
         <field name="total_classes_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="classes" type="ECFRecord"/>
+        <array name="classes" type="EcfRecord"/>
     </struct>
 
     <enum name="SkillNature" type="char">
@@ -225,7 +225,7 @@
     </enum>
 
     <enum name="SkillTargetRestrict" type="char">
-        <value name="NPC">0</value>
+        <value name="Npc">0</value>
         <value name="Friendly">1</value>
         <value name="Opponent">2</value>
     </enum>
@@ -237,7 +237,7 @@
         <value name="Group">3</value>
     </enum>
 
-    <struct name="ESFRecord">
+    <struct name="EsfRecord">
         <comment>Record of Skill data in an Endless Skill File</comment>
         <length name="name_length" type="char"/>
         <length name="chant_length" type="char"/>
@@ -278,12 +278,12 @@
         <field name="cha" type="short"/>
     </struct>
 
-    <struct name="ESF">
+    <struct name="Esf">
         <comment>Endless Skill File</comment>
         <field type="string" length="3">ESF</field>
         <array name="rid" type="short" length="2"/>
         <field name="total_skills_count" type="short"/>
         <field name="version" type="char"/>
-        <array name="skills" type="ESFRecord"/>
+        <array name="skills" type="EsfRecord"/>
     </struct>
 </protocol>

@@ -2,17 +2,17 @@
     <enum name="InitReply" type="byte">
         <comment>Reply code sent with INIT_INIT packet</comment>
         <value name="OutOfDate">1</value>
-        <value name="OK">2</value>
+        <value name="Ok">2</value>
         <value name="Banned">3</value>
         <value name="WarpMap">4</value>
-        <value name="FileEMF">5</value>
-        <value name="FileEIF">6</value>
-        <value name="FileENF">7</value>
-        <value name="FileESF">8</value>
+        <value name="FileEmf">5</value>
+        <value name="FileEif">6</value>
+        <value name="FileEnf">7</value>
+        <value name="FileEsf">8</value>
         <value name="Players">9</value>
         <value name="MapMutation">10</value>
         <value name="FriendListPlayers">11</value>
-        <value name="FileECF">12</value>
+        <value name="FileEcf">12</value>
     </enum>
 
     <enum name="InitBanType" type="byte">
@@ -27,11 +27,11 @@
     <enum name="CharacterIcon" type="char">
         <comment>Icon displayed in paperdolls, books, and the online list</comment>
         <value name="Player">1</value>
-        <value name="GM">4</value>
-        <value name="HGM">5</value>
+        <value name="Gm">4</value>
+        <value name="Hgm">5</value>
         <value name="Party">6</value>
-        <value name="GMParty">9</value>
-        <value name="HGMParty">10</value>
+        <value name="GmParty">9</value>
+        <value name="HgmParty">10</value>
     </enum>
 
     <enum name="AvatarChangeType" type="char">
@@ -113,7 +113,7 @@
             3
         </value>
         <value name="NotApproved">4</value>
-        <value name="OK">5</value>
+        <value name="Ok">5</value>
         <value name="Deleted">6</value>
     </enum>
 
@@ -143,7 +143,7 @@
         </comment>
         <value name="WrongUser">1</value>
         <value name="WrongUserPassword">2</value>
-        <value name="OK">3</value>
+        <value name="Ok">3</value>
         <value name="Banned">4</value>
         <value name="LoggedIn">5</value>
         <value name="Busy">6</value>
@@ -204,7 +204,7 @@
         <value name="Report">2</value>
     </enum>
 
-    <enum name="NPCKilledState" type="char">
+    <enum name="NpcKilledState" type="char">
         <comment>Flag to indicate that an NPC has been killed</comment>
         <value name="Alive">1</value>
         <value name="Killed">2</value>
@@ -212,7 +212,7 @@
 
     <enum name="MapDamageType" type="char">
         <comment>Type of damage being caused by the environment</comment>
-        <value name="TPDrain">1</value>
+        <value name="TpDrain">1</value>
         <value name="Spikes">2</value>
     </enum>
 
@@ -368,7 +368,7 @@
         </chunked>
     </struct>
 
-    <struct name="NPCMapInfo">
+    <struct name="NpcMapInfo">
         <comment>Information about a nearby NPC</comment>
         <field name="index" type="char"/>
         <field name="id" type="short"/>
@@ -410,7 +410,7 @@
             <break/>
             <array name="characters" type="CharacterMapInfo" length="characters_count" delimited="true"/>
             <break/>
-            <array name="npcs" type="NPCMapInfo"/>
+            <array name="npcs" type="NpcMapInfo"/>
             <break/>
             <array name="items" type="ItemMapInfo"/>
         </chunked>
@@ -704,7 +704,7 @@
         </chunked>
     </struct>
 
-    <struct name="NPCKilledData">
+    <struct name="NpcKilledData">
         <comment>Information about an NPC that has been killed</comment>
         <field name="killer_id" type="short"/>
         <field name="killer_direction" type="Direction"/>
@@ -726,24 +726,24 @@
         <field name="max_sp" type="short"/>
     </struct>
 
-    <struct name="NPCUpdatePosition">
+    <struct name="NpcUpdatePosition">
         <comment>An NPC walking</comment>
         <field name="npc_index" type="char"/>
         <field name="coords" type="Coords"/>
         <field name="direction" type="Direction"/>
     </struct>
 
-    <struct name="NPCUpdateAttack">
+    <struct name="NpcUpdateAttack">
         <comment>An NPC attacking</comment>
         <field name="npc_index" type="char"/>
-        <field name="killed" type="NPCKilledState"/>
+        <field name="killed" type="NpcKilledState"/>
         <field name="direction" type="Direction"/>
         <field name="player_id" type="short"/>
         <field name="damage" type="three"/>
         <field name="hp_percentage" type="char"/>
     </struct>
 
-    <struct name="NPCUpdateChat">
+    <struct name="NpcUpdateChat">
         <comment>An NPC talking</comment>
         <field name="npc_index" type="char"/>
         <length name="message_length" type="char"/>
@@ -803,7 +803,7 @@
             <case value="OutOfDate">
                 <field name="version" type="Version"/>
             </case>
-            <case value="OK">
+            <case value="Ok">
                 <field name="seq1" type="byte"/>
                 <field name="seq2" type="byte"/>
                 <field name="server_encryption_multiple" type="byte"/>
@@ -822,22 +822,22 @@
             <case value="WarpMap">
                 <array name="content" type="byte"/>
             </case>
-            <case value="FileEMF">
+            <case value="FileEmf">
                 <array name="content" type="byte"/>
             </case>
-            <case value="FileEIF">
+            <case value="FileEif">
                 <field name="file_id" type="char"/>
                 <array name="content" type="byte"/>
             </case>
-            <case value="FileENF">
+            <case value="FileEnf">
                 <field name="file_id" type="char"/>
                 <array name="content" type="byte"/>
             </case>
-            <case value="FileESF">
+            <case value="FileEsf">
                 <field name="file_id" type="char"/>
                 <array name="content" type="byte"/>
             </case>
-            <case value="FileECF">
+            <case value="FileEcf">
                 <field name="file_id" type="char"/>
                 <array name="content" type="byte"/>
             </case>
@@ -985,7 +985,7 @@
         <chunked>
             <field name="reply_code" type="LoginReply"/>
             <switch field="reply_code">
-                <case value="OK">
+                <case value="Ok">
                     <field name="character_list" type="CharacterSelectionList"/>
                 </case>
             </switch>
@@ -1332,10 +1332,10 @@
         <field name="nearby" type="NearbyInfo"/>
     </packet>
 
-    <packet family="NPC" action="Agree">
+    <packet family="Npc" action="Agree">
         <comment>Reply to request for information about nearby NPCs</comment>
         <length name="npcs_count" type="short"/>
-        <array name="npcs" type="NPCMapInfo" length="npcs_count"/>
+        <array name="npcs" type="NpcMapInfo" length="npcs_count"/>
     </packet>
 
     <packet family="Walk" action="Player">
@@ -1552,7 +1552,7 @@
             <case value="CureCurse">
                 <field name="stats" type="CharacterStatsEquipmentChange"/>
             </case>
-            <case value="EXPReward">
+            <case value="ExpReward">
                 <field name="experience" type="int"/>
                 <field name="level_up" type="char">
                     <comment>
@@ -2120,7 +2120,7 @@
         <field name="partner_player_id" type="short"/>
     </packet>
 
-    <packet family="NPC" action="Reply">
+    <packet family="Npc" action="Reply">
         <comment>Nearby NPC hit by a player</comment>
         <field name="player_id" type="short"/>
         <field name="player_direction" type="Direction"/>
@@ -2141,15 +2141,15 @@
         <field name="caster_tp" type="short"/>
     </packet>
 
-    <packet family="NPC" action="Spec">
+    <packet family="Npc" action="Spec">
         <comment>Nearby NPC killed by player</comment>
-        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="npc_killed_data" type="NpcKilledData"/>
         <field name="experience" type="int" optional="true"/>
     </packet>
 
-    <packet family="NPC" action="Accept">
+    <packet family="Npc" action="Accept">
         <comment>Nearby NPC killed by player and you leveled up</comment>
-        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="npc_killed_data" type="NpcKilledData"/>
         <field name="experience" type="int"/>
         <field name="level_up" type="LevelUpStats"/>
     </packet>
@@ -2157,7 +2157,7 @@
     <packet family="Cast" action="Spec">
         <comment>Nearby NPC killed by player spell</comment>
         <field name="spell_id" type="short"/>
-        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="npc_killed_data" type="NpcKilledData"/>
         <field name="caster_tp" type="short"/>
         <field name="experience" type="int" optional="true"/>
     </packet>
@@ -2165,32 +2165,32 @@
     <packet family="Cast" action="Accept">
         <comment>Nearby NPC killed by player spell and you leveled up</comment>
         <field name="spell_id" type="short"/>
-        <field name="npc_killed_data" type="NPCKilledData"/>
+        <field name="npc_killed_data" type="NpcKilledData"/>
         <field name="caster_tp" type="short"/>
         <field name="experience" type="int"/>
         <field name="level_up" type="LevelUpStats"/>
     </packet>
 
-    <packet family="NPC" action="Junk">
+    <packet family="Npc" action="Junk">
         <comment>Clearing all boss children</comment>
         <field name="npc_id" type="short"/>
     </packet>
 
-    <packet family="NPC" action="Player">
+    <packet family="Npc" action="Player">
         <comment>Main NPC update message</comment>
         <chunked>
-            <array name="positions" type="NPCUpdatePosition"/>
+            <array name="positions" type="NpcUpdatePosition"/>
             <break/>
-            <array name="attacks" type="NPCUpdateAttack"/>
+            <array name="attacks" type="NpcUpdateAttack"/>
             <break/>
-            <array name="chats" type="NPCUpdateChat"/>
+            <array name="chats" type="NpcUpdateChat"/>
             <break/>
             <field name="hp" type="short" optional="true"/>
             <field name="tp" type="short" optional="true"/>
         </chunked>
     </packet>
 
-    <packet family="NPC" action="Dialog">
+    <packet family="Npc" action="Dialog">
         <comment>NPC chat message</comment>
         <field name="npc_index" type="short"/>
         <field name="message" type="string"/>
@@ -2395,7 +2395,7 @@
         <comment>Taking spike or tp drain damage</comment>
         <field name="map_damage_type" type="MapDamageType"/>
         <switch field="map_damage_type">
-            <case value="TPDrain">
+            <case value="TpDrain">
                 <field name="tp_damage" type="short"/>
                 <field name="tp" type="short"/>
                 <field name="max_tp" type="short"/>

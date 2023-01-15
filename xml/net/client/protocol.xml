@@ -20,20 +20,20 @@
 
     <enum name="DialogReply" type="char">
         <comment>Whether the player has clicked the OK button or a link in a quest dialog</comment>
-        <value name="OK">1</value>
+        <value name="Ok">1</value>
         <value name="Link">2</value>
     </enum>
 
     <enum name="FileType" type="char">
         <comment>Data file type</comment>
-        <value name="EMF">1</value>
-        <value name="EIF">2</value>
-        <value name="ENF">3</value>
-        <value name="ESF">4</value>
-        <value name="ECF">5</value>
+        <value name="Emf">1</value>
+        <value name="Eif">2</value>
+        <value name="Enf">3</value>
+        <value name="Esf">4</value>
+        <value name="Ecf">5</value>
     </enum>
 
-    <enum name="StatID" type="short">
+    <enum name="StatId" type="short">
         <comment>Base character stat</comment>
         <value name="Str">1</value>
         <value name="Int">2</value>
@@ -46,7 +46,7 @@
     <enum name="SpellTargetType" type="char">
         <comment>Target type of a spell cast</comment>
         <value name="Player">1</value>
-        <value name="NPC">2</value>
+        <value name="Npc">2</value>
     </enum>
 
     <enum name="MarriageRequestType" type="char">
@@ -182,20 +182,20 @@
         <field name="file_type" type="FileType"/>
         <field name="session_id" type="short"/>
         <switch field="file_type">
-            <case value="EMF">
+            <case value="Emf">
                 <!-- Unlike the pub file IDs, the EMF file ID is a short -->
                 <field name="file_id" type="short"/>
             </case>
-            <case value="EIF">
+            <case value="Eif">
                 <field name="file_id" type="char"/>
             </case>
-            <case value="ENF">
+            <case value="Enf">
                 <field name="file_id" type="char"/>
             </case>
-            <case value="ESF">
+            <case value="Esf">
                 <field name="file_id" type="char"/>
             </case>
-            <case value="ECF">
+            <case value="Ecf">
                 <field name="file_id" type="char"/>
             </case>
         </switch>
@@ -454,7 +454,7 @@
         <field name="action_type" type="TrainType"/>
         <switch field="action_type">
             <case value="Stat">
-                <field name="stat_id" type="StatID"/>
+                <field name="stat_id" type="StatId"/>
             </case>
             <case value="Skill">
                 <field name="spell_id" type="short"/>
@@ -638,7 +638,7 @@
         <array name="player_ids" type="short"/>
     </packet>
 
-    <packet family="NPCRange" action="Request">
+    <packet family="NpcRange" action="Request">
         <comment>Requesting info about nearby NPCs</comment>
         <array name="npc_indexes" type="char"/>
     </packet>
