@@ -210,6 +210,12 @@
         <value name="Killed">2</value>
     </enum>
 
+    <enum name="NpcKillStealProtectionState" type="char">
+        <comment>Flag to indicate whether you are able to attack an NPC</comment>
+        <value name="Unprotected">1</value>
+        <value name="Protected">2</value>
+    </enum>
+
     <enum name="MapDamageType" type="char">
         <comment>Type of damage being caused by the environment</comment>
         <value name="TpDrain">1</value>
@@ -2146,7 +2152,7 @@
         <field name="npc_index" type="short"/>
         <field name="damage" type="three"/>
         <field name="hp_percentage" type="short"/>
-        <field type="char">1</field>
+        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true"/>
     </packet>
 
     <packet family="Cast" action="Reply">
@@ -2158,6 +2164,7 @@
         <field name="damage" type="three"/>
         <field name="hp_percentage" type="short"/>
         <field name="caster_tp" type="short"/>
+        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true"/>
     </packet>
 
     <packet family="Npc" action="Spec">
