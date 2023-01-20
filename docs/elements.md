@@ -85,13 +85,14 @@ Text content is optional and specifies a hardcoded field value.
 
 ## The \<array> Element
 
-| attribute     | description                                                                                                    |
-|---------------|----------------------------------------------------------------------------------------------------------------|
-| name          | The name of the array field.<br>`snake_case` should be used.                                                   |
-| type          | The element type of the array.<br>For more information, see documentation on [types](types.md).                |
-| length        | The length of the array.<br>The value should either be a numeric literal or the name of a `<length>` field.    |
-| optional      | If **true**, the field is considered optional for the purposes of data serialization.                          |
-| delimited     | If **true**, the elements of the array will be delimited with `0xFF` break bytes (without trailing delimiter). |
+| attribute          | description                                                                                                 |
+|--------------------|-------------------------------------------------------------------------------------------------------------|
+| name               | The name of the array field.<br>`snake_case` should be used.                                                |
+| type               | The element type of the array.<br>For more information, see documentation on [types](types.md).             |
+| length             | The length of the array.<br>The value should either be a numeric literal or the name of a `<length>` field. |
+| optional           | If **true**, the field is considered optional for the purposes of data serialization.                       |
+| delimited          | If **true**, the elements of the array will be delimited with `0xFF` break bytes.                           |
+| trailing-delimiter | If **true** (default), a non-empty delimited array will be followed by a trailing `0xFF` break byte.        |
 
 > **Implementation notes**
 > - If `optional` is **true**...

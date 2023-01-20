@@ -415,7 +415,6 @@
         <chunked>
             <break/>
             <array name="characters" type="CharacterMapInfo" length="characters_count" delimited="true"/>
-            <break/>
             <array name="npcs" type="NpcMapInfo"/>
             <break/>
             <array name="items" type="ItemMapInfo"/>
@@ -844,7 +843,6 @@
                     <field name="online_count" type="short"/>
                     <break/>
                     <array name="list" type="OnlinePlayer" delimited="true"/>
-                    <break/>
                 </chunked>
             </case>
             <case value="FriendListPlayers">
@@ -852,7 +850,6 @@
                     <field name="online_count" type="short"/>
                     <break/>
                     <array name="list" type="string" delimited="true"/>
-                    <break/>
                 </chunked>
             </case>
         </switch>
@@ -952,14 +949,12 @@
                     <field type="char">0</field>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
-                    <break/>
                 </case>
                 <case value="6">
                     <comment>CharacterReply.Deleted</comment>
                     <length name="characters_count" type="char"/>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
-                    <break/>
                 </case>
                 <case value="7">
                     <!-- No effect in the official client -->
@@ -1002,7 +997,6 @@
                     <field type="char">0</field>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
-                    <break/>
                 </case>
                 <case value="Banned">
                     <field type="string">NO</field>
@@ -1060,7 +1054,6 @@
                 <case value="EnterGame">
                     <break/>
                     <array name="news" type="string" length="9" delimited="true"/>
-                    <break/>
                     <field name="weight" type="Weight"/>
                     <array name="items" type="Item"/>
                     <break/>
@@ -1219,7 +1212,6 @@
         </comment>
         <chunked>
             <array name="messages" type="GlobalBackfillMessage" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1237,7 +1229,6 @@
         <comment>Large message box</comment>
         <chunked>
             <array name="messages" type="string" length="4" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1463,7 +1454,7 @@
             <field name="current_home_id" type="char"/>
             <field name="session_id" type="short"/>
             <break/>
-            <array name="questions" type="string" length="3" delimited="true"/>
+            <array name="questions" type="string" length="3" delimited="true" trailing-delimiter="false"/>
         </chunked>
     </packet>
 
@@ -1660,7 +1651,6 @@
             <field name="board_id" type="char"/>
             <length name="posts_count" type="char"/>
             <array name="posts" type="BoardPostListing" length="posts_count" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1768,7 +1758,6 @@
             <field name="icon" type="CharacterIcon"/>
             <break/>
             <array name="quest_names" type="string" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1874,7 +1863,6 @@
         <comment>Member list received when party is first joined</comment>
         <chunked>
             <array name="members" type="PartyMember" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1897,7 +1885,6 @@
         <comment>Party member list update</comment>
         <chunked>
             <array name="members" type="PartyMember" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1959,7 +1946,6 @@
         <comment>Get guild rank list reply</comment>
         <chunked>
             <array name="ranks" type="string" length="9" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -1984,7 +1970,6 @@
             <length name="members_count" type="short"/>
             <break/>
             <array name="members" type="GuildMember" length="members_count" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -2002,11 +1987,9 @@
             <field name="wealth" type="string"/>
             <break/>
             <array name="ranks" type="string" length="9" delimited="true"/>
-            <break/>
             <length name="staff_count" type="short"/>
             <break/>
             <array name="staff" type="GuildStaff" length="staff_count" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -2228,7 +2211,6 @@
             <field name="npc_id" type="short"/>
             <break/>
             <array name="messages" type="string" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -2242,9 +2224,7 @@
             <field name="dialog_id" type="short"/>
             <break/>
             <array name="quest_entries" type="DialogQuestEntry" length="quest_count" delimited="true"/>
-            <break/>
             <array name="dialog_entries" type="DialogEntry" delimited="true"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -2256,11 +2236,9 @@
             <switch field="page">
                 <case value="Progress">
                     <array name="quest_progress_entries" type="QuestProgressEntry" delimited="true"/>
-                    <break/>
                 </case>
                 <case value="History">
                     <array name="completed_quests" type="string" delimited="true"/>
-                    <break/>
                 </case>
             </switch>
         </chunked>

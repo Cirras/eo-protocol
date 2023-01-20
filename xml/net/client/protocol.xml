@@ -401,7 +401,7 @@
             <break/>
             <field name="behaviour_id" type="short"/>
             <break/>
-            <array name="answers" type="string" length="3" delimited="true"/>
+            <array name="answers" type="string" length="3" delimited="true" trailing-delimiter="false"/>
         </chunked>
     </packet>
 
@@ -708,7 +708,6 @@
                 </case>
                 <case value="Ranks">
                     <array name="ranks" type="string" length="9" delimited="true"/>
-                    <break/>
                 </case>
             </switch>
         </chunked>
