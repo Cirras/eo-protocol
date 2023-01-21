@@ -642,8 +642,8 @@
     <struct name="PartyMember">
         <comment>A member of the player's party</comment>
         <field name="player_id" type="short"/>
-        <field name="leader" type="char"/>
-        <field name="level" type="bool"/>
+        <field name="leader" type="bool"/>
+        <field name="level" type="char"/>
         <field name="hp_percentage" type="char"/>
         <field name="name" type="string"/>
     </struct>
