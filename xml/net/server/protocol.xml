@@ -1553,6 +1553,8 @@
     <packet family="Item" action="Reply">
         <comment>Reply to using an item</comment>
         <field name="item_type" type="ItemType"/>
+        <field name="used_item" type="Item"/>
+        <field name="weight" type="Weight"/>
         <switch field="item_type">
             <case value="Heal">
                 <field name="hp_gain" type="int"/>
