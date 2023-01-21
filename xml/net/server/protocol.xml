@@ -526,6 +526,16 @@
         <field name="armor" type="short"/>
     </struct>
 
+    <struct name="CharacterElementalStats">
+        <comment>The 6 elemental character stats</comment>
+        <field name="light" type="short"/>
+        <field name="dark" type="short"/>
+        <field name="fire" type="short"/>
+        <field name="water" type="short"/>
+        <field name="earth" type="short"/>
+        <field name="wind" type="short"/>
+    </struct>
+
     <struct name="CharacterStatsReset">
         <comment>
             Character stats data.
@@ -583,6 +593,7 @@
         <field name="max_tp" type="short"/>
         <field name="base_stats" type="CharacterBaseStats"/>
         <field name="secondary_stats" type="CharacterSecondaryStats"/>
+        <field name="elemental_stats" type="CharacterElementalStats"/>
     </struct>
 
     <struct name="CharacterStatsEquipmentChange">
@@ -1127,12 +1138,6 @@
             <field name="map_id" type="short"/>
             <field name="map_coords" type="BigCoords"/>
             <field name="stats" type="CharacterStatsInfoLookup"/>
-            <field name="light" type="short"/>
-            <field name="dark" type="short"/>
-            <field name="fire" type="short"/>
-            <field name="water" type="short"/>
-            <field name="earth" type="short"/>
-            <field name="wind" type="short"/>
             <field name="weight" type="Weight"/>
         </chunked>
     </packet>
