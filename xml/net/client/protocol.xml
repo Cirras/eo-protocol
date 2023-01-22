@@ -809,6 +809,7 @@
         <field name="target_type" type="SpellTargetType"/>
         <field name="previous_timestamp" type="three"/>
         <field name="spell_id" type="short"/>
+        <field name="victim_id" type="short"/>
         <field name="timestamp" type="three"/>
     </packet>
 
