@@ -165,7 +165,6 @@
 
     <enum name="WarpEffect" type="char">
         <comment>An effect that accompanies a player warp</comment>
-        <value name="None">0</value>
         <value name="Scroll">
             <comment>Plays the scroll sound effect</comment>
             1
