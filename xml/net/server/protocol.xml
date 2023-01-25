@@ -1607,6 +1607,11 @@
         <field name="coords" type="Coords"/>
     </packet>
 
+    <packet family="Item" action="Remove">
+        <comment>Item disappeared from the ground</comment>
+        <field name="item_index" type="short"/>
+    </packet>
+
     <packet family="Item" action="Junk">
         <comment>Reply to junking items</comment>
         <field name="junked_item" type="ThreeItem"/>
