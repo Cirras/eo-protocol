@@ -2086,7 +2086,7 @@
         <field name="spell_id" type="short"/>
         <field name="spell_heal_hp" type="int"/>
         <field name="hp_percentage" type="char"/>
-        <field name="hp" type="short"/>
+        <field name="hp" type="short" optional="true"/>
     </packet>
 
     <packet family="Trade" action="Request">
