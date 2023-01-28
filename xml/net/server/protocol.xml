@@ -149,7 +149,7 @@
         <value name="Busy">6</value>
     </enum>
 
-    <enum name="DialogEntryType" type="char">
+    <enum name="DialogEntryType" type="short">
         <comment>The type of an entry in a quest dialog</comment>
         <value name="Text">1</value>
         <value name="Link">2</value>
