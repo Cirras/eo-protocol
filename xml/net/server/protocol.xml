@@ -203,8 +203,8 @@
         <value name="Report">2</value>
     </enum>
 
-    <enum name="NpcKilledState" type="char">
-        <comment>Flag to indicate that an NPC has been killed</comment>
+    <enum name="PlayerKilledState" type="char">
+        <comment>Flag to indicate that a player has been killed</comment>
         <value name="Alive">1</value>
         <value name="Killed">2</value>
     </enum>
@@ -740,7 +740,7 @@
     <struct name="NpcUpdateAttack">
         <comment>An NPC attacking</comment>
         <field name="npc_index" type="char"/>
-        <field name="killed" type="NpcKilledState"/>
+        <field name="killed" type="PlayerKilledState"/>
         <field name="direction" type="Direction"/>
         <field name="player_id" type="short"/>
         <field name="damage" type="three"/>
