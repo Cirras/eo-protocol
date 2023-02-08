@@ -407,7 +407,7 @@
 
     <packet family="Citizen" action="Remove">
         <comment>Giving up citizenship of a town</comment>
-        <field name="session_id" type="short"/>
+        <field name="behaviour_id" type="short"/>
     </packet>
 
     <packet family="Citizen" action="Open">
