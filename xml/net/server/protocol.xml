@@ -818,6 +818,14 @@
             <case value="Banned">
                 <field name="ban_type" type="InitBanType"/>
                 <switch field="ban_type">
+                    <case value="0">
+                        <comment>
+                            The official client treats any value below 2 as a temporary ban.
+                            The official server sends 1, but some game server implementations
+                            erroneously send 0.
+                        </comment>
+                        <field name="minutes_remaining" type="byte"/>
+                    </case>
                     <case value="Temporary">
                         <field name="minutes_remaining" type="byte"/>
                     </case>
@@ -873,7 +881,7 @@
 
     <packet family="Account" action="Reply">
         <comment>Reply to client Account-family packets</comment>
-        <field name="reply_code" type="short">
+        <field name="reply_code" type="AccountReply">
             <comment>
                 Sometimes an AccountReply code, sometimes a session ID for account creation
             </comment>
@@ -882,31 +890,25 @@
             <case value="0">
                 <!-- No effect in the official client -->
             </case>
-            <case value="1">
-                <comment>AccountReply.Exists</comment>
+            <case value="Exists">
                 <field type="string">NO</field>
             </case>
-            <case value="2">
-                <comment>AccountReply.NotApproved</comment>
+            <case value="NotApproved">
                 <field type="string">NO</field>
             </case>
-            <case value="3">
-                <comment>AccountReply.Created</comment>
+            <case value="Created">
                 <field type="string">GO</field>
             </case>
             <case value="4">
                 <!-- No effect in the official client -->
             </case>
-            <case value="5">
-                <comment>AccountReply.ChangeFailed</comment>
+            <case value="ChangeFailed">
                 <field type="string">NO</field>
             </case>
-            <case value="6">
-                <comment>AccountReply.Changed</comment>
+            <case value="Changed">
                 <field type="string">NO</field>
             </case>
-            <case value="7">
-                <comment>AccountReply.RequestDenied</comment>
+            <case value="RequestDenied">
                 <field type="string">NO</field>
             </case>
             <case value="8">
@@ -928,7 +930,7 @@
     <packet family="Character" action="Reply">
         <comment>Reply to client Character-family packets</comment>
         <chunked>
-            <field name="reply_code" type="short">
+            <field name="reply_code" type="CharacterReply">
                 <comment>
                     Sometimes a CharacterReply code, sometimes a session ID for character creation
                 </comment>
@@ -937,31 +939,25 @@
                 <case value="0">
                     <!-- No effect in the official client -->
                 </case>
-                <case value="1">
-                    <comment>CharacterReply.Exists</comment>
+                <case value="Exists">
                     <field type="string">NO</field>
                 </case>
-                <case value="2">
-                    <comment>CharacterReply.Full</comment>
+                <case value="Full">
                     <field type="string">NO</field>
                 </case>
-                <case value="3">
-                    <comment>CharacterReply.Full3</comment>
+                <case value="Full3">
                     <field type="string">NO</field>
                 </case>
-                <case value="4">
-                    <comment>CharacterReply.NotApproved</comment>
+                <case value="NotApproved">
                     <field type="string">NO</field>
                 </case>
-                <case value="5">
-                    <comment>CharacterReply.OK</comment>
+                <case value="Ok">
                     <length name="characters_count" type="char"/>
                     <field type="char">0</field>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>
                 </case>
-                <case value="6">
-                    <comment>CharacterReply.Deleted</comment>
+                <case value="Deleted">
                     <length name="characters_count" type="char"/>
                     <break/>
                     <array name="characters" type="CharacterSelectionListEntry" length="characters_count" delimited="true"/>

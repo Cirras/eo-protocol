@@ -156,6 +156,11 @@ Text content is required and specifies a hardcoded dummy value.
 | default       | If **true**, then this switch case will be considered active if the field value does not match any other `case` elements. Only one switch case can be the default. |
 
 > **Implementation notes**
+> - If the field referenced by the switch is a numeric type...
+>   - `value` can be an integer literal.
+> - If the field referenced by the switch is an enumeration type...
+>   - `value` can be the name of a **specified** enum value.
+>   - `value` can be an integer literal representing an **unspecified** enum value.
 > - If `default` is true...
 >   - `value` cannot be specified.
 >   - the case must appear at the end of the switch.
