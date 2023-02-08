@@ -286,8 +286,8 @@
         <field name="armor" type="short"/>
         <field type="short">0</field>
         <field name="hat" type="short"/>
-        <field name="weapon" type="short"/>
         <field name="shield" type="short"/>
+        <field name="weapon" type="short"/>
     </struct>
 
     <struct name="EquipmentCharacterSelect">
