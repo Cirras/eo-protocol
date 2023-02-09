@@ -7,11 +7,12 @@
         <value name="Money">2</value>
         <value name="Heal">3</value>
         <value name="Teleport">4</value>
-        <value name="Spell">5</value>
+        <!-- "transformation" in the official pub editor -->
+        <value name="Reserved5">5</value>
         <value name="ExpReward">6</value>
         <!-- "skill book" in the official pub editor -->
         <value name="Reserved7">7</value>
-        <!-- "reserved" in the official pub editor -->
+        <!-- "visual document" in the official pub editor -->
         <value name="Reserved8">8</value>
         <value name="Key">9</value>
         <value name="Weapon">10</value>
