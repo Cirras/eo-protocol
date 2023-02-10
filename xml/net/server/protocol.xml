@@ -155,7 +155,7 @@
         <value name="Link">2</value>
     </enum>
 
-    <enum name="QuestRequirementIcon" type="char">
+    <enum name="QuestRequirementIcon" type="short">
         <comment>Icon displayed for each quest in the Quest Progress window</comment>
         <value name="Item">3</value>
         <value name="Talk">5</value>
