@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <protocol>
+    <enum name="Element" type="char">
+        <value name="None">0</value>
+        <value name="Light">1</value>
+        <value name="Dark">2</value>
+        <value name="Earth">3</value>
+        <value name="Wind">4</value>
+        <value name="Water">5</value>
+        <value name="Fire">6</value>
+    </enum>
+
     <enum name="ItemType" type="char">
         <value name="General">0</value>
         <!-- "static" in the official pub editor -->
@@ -116,7 +126,7 @@
         <field name="agi_requirement" type="short"/>
         <field name="con_requirement" type="short"/>
         <field name="cha_requirement" type="short"/>
-        <field name="element" type="char"/>
+        <field name="element" type="Element"/>
         <field name="element_damage" type="char"/>
         <field name="weight" type="char"/>
         <!-- "Weapon Target Area" in the official pub editor -->
@@ -174,9 +184,9 @@
         <field name="evade" type="short"/>
         <field name="armor" type="short"/>
         <field name="return_damage" type="char"/>
-        <field name="element" type="short"/>
+        <field name="element" type="Element:short"/>
         <field name="element_damage" type="short"/>
-        <field name="element_weakness" type="short"/>
+        <field name="element_weakness" type="Element:short"/>
         <field name="element_weakness_damage" type="short"/>
         <field name="level" type="char"/>
         <field name="experience" type="three"/>
