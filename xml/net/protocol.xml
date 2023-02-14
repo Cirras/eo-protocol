@@ -97,6 +97,8 @@
         <value name="Ping">240</value>
         <value name="Pong">241</value>
         <value name="Net242">242</value>
+        <value name="Net243">243</value>
+        <value name="Net244">244</value>
         <value name="Error">250</value>
         <value name="Init">255</value>
     </enum>
