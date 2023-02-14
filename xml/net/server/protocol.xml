@@ -1832,7 +1832,7 @@
 
     <packet family="Chest" action="Spec">
         <comment>Reply to trying to add an item to a full chest</comment>
-        <dummy type="string">0</dummy>
+        <dummy type="byte">0</dummy>
     </packet>
 
     <packet family="Chest" action="Close">
