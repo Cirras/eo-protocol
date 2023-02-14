@@ -270,6 +270,16 @@
         <field name="message" type="string"/>
     </packet>
 
+    <packet family="Talk" action="Player">
+        <comment>Public chat message - alias of TALK_REPORT (vestigial)</comment>
+        <field name="message" type="string"/>
+    </packet>
+
+    <packet family="Talk" action="Use">
+        <comment>Public chat message - alias of TALK_REPORT (vestigial)</comment>
+        <field name="message" type="string"/>
+    </packet>
+
     <packet family="Talk" action="Admin">
         <comment>Admin chat message</comment>
         <field name="message" type="string"/>

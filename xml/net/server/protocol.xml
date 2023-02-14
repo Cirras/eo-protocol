@@ -1243,6 +1243,11 @@
         <field name="direction" type="Direction"/>
     </packet>
 
+    <packet family="Attack" action="Error">
+        <comment>Show flood protection message (vestigial)</comment>
+        <dummy type="byte">255</dummy>
+    </packet>
+
     <packet family="Avatar" action="Reply">
         <comment>Nearby player hit by another player</comment>
         <field name="player_id" type="short"/>
@@ -2052,6 +2057,11 @@
         <comment>Nearby player raising their arm to cast a spell (vestigial)</comment>
         <field name="player_id" type="short"/>
         <field name="direction" type="Direction"/>
+    </packet>
+
+    <packet family="Spell" action="Error">
+        <comment>Show flood protection message (vestigial)</comment>
+        <dummy type="byte">255</dummy>
     </packet>
 
     <packet family="Avatar" action="Admin">
