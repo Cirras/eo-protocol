@@ -1783,7 +1783,7 @@
         <field name="name" type="string"/>
     </packet>
 
-    <packet family="Players" action="Net3">
+    <packet family="Players" action="Net242">
         <comment>#find command reply - different map</comment>
         <field name="name" type="string"/>
     </packet>

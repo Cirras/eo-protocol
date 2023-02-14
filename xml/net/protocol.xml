@@ -96,7 +96,7 @@
         <value name="Dialog">34</value>
         <value name="Ping">240</value>
         <value name="Pong">241</value>
-        <value name="Net3">242</value>
+        <value name="Net242">242</value>
         <value name="Error">250</value>
         <value name="Init">255</value>
     </enum>
