@@ -9,7 +9,7 @@
         <value name="FileEif">6</value>
         <value name="FileEnf">7</value>
         <value name="FileEsf">8</value>
-        <value name="Players">9</value>
+        <value name="PlayersList">9</value>
         <value name="MapMutation">10</value>
         <value name="FriendListPlayers">11</value>
         <value name="FileEcf">12</value>
@@ -887,7 +887,7 @@
             <case value="MapMutation">
                 <field name="map_file" type="MapFile"/>
             </case>
-            <case value="Players">
+            <case value="PlayersList">
                 <chunked>
                     <field name="players_list" type="PlayersList"/>
                 </chunked>
@@ -926,7 +926,7 @@
     </packet>
 
     <packet family="Players" action="List">
-        <comment>Equivalent to INIT_INIT with InitReply.Players</comment>
+        <comment>Equivalent to INIT_INIT with InitReply.PlayersList</comment>
         <chunked>
             <field name="players_list" type="PlayersList"/>
         </chunked>
