@@ -69,7 +69,10 @@
     </struct>
 
     <packet family="Init" action="Init">
-        <comment>Connection initialization request</comment>
+        <comment>
+            Connection initialization request.
+            This packet is unencrypted.
+        </comment>
         <field name="challenge" type="three"/>
         <field name="version" type="Version"/>
         <!-- The official server verifies that this number is 112 -->
