@@ -420,6 +420,38 @@
         </chunked>
     </struct>
 
+    <struct name="MapFile">
+        <comment>A map file (EMF)</comment>
+        <array name="content" type="byte"/>
+    </struct>
+
+    <struct name="PubFile">
+        <comment>A pub file (EIF, ENF, ECF, ESF)</comment>
+        <field name="file_id" type="char"/>
+        <array name="content" type="byte"/>
+    </struct>
+
+    <struct name="PlayersList">
+        <comment>Information about online players</comment>
+        <chunked>
+            <field name="online_count" type="short"/>
+            <break/>
+            <array name="players" type="OnlinePlayer" delimited="true"/>
+        </chunked>
+    </struct>
+
+    <struct name="PlayersListFriends">
+        <comment>
+            Information about online players.
+            Sent in reply to friends list requests.
+        </comment>
+        <chunked>
+            <field name="online_count" type="short"/>
+            <break/>
+            <array name="players" type="string" delimited="true"/>
+        </chunked>
+    </struct>
+
     <struct name="OnlinePlayer">
         <comment>A player in the online list</comment>
         <chunked>
@@ -835,45 +867,86 @@
                 </switch>
             </case>
             <case value="WarpMap">
-                <array name="content" type="byte"/>
+                <field name="map_file" type="MapFile"/>
             </case>
             <case value="FileEmf">
-                <array name="content" type="byte"/>
+                <field name="map_file" type="MapFile"/>
             </case>
             <case value="FileEif">
-                <field name="file_id" type="char"/>
-                <array name="content" type="byte"/>
+                <field name="pub_file" type="PubFile"/>
             </case>
             <case value="FileEnf">
-                <field name="file_id" type="char"/>
-                <array name="content" type="byte"/>
+                <field name="pub_file" type="PubFile"/>
             </case>
             <case value="FileEsf">
-                <field name="file_id" type="char"/>
-                <array name="content" type="byte"/>
+                <field name="pub_file" type="PubFile"/>
             </case>
             <case value="FileEcf">
-                <field name="file_id" type="char"/>
-                <array name="content" type="byte"/>
+                <field name="pub_file" type="PubFile"/>
             </case>
             <case value="MapMutation">
-                <array name="content" type="byte"/>
+                <field name="map_file" type="MapFile"/>
             </case>
             <case value="Players">
                 <chunked>
-                    <field name="online_count" type="short"/>
-                    <break/>
-                    <array name="list" type="OnlinePlayer" delimited="true"/>
+                    <field name="players_list" type="PlayersList"/>
                 </chunked>
             </case>
             <case value="FriendListPlayers">
                 <chunked>
-                    <field name="online_count" type="short"/>
-                    <break/>
-                    <array name="list" type="string" delimited="true"/>
+                    <field name="players_list" type="PlayersListFriends"/>
                 </chunked>
             </case>
         </switch>
+    </packet>
+
+    <packet family="Warp" action="Player">
+        <comment>Equivalent to INIT_INIT with InitReply.WarpMap</comment>
+        <field name="map_file" type="MapFile"/>
+    </packet>
+
+    <packet family="Welcome" action="Ping">
+        <comment>Equivalent to INIT_INIT with InitReply.FileMap</comment>
+        <field name="map_file" type="MapFile"/>
+    </packet>
+
+    <packet family="Welcome" action="Pong">
+        <comment>Equivalent to INIT_INIT with InitReply.FileEif</comment>
+        <field name="pub_file" type="PubFile"/>
+    </packet>
+
+    <packet family="Welcome" action="Net242">
+        <comment>Equivalent to INIT_INIT with InitReply.FileEnf</comment>
+        <field name="pub_file" type="PubFile"/>
+    </packet>
+
+    <packet family="Welcome" action="Net243">
+        <comment>Equivalent to INIT_INIT with InitReply.FileEsf</comment>
+        <field name="pub_file" type="PubFile"/>
+    </packet>
+
+    <packet family="Players" action="List">
+        <comment>Equivalent to INIT_INIT with InitReply.Players</comment>
+        <chunked>
+            <field name="players_list" type="PlayersList"/>
+        </chunked>
+    </packet>
+
+    <packet family="Warp" action="Create">
+        <comment>Equivalent to INIT_INIT with InitReply.MapMutation</comment>
+        <field name="map_file" type="MapFile"/>
+    </packet>
+
+    <packet family="Players" action="Reply">
+        <comment>Equivalent to INIT_INIT with InitReply.FriendListPlayers</comment>
+        <chunked>
+            <field name="players_list" type="PlayersListFriends"/>
+        </chunked>
+    </packet>
+
+    <packet family="Welcome" action="Net244">
+        <comment>Equivalent to INIT_INIT with InitReply.FileEcf</comment>
+        <field name="pub_file" type="PubFile"/>
     </packet>
 
     <packet family="Connection" action="Player">
