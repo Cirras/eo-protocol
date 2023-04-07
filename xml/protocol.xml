@@ -3,11 +3,11 @@
     <enum name="AdminLevel" type="char">
         <comment>The admin level of a player</comment>
         <value name="Player">0</value>
-        <value name="Guide">1</value>
-        <value name="Guardian">2</value>
-        <value name="Gm">3</value>
-        <value name="Hgm">4</value>
-        <value name="Reserved5">5</value>
+        <value name="Spy">1</value>
+        <value name="LightGuide">2</value>
+        <value name="Guardian">3</value>
+        <value name="GameMaster">4</value>
+        <value name="HighGameMaster">5</value>
     </enum>
 
     <enum name="Direction" type="char">
