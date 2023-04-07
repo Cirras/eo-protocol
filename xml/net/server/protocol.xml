@@ -487,10 +487,10 @@
         <field name="jail_map" type="short"/>
         <field name="rescue_map" type="short"/>
         <field name="rescue_coords" type="Coords"/>
-        <field name="light_guide_flood_rate" type="short"/>
+        <field name="spy_and_light_guide_flood_rate" type="short"/>
         <field name="guardian_flood_rate" type="short"/>
-        <field name="game_master_and_high_game_master_flood_rate" type="short"/>
-        <field name="reserved5_flood_rate" type="short"/>
+        <field name="game_master_flood_rate" type="short"/>
+        <field name="high_game_master_flood_rate" type="short"/>
     </struct>
 
     <struct name="ShopTradeItem">
