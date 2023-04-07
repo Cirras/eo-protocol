@@ -1825,12 +1825,17 @@
     <packet family="Paperdoll" action="Remove">
         <comment>Reply to unequipping an item</comment>
         <field name="change" type="AvatarChange"/>
+        <field name="item_id" type="short"/>
+        <field name="sub_loc" type="char"/>
         <field name="stats" type="CharacterStatsEquipmentChange"/>
     </packet>
 
     <packet family="Paperdoll" action="Agree">
         <comment>Reply to equipping an item</comment>
         <field name="change" type="AvatarChange"/>
+        <field name="item_id" type="short"/>
+        <field name="remaining_amount" type="three"/>
+        <field name="sub_loc" type="char"/>
         <field name="stats" type="CharacterStatsEquipmentChange"/>
     </packet>
 
