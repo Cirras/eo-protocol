@@ -1496,7 +1496,7 @@
 
     <packet family="Locker" action="Get">
         <comment>Response to taking an item from a bank locker</comment>
-        <field name="taken_item" type="Item"/>
+        <field name="taken_item" type="ThreeItem"/>
         <field name="weight" type="Weight"/>
         <array name="locker_items" type="ThreeItem"/>
     </packet>
