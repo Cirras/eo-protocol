@@ -285,7 +285,5 @@ A problematic scenario presents itself:
 - The clients receiving those packets are unable to read them correctly due to the unexpected `break` bytes.
 
 > **Implementation notes:**
-> - The serializer should sanitize `0xFF` bytes when writing strings if:
->    - the packet contains a `<chunked>` section.
->    - the packet contains a `struct` field that itself contains a `<chunked>` section (recursive).
+> - The serializer should sanitize `0xFF` bytes in strings when within a `<chunked>` section.
 > - Since `0xFF` maps to character **ÿ** in ansi codepage 1252, it can simply be swapped to **y** (`0x79`).
