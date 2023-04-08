@@ -1455,12 +1455,12 @@
 
     <packet family="Walk" action="Close">
         <comment>Your character has been frozen</comment>
-        <dummy type="string">f</dummy>
+        <dummy type="string">S</dummy>
     </packet>
 
     <packet family="Walk" action="Open">
         <comment>Your character has been unfrozen</comment>
-        <dummy type="string">u</dummy>
+        <dummy type="string">S</dummy>
     </packet>
 
     <packet family="Bank" action="Open">
