@@ -110,13 +110,22 @@
         <field name="water_resistance" type="char"/>
         <field name="fire_resistance" type="char"/>
         <field name="spec1" type="three">
-            <comment>scroll_map|doll_graphic|exp_reward|hair_color|effect|key</comment>
+            <comment>
+                Holds one the following values, depending on item type:
+                scroll_map, doll_graphic, exp_reward, hair_color, effect, key, alcohol_potency
+            </comment>
         </field>
         <field name="spec2" type="char">
-            <comment>scroll_x|gender</comment>
+            <comment>
+                Holds one the following values, depending on item type:
+                scroll_x, gender
+            </comment>
         </field>
         <field name="spec3" type="char">
-            <comment>scroll_y</comment>
+            <comment>
+                Holds one the following values, depending on item type:
+                scroll_y
+            </comment>
         </field>
         <field name="level_requirement" type="short"/>
         <field name="class_requirement" type="short"/>
