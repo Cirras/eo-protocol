@@ -14,7 +14,7 @@
         <value name="General">0</value>
         <!-- "static" in the official pub editor -->
         <value name="Reserved1">1</value>
-        <value name="Money">2</value>
+        <value name="Currency">2</value>
         <value name="Heal">3</value>
         <value name="Teleport">4</value>
         <!-- "transformation" in the official pub editor -->
