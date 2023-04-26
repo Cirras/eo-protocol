@@ -12,6 +12,7 @@ A specification of the XML elements used within `protocol.xml` files.
 | [\<packet>](#the-packet-element) | Defines a packet type. Similar to a `struct`, but a `packet` is mapped to a packet `family` and `action`.                                             |
 | [\<field>](#the-field-element)   | Defines a field in a `struct` or `packet`.                                                                                                            |
 | [\<array>](#the-array-element)   | Defines an array field in a `struct` or `packet`.                                                                                                     |
+| [\<length>](#the-length-element) | Defines a special field that holds the length of another field in a `struct` or `packet`.                                                             |
 | [\<dummy>](#the-dummy-element)   | Defines a dummy data field in a `packet`. Similar to an unnamed `field`, but a `dummy` should only be written if the packet would otherwise be empty. |
 | [\<switch>](#the-switch-element) | Defines a section in a `struct` or `packet` where the structure may differ based on the value of a field.                                             |
 | [\<case>](#the-case-element)     | Defines an optional portion of a `struct` or `packet` based on the value of the field specified in the parent `switch`.                               |
