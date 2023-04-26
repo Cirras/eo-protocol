@@ -272,7 +272,7 @@
         <!-- Always a 1, and cannot be modified via the official pub editor -->
         <field type="char">1</field>
         <field name="type" type="SkillType"/>
-        <field name="element" type="char"/>
+        <field name="element" type="Element"/>
         <field name="element_power" type="short"/>
         <field name="target_restrict" type="SkillTargetRestrict"/>
         <field name="target_type" type="SkillTargetType"/>
