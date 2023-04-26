@@ -37,7 +37,7 @@
         <value name="Ring">19</value>
         <value name="Armlet">20</value>
         <value name="Bracer">21</value>
-        <value name="Beer">22</value>
+        <value name="Alcohol">22</value>
         <value name="EffectPotion">23</value>
         <value name="HairDye">24</value>
         <value name="CureCurse">25</value>
