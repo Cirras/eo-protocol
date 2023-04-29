@@ -57,8 +57,8 @@
 
     <struct name="ByteCoords">
         <comment>Map coordinates with raw 1-byte values</comment>
-        <field name="x" type="short"/>
-        <field name="y" type="short"/>
+        <field name="x" type="byte"/>
+        <field name="y" type="byte"/>
     </struct>
 
     <struct name="WalkAction">
