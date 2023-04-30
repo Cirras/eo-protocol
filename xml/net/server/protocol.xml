@@ -422,13 +422,13 @@
 
     <struct name="MapFile">
         <comment>A map file (EMF)</comment>
-        <array name="content" type="byte"/>
+        <field name="content" type="blob"/>
     </struct>
 
     <struct name="PubFile">
         <comment>A pub file (EIF, ENF, ECF, ESF)</comment>
         <field name="file_id" type="char"/>
-        <array name="content" type="byte"/>
+        <field name="content" type="blob"/>
     </struct>
 
     <struct name="PlayersList">

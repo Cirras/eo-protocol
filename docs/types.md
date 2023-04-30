@@ -33,6 +33,14 @@ A specification of the data types that can be referenced in protocol files.
     - the `length` attribute is not provided.
 - If applicable, **fixed** size can be calculated as `element_size * length`.
 
+## Special types
+| type | size                 | description                 |
+|------|----------------------|-----------------------------|
+| blob | variable, unbounded. | An unencoded blob of bytes. |
+
+> **Implementation notes:**
+> - `blob` is serialized identically to an unbounded array of `byte`.
+
 ## Custom types
 
 ### Enumerations
