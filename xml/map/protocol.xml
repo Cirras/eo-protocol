@@ -117,7 +117,7 @@
     <struct name="MapTileSpecRowTile">
         <comment>A single tile in a row of tilespecs</comment>
         <field name="x" type="char"/>
-        <field name="tile_spec" type="char"/>
+        <field name="tile_spec" type="MapTileSpec"/>
     </struct>
 
     <struct name="MapTileSpecRow">
