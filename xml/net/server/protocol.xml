@@ -1894,7 +1894,7 @@
     <packet family="Chest" action="Reply">
         <comment>Reply to placing an item in to a chest</comment>
         <field name="added_item_id" type="short"/>
-        <field name="remaining_amount" type="short"/>
+        <field name="remaining_amount" type="int"/>
         <field name="weight" type="Weight"/>
         <array name="items" type="ThreeItem"/>
     </packet>
