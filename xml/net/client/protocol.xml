@@ -398,13 +398,13 @@
     <packet family="Citizen" action="Request">
         <comment>Request sleeping at an inn</comment>
         <field name="session_id" type="short"/>
-        <field name="behaviour_id" type="short"/>
+        <field name="behavior_id" type="short"/>
     </packet>
 
     <packet family="Citizen" action="Accept">
         <comment>Confirm sleeping at an inn</comment>
         <field name="session_id" type="short"/>
-        <field name="behaviour_id" type="short"/>
+        <field name="behavior_id" type="short"/>
     </packet>
 
     <packet family="Citizen" action="Reply">
@@ -412,7 +412,7 @@
         <chunked>
             <field name="session_id" type="short"/>
             <break/>
-            <field name="behaviour_id" type="short"/>
+            <field name="behavior_id" type="short"/>
             <break/>
             <array name="answers" type="string" length="3" delimited="true" trailing-delimiter="false"/>
         </chunked>
@@ -420,7 +420,7 @@
 
     <packet family="Citizen" action="Remove">
         <comment>Giving up citizenship of a town</comment>
-        <field name="behaviour_id" type="short"/>
+        <field name="behavior_id" type="short"/>
     </packet>
 
     <packet family="Citizen" action="Open">

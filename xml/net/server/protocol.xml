@@ -1535,7 +1535,7 @@
     <packet family="Citizen" action="Open">
         <comment>Response from talking to a citizenship NPC</comment>
         <chunked>
-            <field name="behaviour_id" type="three"/>
+            <field name="behavior_id" type="three"/>
             <field name="current_home_id" type="char"/>
             <field name="session_id" type="short"/>
             <break/>
@@ -2320,7 +2320,7 @@
         <comment>Quest selection dialog</comment>
         <chunked>
             <length name="quest_count" type="char"/>
-            <field name="behaviour_id" type="short"/>
+            <field name="behavior_id" type="short"/>
             <field name="quest_id" type="short"/>
             <field name="session_id" type="short"/>
             <field name="dialog_id" type="short"/>

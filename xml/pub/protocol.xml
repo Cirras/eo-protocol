@@ -184,7 +184,7 @@
         <field name="boss" type="bool:short"/>
         <field name="child" type="bool:short"/>
         <field name="type" type="NpcType"/>
-        <field name="behaviour_id" type="short"/>
+        <field name="behavior_id" type="short"/>
         <field name="hp" type="three"/>
         <field name="tp" type="short"/>
         <field name="min_damage" type="short"/>
