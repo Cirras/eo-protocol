@@ -645,10 +645,10 @@
     <struct name="SkillLearn">
         <comment>A skill that can be learned from a skill master NPC</comment>
         <field name="id" type="short"/>
-        <field name="level_req" type="char"/>
-        <field name="class_req" type="char"/>
+        <field name="level_requirement" type="char"/>
+        <field name="class_requirement" type="char"/>
         <field name="cost" type="int"/>
-        <array name="skill_req" type="short" length="4"/>
+        <array name="skill_requirements" type="short" length="4"/>
         <field name="stat_requirements" type="CharacterBaseStats"/>
     </struct>
 
