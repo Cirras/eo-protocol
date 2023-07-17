@@ -2182,7 +2182,11 @@
 
     <packet family="Trade" action="Request">
         <comment>Trade request from another player</comment>
-        <field name="unk1" type="char"/>
+        <!--
+            Unlike the official server's handling of the client TRADE_REQUEST packet, the official
+            client does not verify that this number is 138.
+        -->
+        <field type="char">138</field>
         <field name="partner_player_id" type="short"/>
         <field name="partner_player_name" type="string"/>
     </packet>
