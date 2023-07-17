@@ -874,7 +874,7 @@
 
     <packet family="Trade" action="Close">
         <comment>Cancel the trade</comment>
-        <field name="unk1" type="char"/>
+        <dummy type="char">0</dummy>
     </packet>
 
     <packet family="Quest" action="Use">
