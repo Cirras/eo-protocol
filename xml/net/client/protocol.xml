@@ -661,7 +661,13 @@
 
     <packet family="NpcRange" action="Request">
         <comment>Requesting info about nearby NPCs</comment>
-        <array name="npc_indexes" type="char"/>
+        <length name="npc_indexes_length" type="char"/>
+        <!--
+            The official server indexes the packet from the 3rd byte instead of activating
+            chunking, so this 0xFF value is not actually a break byte.
+        -->
+        <field type="byte">255</field>
+        <array name="npc_indexes" type="char" length="npc_indexes_length"/>
     </packet>
 
     <packet family="Party" action="Request">
