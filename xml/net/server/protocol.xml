@@ -450,9 +450,9 @@
             Sent in reply to friends list requests.
         </comment>
         <chunked>
-            <field name="online_count" type="short"/>
+            <length name="players_count" type="short"/>
             <break/>
-            <array name="players" type="string" delimited="true"/>
+            <array name="players" type="string" length="players_count" delimited="true"/>
         </chunked>
     </struct>
 
