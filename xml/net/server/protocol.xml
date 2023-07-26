@@ -438,9 +438,9 @@
     <struct name="PlayersList">
         <comment>Information about online players</comment>
         <chunked>
-            <field name="online_count" type="short"/>
+            <length name="players_count" type="short"/>
             <break/>
-            <array name="players" type="OnlinePlayer" delimited="true"/>
+            <array name="players" type="OnlinePlayer" length="players_count" delimited="true"/>
         </chunked>
     </struct>
 
