@@ -354,11 +354,13 @@
     <packet family="Bank" action="Add">
         <comment>Depositing gold</comment>
         <field name="amount" type="int"/>
+        <field name="session_id" type="three">
     </packet>
 
     <packet family="Bank" action="Take">
         <comment>Withdrawing gold</comment>
         <field name="amount" type="int"/>
+        <field name="session_id" type="three">
     </packet>
 
     <packet family="Barber" action="Buy">
