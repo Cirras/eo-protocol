@@ -13,6 +13,26 @@ The idea is to put all of that collective knowledge in one place.
 - Documentation
 - Code generation
 
+## Projects
+
+Community projects based on this specification.
+
+### Libraries
+
+1. **[eolib-go](https://github.com/ethanmoffat/eolib-go)** ([@ethanmoffat](https://github.com/ethanmoffat))
+    * Core Golang library for writing Endless Online applications.
+2. **[eolib-java](https://github.com/cirras/eolib-java)** ([@cirras](https://github.com/cirras))
+    * Core Java library for writing Endless Online applications.
+3. **[eolib-python](https://github.com/cirras/eolib-python)** ([@cirras](https://github.com/cirras))
+    * Core Python library for writing Endless Online applications.
+4. **[eolib-ts](https://github.com/cirras/eolib-ts)** ([@cirras](https://github.com/cirras))
+    * Core Typescript library for writing Endless Online applications.
+
+### Documentation
+
+1. **[eo-protocol-web](https://eoserv.net/eo-protocol-web/)** ([@tehsausage](https://github.com/tehsausage))
+    * Generated protocol documentation site.
+
 ## Acknowledgements
 
 - Julian Smythe
