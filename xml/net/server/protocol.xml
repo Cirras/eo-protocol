@@ -2377,7 +2377,6 @@
             <field name="killer_name" type="string"/>
             <break/>
             <field name="victim_name" type="string"/>
-            <break/>
         </chunked>
     </packet>
 
@@ -2391,7 +2390,6 @@
             <field name="killer_name" type="string"/>
             <break/>
             <field name="victim_name" type="string"/>
-            <break/>
         </chunked>
     </packet>
 
