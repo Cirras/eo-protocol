@@ -1442,7 +1442,7 @@
     <packet family="Walk" action="Player">
         <comment>Nearby player has walked</comment>
         <field name="player_id" type="short"/>
-        <field name="Direction" type="Direction"/>
+        <field name="direction" type="Direction"/>
         <field name="coords" type="Coords"/>
     </packet>
 
