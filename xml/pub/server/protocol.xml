@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol>
+    <struct name="DropRecord">
+        <comment>Record of an item an NPC can drop when killed</comment>
+        <field name="item_id" type="short"/>
+        <field name="min_amount" type="three"/>
+        <field name="max_amount" type="three"/>
+        <field name="rate" type="short">
+            <comment>Chance (x in 64,000) of the item being dropped</comment>
+        </field>
+    </struct>
+
+    <struct name="DropNpcRecord">
+        <comment>Record of potential drops from an NPC</comment>
+        <field name="npc_id" type="short"/>
+        <length name="drops_count" type="short"/>
+        <array name="drops" type="DropRecord" length="drops_count"/>
+    </struct>
+
+    <struct name="DropFile">
+        <comment>Endless Drop File</comment>
+        <field type="string" length="3">EDF</field>
+        <array name="npcs" type="DropNpcRecord"/>
+    </struct>
+
+    <struct name="InnQuestionRecord">
+        <comment>Record of a question and answer that the player must answer to register citizenship with an inn</comment>
+        <length name="question_length" type="char"/>
+        <field name="question" type="string" length="question_length"/>
+        <length name="answer_length" type="char"/>
+        <field name="answer" type="string" length="answer_length"/>
+    </struct>
+
+    <struct name="InnRecord">
+        <comment>Record of Inn data in an Endless Inn File</comment>
+        <field name="behavior_id" type="short">
+            <comment>Behavior ID of the NPC that runs the inn. 0 for default inn</comment>
+        </field>
+        <length name="name_length" type="char"/>
+        <field name="name" type="string" length="name_length"/>
+        <field name="spawn_map" type="short">
+            <comment>ID of the map the player is sent to after respawning</comment>
+        </field>
+        <field name="spawn_x" type="char">
+            <comment>X coordinate of the map the player is sent to after respawning</comment>
+        </field>
+        <field name="spawn_y" type="char">
+            <comment>Y coordinate of the map the player is sent to after respawning</comment>
+        </field>
+        <field name="sleep_map" type="short">
+            <comment>ID of the map the player is sent to after sleeping at the inn</comment>
+        </field>
+        <field name="sleep_x" type="char">
+            <comment>X coordinate of the map the player is sent to after sleeping at the inn</comment>
+        </field>
+        <field name="sleep_y" type="char">
+            <comment>Y coordinate of the map the player is sent to after sleeping at the inn</comment>
+        </field>
+        <field name="alternate_spawn_enabled" type="bool">
+            <comment>
+                Flag for an alternate spawn point. If true, the server will use this alternate spawn
+                map, x, and, y based on some other condition.
+
+                In the official server, this is used to respawn new characters on the noob island
+                until they reach a certain level.
+            <comment>
+        </field>
+        <field name="alternate_spawn_map" type="short"/>
+        <field name="alternate_spawn_x" type="char"/>
+        <field name="alternate_spawn_y" type="char"/>
+        <array name="questions" type="InnQuestionRecord" length="3"/>
+    </struct>
+
+    <struct name="InnFile">
+        <comment>Endless Inn File</comment>
+        <field type="string" length="3">EID</field>
+        <array name="inns" type="InnRecord"/>
+    </struct>
+
+    <struct name="SkillMasterSkillRecord">
+        <comment>Record of a skill that a Skill Master NPC can teach</comment>
+        <field name="skill_id" type="short"/>
+        <field name="level_requirement" type="char">
+            <comment>Level required to learn this skill</comment>
+        </field>
+        <field name="class_requirement" type="char">
+            <comment>Class required to learn this skill</comment>
+        </field>
+        <field name="price" type="int"/>
+        <array name="skill_requirements" type="short" length="4">
+            <comment>IDs of skills that must be learned before a player can learn this skill</comment>
+        </array>
+        <field name="str_requirement" type="short">
+            <comment>Strength required to learn this skill</comment>
+        </field>
+        <field name="int_requirement" type="short">
+            <comment>Intelligence required to learn this skill</comment>
+        <field>
+        <field name="wis_requirement" type="short">
+            <comment>Wisdom required to learn this skill</comment>
+        <field>
+        <field name="agi_requirement" type="short">
+            <comment>Agility required to learn this skill</comment>
+        </field>
+        <field name="con_requirement" type="short">
+            <comment>Constitution required to learn this skill</comment>
+        </field>
+        <field name="cha_requirement" type="short">
+            <comment>Charisma required to learn this skill</comment>
+        </field>
+    </struct>
+
+    <struct name="SkillMasterRecord">
+        <comment>Record of Skill Master data in an Endless Skill Master File</comment>
+        <field name="behavior_id" type="short">
+            <comment>Behavior ID of the Skill Master NPC</comment>
+        </field>
+        <length name="name_length" type="char"/>
+        <field name="name" type="string" length="name_length"/>
+        <field name="min_level" type="char">
+            <comment>Minimum level required to use this Skill Master</comment>
+        </field>
+        <field name="max_level" type="char">
+            <comment>Maximum level allowed to use this Skill Master</comment>
+        </field>
+        <field name="class_requirement" type="char">
+            <comment>Class required to use this Skill Master</comment>
+        <field>
+        <length name="skills_count" type="short"/>
+        <array name="skills" type="SkillMasterSkillRecord" length="skills_count"/>
+    </struct>
+
+    <struct name="SkillMasterFile">
+        <comment>Endless Skill Master File</comment>
+        <field type="string" length="3">EMF</field>
+        <array name="skill_masters" type="SkillMasterRecord"/>
+    </struct>
+
+    <struct name="ShopTradeRecord">
+        <comment>Record of an item that can be bought or sold in a shop</comment>
+        <field name="item_id" type="short"/>
+        <field name="buy_price" type="three">
+            <comment>How much it costs to buy the item from the shop</comment>
+        </field>
+        <field name="sell_price" type="three">
+            <comment>How much the shop will pay for the item</comment>
+        </field>
+        <field name="max_amount" type="char">
+            <comment>Max amount of the item that can be bought or sold at one time</comment>
+        </field>
+    </struct>
+
+    <struct name="ShopCraftIngredientRecord">
+        <comment>Record of an ingredient for crafting an item in a shop</comment>
+        <field name="item_id" type="short">
+            <comment>Item ID of the craft ingredient, or 0 if the ingredient is not present</comment>
+        <field>
+        <field name="amount" type="char"/>
+    </struct>
+
+
+    <struct name="ShopCraftRecord">
+        <comment>Record of an item that can be crafted in a shop</comment>
+        <field name="item_id" type="short"/>
+        <array name="ingredients" type="ShopCraftIngredientRecord" length="4"/>
+    </struct>
+
+    <struct name="ShopRecord">
+        <comment>Record of Shop data in an Endless Shop File</comment>
+        <field name="behavior_id" type="short"/>
+        <length name="name_length" type="char"/>
+        <field name="name" type="string" length="name_length"/>
+        <field name="min_level" type="char">
+            <comment>Minimum level required to use this shop</comment>
+        </field>
+        <field name="max_level" type="char">
+            <comment>Maximum level allowed to use this shop</comment>
+        <field>
+        <field name="class_requirement" type="char">
+            <comment>Class required to use this shop</comment>
+        </field>
+        <length name="trades_count" type="short"/>
+        <length name="crafts_count" type="char"/>
+        <array name="trades" type="ShopTradeRecord" length="trades_count"/>
+        <array name="crafts" type="ShopCraftRecord" length="crafts_count"/>
+    </struct>
+
+    <struct name="ShopFile">
+        <comment>Endless Shop File</comment>
+        <field type="string" length="3">ESF</field>
+        <array name="shops" type="ShopRecord"/>
+    </struct>
+
+    <struct name="TalkMessageRecord">
+        <comment>Record of a message that an NPC can say</comment>
+        <length name="message_length" type="char"/>
+        <field name="message" type="string" length="message_length"/>
+    </struct>
+
+    <struct name="TalkRecord">
+        <comment>Record of Talk data in an Endless Talk File</comment>
+        <field name="npc_id" type="short">
+            <comment>ID of the NPC that will talk</comment>
+        </field>
+        <field name="rate" type="char">
+            <comment>Chance that the NPC will talk (0-100)<comment>
+        </field>
+        <length name="messages_count" type="char"/>
+        <array name="messages" type="TalkMessageRecord" length="messages_count"/>
+    </struct>
+
+    <struct name="TalkFile">
+        <comment>Endless Talk File</comment>
+        <field type="string" length="3">ETF</field>
+        <array name="npcs" type="TalkRecord"/>
+    </struct>
+</protocol>
