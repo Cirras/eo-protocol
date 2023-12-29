@@ -1435,7 +1435,7 @@
 
     <packet family="Npc" action="Agree">
         <comment>Reply to request for information about nearby NPCs</comment>
-        <length name="npcs_count" type="short"/>
+        <length name="npcs_count" type="char"/>
         <array name="npcs" type="NpcMapInfo" length="npcs_count"/>
     </packet>
 
