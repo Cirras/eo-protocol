@@ -553,11 +553,11 @@
 
     <packet family="Jukebox" action="Msg">
         <comment>Requesting a song on a jukebox</comment>
-        <chunked>
-            <field type="char">0</field>
-            <field type="char">0</field>
-            <field name="track_id" type="short"/>
-        </chunked>
+        <field type="char">0</field>
+        <field type="char">0</field>
+        <field name="track_id" type="short">
+            <comment>This value is 0-indexed</comment>
+        </field>
     </packet>
 
     <packet family="Jukebox" action="Use">
