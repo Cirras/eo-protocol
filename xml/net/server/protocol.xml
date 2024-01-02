@@ -1788,7 +1788,9 @@
 
     <packet family="Jukebox" action="Use">
         <comment>Play jukebox music</comment>
-        <field name="track_id" type="short"/>
+        <field name="track_id" type="short">
+            <comment>This value is 1-indexed</comment>
+        </field>
     </packet>
 
     <packet family="Warp" action="Request">
