@@ -3,7 +3,10 @@
         <comment>Reply code sent with INIT_INIT packet</comment>
         <value name="OutOfDate">1</value>
         <value name="Ok">2</value>
-        <value name="Banned">3</value>
+        <value name="Banned">
+          <comment>The official client won't display a message until the connection from the server is closed</comment>
+          3
+        </value>
         <value name="WarpMap">4</value>
         <value name="FileEmf">5</value>
         <value name="FileEif">6</value>
@@ -144,9 +147,15 @@
         <value name="WrongUser">1</value>
         <value name="WrongUserPassword">2</value>
         <value name="Ok">3</value>
-        <value name="Banned">4</value>
+        <value name="Banned">
+          <comment>The official client won't display a message until the connection from the server is closed</comment>
+          4
+        </value>
         <value name="LoggedIn">5</value>
-        <value name="Busy">6</value>
+        <value name="Busy">
+          <comment>The official client won't display a message until the connection from the server is closed</comment>
+          6
+        </value>
     </enum>
 
     <enum name="DialogEntryType" type="short">
