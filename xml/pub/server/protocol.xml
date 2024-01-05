@@ -63,7 +63,7 @@
 
                 In the official server, this is used to respawn new characters on the noob island
                 until they reach a certain level.
-            <comment>
+            </comment>
         </field>
         <field name="alternate_spawn_map" type="short"/>
         <field name="alternate_spawn_x" type="char"/>
@@ -95,10 +95,10 @@
         </field>
         <field name="int_requirement" type="short">
             <comment>Intelligence required to learn this skill</comment>
-        <field>
+        </field>
         <field name="wis_requirement" type="short">
             <comment>Wisdom required to learn this skill</comment>
-        <field>
+        </field>
         <field name="agi_requirement" type="short">
             <comment>Agility required to learn this skill</comment>
         </field>
@@ -125,7 +125,7 @@
         </field>
         <field name="class_requirement" type="char">
             <comment>Class required to use this Skill Master</comment>
-        <field>
+        </field>
         <length name="skills_count" type="short"/>
         <array name="skills" type="SkillMasterSkillRecord" length="skills_count"/>
     </struct>
@@ -154,10 +154,9 @@
         <comment>Record of an ingredient for crafting an item in a shop</comment>
         <field name="item_id" type="short">
             <comment>Item ID of the craft ingredient, or 0 if the ingredient is not present</comment>
-        <field>
+        </field>
         <field name="amount" type="char"/>
     </struct>
-
 
     <struct name="ShopCraftRecord">
         <comment>Record of an item that can be crafted in a shop</comment>
@@ -175,7 +174,7 @@
         </field>
         <field name="max_level" type="char">
             <comment>Maximum level allowed to use this shop</comment>
-        <field>
+        </field>
         <field name="class_requirement" type="char">
             <comment>Class required to use this shop</comment>
         </field>
@@ -203,7 +202,7 @@
             <comment>ID of the NPC that will talk</comment>
         </field>
         <field name="rate" type="char">
-            <comment>Chance that the NPC will talk (0-100)<comment>
+            <comment>Chance that the NPC will talk (0-100)</comment>
         </field>
         <length name="messages_count" type="char"/>
         <array name="messages" type="TalkMessageRecord" length="messages_count"/>
