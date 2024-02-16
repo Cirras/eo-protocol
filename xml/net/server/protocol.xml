@@ -2164,8 +2164,8 @@
         <comment>Nearby player hit by a damage spell from a player</comment>
         <field name="caster_id" type="short"/>
         <field name="victim_id" type="short"/>
-        <field name="caster_direction" type="Direction"/>
         <field name="damage" type="three"/>
+        <field name="caster_direction" type="Direction"/>
         <field name="hp_percentage" type="char"/>
         <field name="victim_died" type="bool"/>
         <field name="spell_id" type="short"/>
