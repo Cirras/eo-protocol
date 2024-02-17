@@ -2063,7 +2063,7 @@
     </packet>
 
     <packet family="Guild" action="Buy">
-        <comment>Deposit guild bank list reply</comment>
+        <comment>Deposit guild bank reply</comment>
         <field name="gold_amount" type="int"/>
     </packet>
 
