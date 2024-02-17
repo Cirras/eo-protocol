@@ -764,6 +764,7 @@
         <comment>Request guild description, rank list, or bank balance</comment>
         <field name="session_id" type="int"/>
         <field name="info_type" type="GuildInfoType"/>
+        <field name="guild_tag" type="string" length="3"/>
     </packet>
 
     <packet family="Guild" action="Use">
