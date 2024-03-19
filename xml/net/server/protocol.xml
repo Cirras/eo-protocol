@@ -2252,7 +2252,9 @@
         <field name="npc_index" type="short"/>
         <field name="damage" type="three"/>
         <field name="hp_percentage" type="short"/>
-        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true"/>
+        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true">
+            <comment>This field should be sent to the attacker, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Cast" action="Reply">
