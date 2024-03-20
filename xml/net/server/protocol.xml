@@ -845,6 +845,18 @@
         </chunked>
     </struct>
 
+    <struct name="PlayerEffect">
+        <comment>An effect playing on a player</comment>
+        <field name="player_id" type="short"/>
+        <field name="effect_id" type="three"/>
+    </struct>
+
+    <struct name="TileEffect">
+        <comment>An effect playing on a tile</comment>
+        <field name="coords" type="Coords"/>
+        <field name="effect_id" type="short"/>
+    </struct>
+
     <packet family="Init" action="Init">
         <comment>
             Reply to connection initialization and requests for unencrypted data.
@@ -1410,9 +1422,8 @@
     </packet>
 
     <packet family="Effect" action="Player">
-        <comment>Nearby player doing an effect</comment>
-        <field name="player_id" type="short"/>
-        <field name="effect_id" type="three"/>
+        <comment>Effects playing on nearby players</comment>
+        <array name="effects" type="PlayerEffect"/>
     </packet>
 
     <packet family="Face" action="Player">
@@ -2492,9 +2503,8 @@
     </packet>
 
     <packet family="Effect" action="Agree">
-        <comment>Map tile effect</comment>
-        <field name="coords" type="Coords"/>
-        <field name="effect_id" type="short"/>
+        <comment>Effects playing on nearby tiles</comment>
+        <array name="effects" type="TileEffect"/>
     </packet>
 
     <packet family="Effect" action="TargetOther">
