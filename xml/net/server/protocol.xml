@@ -636,7 +636,7 @@
         <field name="tp" type="short"/>
         <field name="max_tp" type="short"/>
         <field name="base_stats" type="CharacterBaseStats"/>
-        <field name="secondary_stats" type="CharacterSecondaryStats"/>
+        <field name="secondary_stats" type="CharacterSecondaryStatsInfoLookup"/>
         <field name="elemental_stats" type="CharacterElementalStats"/>
     </struct>
 
