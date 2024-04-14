@@ -2276,38 +2276,58 @@
         <field name="npc_index" type="short"/>
         <field name="damage" type="three"/>
         <field name="hp_percentage" type="short"/>
-        <field name="caster_tp" type="short"/>
-        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true"/>
+        <field name="caster_tp" type="short" optional="true">
+            <comment>This field should be sent to the attacker, but not nearby players</comment>
+        </field>
+        <field name="kill_steal_protection" type="NpcKillStealProtectionState" optional="true">
+            <comment>This field should be sent to the attacker, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Npc" action="Spec">
         <comment>Nearby NPC killed by player</comment>
         <field name="npc_killed_data" type="NpcKilledData"/>
-        <field name="experience" type="int" optional="true"/>
+        <field name="experience" type="int" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Npc" action="Accept">
-        <comment>Nearby NPC killed by player and you leveled up</comment>
+        <comment>Nearby NPC killed and killer leveled up</comment>
         <field name="npc_killed_data" type="NpcKilledData"/>
-        <field name="experience" type="int"/>
-        <field name="level_up" type="LevelUpStats"/>
+        <field name="experience" type="int" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
+        <field name="level_up" type="LevelUpStats" optional="true">
+            <comment>This field should be sent to the killer if they leveled up, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Cast" action="Spec">
         <comment>Nearby NPC killed by player spell</comment>
         <field name="spell_id" type="short"/>
         <field name="npc_killed_data" type="NpcKilledData"/>
-        <field name="caster_tp" type="short"/>
-        <field name="experience" type="int" optional="true"/>
+        <field name="caster_tp" type="short" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
+        <field name="experience" type="int" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Cast" action="Accept">
-        <comment>Nearby NPC killed by player spell and you leveled up</comment>
+        <comment>Nearby NPC killed by player spell and killer leveled up</comment>
         <field name="spell_id" type="short"/>
         <field name="npc_killed_data" type="NpcKilledData"/>
-        <field name="caster_tp" type="short"/>
-        <field name="experience" type="int"/>
-        <field name="level_up" type="LevelUpStats"/>
+        <field name="caster_tp" type="short" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
+        <field name="experience" type="int" optional="true">
+            <comment>This field should be sent to the killer, but not nearby players</comment>
+        </field>
+        <field name="level_up" type="LevelUpStats" optional="true">
+            <comment>This field should be sent to the killer if they leveled up, but not nearby players</comment>
+        </field>
     </packet>
 
     <packet family="Npc" action="Junk">
