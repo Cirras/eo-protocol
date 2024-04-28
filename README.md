@@ -29,6 +29,8 @@ Community projects based on this specification.
     * Core Rust library for writing Endless Online applications.
 5. **[eolib-ts](https://github.com/cirras/eolib-ts)** ([@cirras](https://github.com/cirras))
     * Core Typescript library for writing Endless Online applications.
+6. **[eolib-php](https://github.com/exilestudios/eolib-php)** ([@exilestudios](https://github.com/exilestudios))
+    * Core PHP library for writing Endless Online applications.
 
 ### Documentation
 
