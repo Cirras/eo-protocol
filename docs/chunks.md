@@ -41,7 +41,7 @@ void FooBar(DataReader* reader)
 
     // Read number fields from the 3rd chunk.
     unsigned int session_id = DecodeNumber(numbers.SubString(1, 4));
-    unsigned short class_id = DecodeNumber(numbers.SubString(4, 2));
+    unsigned short class_id = DecodeNumber(numbers.SubString(5, 2));
 }
 ```
 
