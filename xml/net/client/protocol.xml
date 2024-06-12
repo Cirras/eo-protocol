@@ -898,6 +898,9 @@
         <field name="npc_index" type="short"/>
         <field name="reply_type" type="DialogReply"/>
         <switch field="reply_type">
+            <case value="Ok">
+                <field type="char">0</field>
+            </case>
             <case value="Link">
                 <field name="action" type="char"/>
             </case>
