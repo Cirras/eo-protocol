@@ -1007,7 +1007,7 @@
                 <field type="string">NO</field>
             </case>
             <case value="Changed">
-                <field type="string">NO</field>
+                <field type="string">OK</field>
             </case>
             <case value="RequestDenied">
                 <field type="string">NO</field>
