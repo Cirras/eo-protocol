@@ -1228,6 +1228,7 @@
             <break/>
             <field name="usage" type="int"/>
             <break/>
+            <field name="gold_bank" type="int"/>
             <break/>
             <field name="exp" type="int"/>
             <field name="level" type="char"/>
