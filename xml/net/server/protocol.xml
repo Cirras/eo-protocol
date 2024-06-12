@@ -1604,7 +1604,6 @@
             <array name="trade_items" type="ShopTradeItem"/>
             <break/>
             <array name="craft_items" type="ShopCraftItem"/>
-            <break/>
         </chunked>
     </packet>
 
