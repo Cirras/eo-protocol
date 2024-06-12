@@ -2473,6 +2473,7 @@
         <comment>HP/TP update</comment>
         <field name="hp" type="short"/>
         <field name="tp" type="short"/>
+        <field type="short">0</field>
     </packet>
 
     <packet family="Recover" action="Agree">
