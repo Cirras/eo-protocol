@@ -1902,8 +1902,12 @@
 
     <packet family="Door" action="Open">
         <comment>Nearby door opening</comment>
-        <field name="coords" type="Coords"/>
-        <field type="char">0</field>
+        <field name="coords" type="Coords">
+            <comment>
+                The official server erroneously encodes the Y coordinate as a short.
+                The official client reads each coordinate as a char.
+            </comment>
+        </field>
     </packet>
 
     <packet family="Door" action="Close">
