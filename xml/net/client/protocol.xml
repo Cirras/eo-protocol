@@ -162,7 +162,13 @@
     <packet family="Character" action="Remove">
         <comment>Confirm deleting character from an account</comment>
         <field name="session_id" type="short"/>
-        <field name="character_id" type="int"/>
+        <field name="character_id" type="int">
+            <comment>
+                The official client sends a short, which gets written as a variable-sized integer
+                (2-4 bytes) due to a quirk of the official encoding routine.
+                However, the official server expects an int.
+            </comment>
+        </field>
     </packet>
 
     <packet family="Login" action="Request">
