@@ -2206,6 +2206,17 @@
         <field name="hp" type="short" optional="true"/>
     </packet>
 
+    <packet family="Spell" action="Reply">
+        <comment>Your character self-cast a targetable heal spell</comment>
+        <!--
+            The official client updates the casting character's SP by reading the spell's SP cost
+            from the pub file.
+        -->
+        <field type="short" name="spell_id"/>
+        <field type="short" name="hp"/>
+        <field type="short" name="tp"/>
+    </packet>
+
     <packet family="Trade" action="Request">
         <comment>Trade request from another player</comment>
         <!--
