@@ -2362,7 +2362,7 @@
     <packet family="Quest" action="Report">
         <comment>NPC chat messages</comment>
         <chunked>
-            <field name="npc_id" type="short"/>
+            <field name="npc_index" type="short"/>
             <break/>
             <array name="messages" type="string" delimited="true"/>
         </chunked>
