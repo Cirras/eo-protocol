@@ -2239,20 +2239,17 @@
 
     <packet family="Trade" action="Reply">
         <comment>Trade updated (items changed)</comment>
-        <field name="your_data" type="TradeItemData"/>
-        <field name="partner_data" type="TradeItemData"/>
+        <array name="data" type="TradeItemData" length="2"/>
     </packet>
 
     <packet family="Trade" action="Admin">
         <comment>Trade updated (items changed while trade was accepted)</comment>
-        <field name="your_data" type="TradeItemData"/>
-        <field name="partner_data" type="TradeItemData"/>
+        <array name="data" type="TradeItemData" length="2"/>
     </packet>
 
     <packet family="Trade" action="Use">
         <comment>Trade completed</comment>        
-        <field name="partner_data" type="TradeItemData"/>
-        <field name="your_data" type="TradeItemData"/>
+        <array name="data" type="TradeItemData" length="2"/>
     </packet>
 
     <packet family="Trade" action="Spec">
