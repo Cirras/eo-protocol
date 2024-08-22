@@ -316,26 +316,6 @@
         <field name="weapon" type="short"/>
     </struct>
 
-    <struct name="EquipmentWelcome">
-        <comment>
-            Player equipment data.
-            Sent upon selecting a character and entering the game.
-            Note that these values are item IDs.
-        </comment>
-        <field name="boots" type="short"/>
-        <field name="gloves" type="short"/>
-        <field name="accessory" type="short"/>
-        <field name="armor" type="short"/>
-        <field name="belt" type="short"/>
-        <field name="necklace" type="short"/>
-        <field name="hat" type="short"/>
-        <field name="shield" type="short"/>
-        <field name="weapon" type="short"/>
-        <array name="ring" type="short" length="2"/>
-        <array name="armlet" type="short" length="2"/>
-        <array name="bracer" type="short" length="2"/>
-    </struct>
-
     <struct name="EquipmentPaperdoll">
         <comment>
             Player equipment data.
@@ -1149,7 +1129,7 @@
                     <field name="experience" type="int"/>
                     <field name="usage" type="int"/>
                     <field name="stats" type="CharacterStatsWelcome"/>
-                    <field name="equipment" type="EquipmentWelcome"/>
+                    <field name="equipment" type="EquipmentPaperdoll"/>
                     <field name="guild_rank" type="char"/>
                     <field name="settings" type="ServerSettings"/>
                     <field name="login_message_code" type="LoginMessageCode"/>
