@@ -743,11 +743,8 @@
 
     <struct name="TradeItemData">
         <comment>Trade window item data</comment>
-        <chunked>
-            <field name="player_id" type="short"/>
-            <array name="items" type="Item"/>
-            <break/>
-        </chunked>
+        <field name="player_id" type="short"/>
+        <array name="items" type="Item"/>
     </struct>
 
     <struct name="NpcKilledData">
@@ -2239,17 +2236,17 @@
 
     <packet family="Trade" action="Reply">
         <comment>Trade updated (items changed)</comment>
-        <array name="trade_data" type="TradeItemData" length="2"/>
+        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
     </packet>
 
     <packet family="Trade" action="Admin">
         <comment>Trade updated (items changed while trade was accepted)</comment>
-        <array name="trade_data" type="TradeItemData" length="2"/>
+        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
     </packet>
 
     <packet family="Trade" action="Use">
         <comment>Trade completed</comment>
-        <array name="trade_data" type="TradeItemData" length="2"/>
+        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
     </packet>
 
     <packet family="Trade" action="Spec">
