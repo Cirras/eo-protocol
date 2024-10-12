@@ -2236,17 +2236,23 @@
 
     <packet family="Trade" action="Reply">
         <comment>Trade updated (items changed)</comment>
-        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        <chunked>
+            <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        </chunked>
     </packet>
 
     <packet family="Trade" action="Admin">
         <comment>Trade updated (items changed while trade was accepted)</comment>
-        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        <chunked>
+            <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        </chunked>
     </packet>
 
     <packet family="Trade" action="Use">
         <comment>Trade completed</comment>
-        <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        <chunked>
+            <array name="trade_data" type="TradeItemData" length="2" delimited="true"/>
+        </chunked>
     </packet>
 
     <packet family="Trade" action="Spec">
