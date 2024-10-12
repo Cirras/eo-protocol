@@ -444,6 +444,20 @@
         <field name="content" type="blob"/>
     </struct>
 
+    <struct name="OnlinePlayer">
+        <comment>A player in the online list</comment>
+        <chunked>
+            <field name="name" type="string"/>
+            <break/>
+            <field name="title" type="string"/>
+            <break/>
+            <field name="level" type="char"/>
+            <field name="icon" type="CharacterIcon"/>
+            <field name="class_id" type="char"/>
+            <field name="guild_tag" type="string"/>
+        </chunked>
+    </struct>
+
     <struct name="PlayersList">
         <comment>Information about online players</comment>
         <chunked>
@@ -462,20 +476,6 @@
             <length name="players_count" type="short"/>
             <break/>
             <array name="players" type="string" length="players_count" delimited="true"/>
-        </chunked>
-    </struct>
-
-    <struct name="OnlinePlayer">
-        <comment>A player in the online list</comment>
-        <chunked>
-            <field name="name" type="string"/>
-            <break/>
-            <field name="title" type="string"/>
-            <break/>
-            <field name="level" type="char"/>
-            <field name="icon" type="CharacterIcon"/>
-            <field name="class_id" type="char"/>
-            <field name="guild_tag" type="string"/>
         </chunked>
     </struct>
 
