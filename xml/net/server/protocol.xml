@@ -651,6 +651,16 @@
         <field name="secondary_stats" type="CharacterSecondaryStats"/>
     </struct>
 
+    <struct name="SkillStatRequirements">
+        <comment>Stat requirements to learn a skill from a skill master NPC</comment>
+        <field name="str" type="short"/>
+        <field name="wis" type="short"/>
+        <field name="intl" type="short"/>
+        <field name="agi" type="short"/>
+        <field name="con" type="short"/>
+        <field name="cha" type="short"/>
+    </struct>
+
     <struct name="SkillLearn">
         <comment>A skill that can be learned from a skill master NPC</comment>
         <field name="id" type="short"/>
@@ -658,7 +668,7 @@
         <field name="class_requirement" type="char"/>
         <field name="cost" type="int"/>
         <array name="skill_requirements" type="short" length="4"/>
-        <field name="stat_requirements" type="CharacterBaseStats"/>
+        <field name="stat_requirements" type="SkillStatRequirements"/>
     </struct>
 
     <struct name="BoardPostListing">
